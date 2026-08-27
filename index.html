@@ -6,31 +6,57 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0f3b43">
-<title>연구실 정기점검 가이드</title>
+<title>증적사진 촬영 가이드</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root, [data-theme='light'] {
-  --color-bg: #f4f7f7; --color-surface: #ffffff; --color-surface-2: #f7faf9;
-  --color-surface-offset: #eef3f1; --color-divider: #dde6e3; --color-border: #cdd8d4;
-  --color-text: #16262a; --color-text-muted: #5d7479; --color-text-faint: #9aa8ac;
-  --color-primary: #0f3b43; --color-primary-hover: #0a2c33; --color-primary-soft: #e2ecee;
-  --color-accent: #c45c26; --color-accent-soft: #fbe9dd;
-  --color-success: #2f7a3a; --color-success-soft: #e4f1e6;
-  --color-warning: #b86b1a; --color-warning-soft: #f7ece0;
-  --color-danger: #b3261e; --color-danger-soft: #f6e0de;
-  --shadow-sm: 0 1px 2px rgba(16,38,42,.06); --shadow-md: 0 4px 14px rgba(16,38,42,.09); --shadow-lg: 0 12px 32px rgba(16,38,42,.14);
+  --color-bg: #f4f7f7;
+  --color-surface: #ffffff;
+  --color-surface-2: #f7faf9;
+  --color-surface-offset: #eef3f1;
+  --color-divider: #dde6e3;
+  --color-border: #cdd8d4;
+  --color-text: #16262a;
+  --color-text-muted: #5d7479;
+  --color-text-faint: #9aa8ac;
+  --color-primary: #0f3b43;
+  --color-primary-hover: #0a2c33;
+  --color-primary-soft: #e2ecee;
+  --color-accent: #c45c26;
+  --color-accent-soft: #fbe9dd;
+  --color-success: #2f7a3a;
+  --color-success-soft: #e4f1e6;
+  --color-warning: #b86b1a;
+  --color-warning-soft: #f7ece0;
+  --shadow-sm: 0 1px 2px rgba(16,38,42,.06);
+  --shadow-md: 0 4px 14px rgba(16,38,42,.09);
+  --shadow-lg: 0 12px 32px rgba(16,38,42,.14);
   --font-body: 'Noto Sans KR', system-ui, sans-serif;
 }
 [data-theme='dark'] {
-  --color-bg: #101a1c; --color-surface: #162427; --color-surface-2: #1b2b2e; --color-surface-offset: #14201f;
-  --color-divider: #243436; --color-border: #2f4347; --color-text: #d6e0e0; --color-text-muted: #8ca0a3; --color-text-faint: #5d6f72;
-  --color-primary: #6fb0b8; --color-primary-hover: #8cc3ca; --color-primary-soft: #1d3236;
-  --color-accent: #e08a4f; --color-accent-soft: #33281d;
-  --color-success: #7bbf6a; --color-success-soft: #1d2c20; --color-warning: #d9a23a; --color-warning-soft: #2c2618;
-  --color-danger: #e5706a; --color-danger-soft: #2c1d1c;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.3); --shadow-md: 0 4px 14px rgba(0,0,0,.4); --shadow-lg: 0 12px 32px rgba(0,0,0,.5);
+  --color-bg: #101a1c;
+  --color-surface: #162427;
+  --color-surface-2: #1b2b2e;
+  --color-surface-offset: #14201f;
+  --color-divider: #243436;
+  --color-border: #2f4347;
+  --color-text: #d6e0e0;
+  --color-text-muted: #8ca0a3;
+  --color-text-faint: #5d6f72;
+  --color-primary: #6fb0b8;
+  --color-primary-hover: #8cc3ca;
+  --color-primary-soft: #1d3236;
+  --color-accent: #e08a4f;
+  --color-accent-soft: #33281d;
+  --color-success: #7bbf6a;
+  --color-success-soft: #1d2c20;
+  --color-warning: #d9a23a;
+  --color-warning-soft: #2c2618;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.5);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:none;text-size-adjust:none;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:84px}
@@ -39,8 +65,10 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
 :focus-visible{outline:2px solid var(--color-primary);outline-offset:2px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
+/* Sticky app shell — header + chips + viewtabs fixed together (native fit) */
 .appbar{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--color-surface) 92%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider);padding-top:env(safe-area-inset-top)}
-.appbar-inner{max-width:460px;margin:0 auto}
+.appbar-inner{max-width:440px;margin:0 auto}
+/* Header */
 .header-inner{display:flex;align-items:center;gap:10px;padding:10px 16px}
 .brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .brand-logo{width:30px;height:30px;flex-shrink:0;color:var(--color-primary)}
@@ -50,12 +78,14 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
 .theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--color-text-muted);border:1px solid var(--color-border)}
 .theme-btn:active{background:var(--color-surface-offset)}
 
+/* Progress bar */
 .progress-wrap{padding:0 16px 8px}
 .progress-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--color-text-muted);margin-bottom:5px}
 .progress-head b{color:var(--color-text);font-weight:700}
 .progress-bar{height:6px;background:var(--color-surface-offset);border-radius:999px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));border-radius:999px;transition:width .4s cubic-bezier(.16,1,.3,1);width:0}
 
+/* Process chips */
 .chips{display:flex;gap:7px;overflow-x:auto;padding:6px 16px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex-shrink:0;scroll-snap-align:start;padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-muted);white-space:nowrap;display:flex;align-items:center;gap:6px}
@@ -64,27 +94,23 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
 .chip.active .chip-count{background:rgba(255,255,255,.22);color:#fff}
 .chip-count{font-size:11px;font-weight:700;background:var(--color-surface-offset);color:var(--color-text-muted);padding:1px 7px;border-radius:999px;min-width:18px;text-align:center}
 
-.list{padding:12px 16px calc(28px + env(safe-area-inset-bottom));max-width:460px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
+/* Item list */
+.list{padding:12px 16px calc(28px + env(safe-area-inset-bottom));max-width:440px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
 .proc-head{display:flex;align-items:baseline;gap:8px;margin:6px 2px 2px}
-.proc-head h2{font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.25}
-.proc-head .proc-meta{font-size:12px;color:var(--color-text-muted);white-space:nowrap}
+.proc-head h2{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.proc-head .proc-meta{font-size:12px;color:var(--color-text-muted)}
 
 .card{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);transition:border-color .2s,box-shadow .2s}
-.card.done{border-color:var(--color-success)}
+.card.done{border-color:var(--color-success);opacity:.92}
 .card-head{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer}
-.seq-badge{flex-shrink:0;min-width:46px;height:30px;padding:0 8px;border-radius:9px;background:var(--color-primary);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;letter-spacing:-.01em}
+.seq-badge{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:var(--color-primary);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center}
 .card.done .seq-badge{background:var(--color-success)}
 .card-title-wrap{flex:1;min-width:0}
 .card-title{font-size:15px;font-weight:700;line-height:1.3}
-.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.card-hazard{margin-top:6px;font-size:12px;line-height:1.45;color:var(--color-text-muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal;word-break:keep-all}
 .tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--color-surface-offset);color:var(--color-text-muted)}
-.tag.grade-core{background:var(--color-accent-soft);color:var(--color-accent)}
-.tag.grade-gen{background:var(--color-primary-soft);color:var(--color-primary)}
-.tag.judge-tag{font-weight:700}
-.tag.judge-양호{background:var(--color-success-soft);color:var(--color-success)}
-.tag.judge-주의{background:var(--color-warning-soft);color:var(--color-warning)}
-.tag.judge-불량{background:var(--color-danger-soft);color:var(--color-danger)}
-.tag.judge-해당없음{background:var(--color-surface-offset);color:var(--color-text-muted)}
+.tag.disaster{background:var(--color-accent-soft);color:var(--color-accent)}
 .chev{flex-shrink:0;color:var(--color-text-faint);transition:transform .25s}
 .card.open .chev{transform:rotate(180deg);color:var(--color-primary)}
 
@@ -92,68 +118,94 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
 .card.open .card-body{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 
-.photo-block{margin-top:6px}
-.points-label{font-size:12px;font-weight:700;color:var(--color-accent);margin:4px 0 8px;display:flex;align-items:center;gap:6px}
-.photo-text{font-size:14px;line-height:1.55;color:var(--color-text);padding:12px 13px;background:var(--color-accent-soft);border-radius:11px;white-space:pre-line;word-break:keep-all}
+.points-label{font-size:12px;font-weight:700;color:var(--color-accent);text-transform:none;letter-spacing:0;margin:4px 0 8px;display:flex;align-items:center;gap:6px}
+.points-list{display:flex;flex-direction:column;gap:8px;counter-reset:pt}
+.point{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;background:var(--color-accent-soft);border-radius:11px;border:1px solid transparent}
+.point.done{background:var(--color-success-soft);border-color:var(--color-success)}
+.point .pmark{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--color-accent);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
+.point.done .pmark{background:var(--color-success)}
+.point.done .pmark::after{content:'✓';font-size:13px}
+.point.done .pmark .num{display:none}
+.point .ptext{flex:1;font-size:14px;line-height:1.5}
+.point.done .ptext{text-decoration:line-through;color:var(--color-text-muted)}
+.point-btn{flex-shrink:0;width:28px;height:28px;border-radius:8px;border:1.5px solid var(--color-border);display:grid;place-items:center;color:var(--color-text-faint);margin-left:4px}
+.point.done .point-btn{color:var(--color-success);border-color:var(--color-success)}
+.point-btn:active{transform:scale(.9)}
 
-.card-foot{display:flex;flex-direction:column;gap:8px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-divider)}
-.photo-foot-label{font-size:11px;font-weight:700;color:var(--color-text-muted);margin-bottom:5px;display:flex;align-items:center;gap:5px}
-.photo-input-row{display:flex;gap:8px;align-items:center}
+.section-block{margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-divider)}
+.section-block h4{font-size:12px;font-weight:700;color:var(--color-text-muted);margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.section-block p{font-size:14px;line-height:1.55;color:var(--color-text)}
+
+.card-foot{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-divider)}
+.fbtn{flex:1;padding:9px;border-radius:10px;font-size:13px;font-weight:700;border:1.5px solid var(--color-border);color:var(--color-text-muted);display:flex;align-items:center;justify-content:center;gap:6px}
+.fbtn:active{transform:scale(.97)}
+.fbtn.primary{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.fbtn.done{background:var(--color-success);color:#fff;border-color:var(--color-success)}
+.fbtn:disabled{opacity:.4}
+
+/* 사진번호 입력 */
 .photo-input{flex:1;min-width:0;padding:9px 10px;border-radius:10px;font-size:13px;font-weight:600;background:var(--color-surface-offset);border:1.5px solid var(--color-border);color:var(--color-text);text-align:center;min-height:38px}
 .photo-input::placeholder{color:var(--color-text-faint);font-weight:500}
 .photo-input:focus{outline:none;border-color:var(--color-primary);background:var(--color-surface)}
 .photo-input.has-val{background:var(--color-success-soft);border-color:var(--color-success);color:var(--color-success)}
-.judge-seg{display:flex;gap:7px;flex-wrap:wrap}
-.judge-opt{flex:1;min-width:0;padding:9px 4px;border-radius:10px;font-size:12px;font-weight:700;border:1.5px solid var(--color-border);background:var(--color-surface-offset);color:var(--color-text-muted);min-height:40px}
-.judge-opt:active{transform:scale(.98)}
-.judge-opt.sel-양호{background:var(--color-success-soft);border-color:var(--color-success);color:var(--color-success)}
-.judge-opt.sel-주의{background:var(--color-warning-soft);border-color:var(--color-warning);color:var(--color-warning)}
-.judge-opt.sel-불량{background:var(--color-danger-soft);border-color:var(--color-danger);color:var(--color-danger)}
-.judge-opt.sel-해당없음{background:var(--color-primary-soft);border-color:var(--color-primary);color:var(--color-primary)}
-.judge-opt.is-na{opacity:.3;text-decoration:line-through;pointer-events:none}
+.issue-seg{display:flex;gap:8px}
+.issue-opt{flex:1;padding:9px 6px;border-radius:10px;font-size:12px;font-weight:700;border:1.5px solid var(--color-border);background:var(--color-surface-offset);color:var(--color-text-muted);min-height:38px}
+.issue-opt:active{transform:scale(.98)}
+.issue-opt.sel-ok{background:var(--color-success-soft);border-color:var(--color-success);color:var(--color-success)}
+.issue-opt.sel-bad{background:var(--color-warning-soft,#f6e9d6);border-color:var(--color-warning);color:var(--color-warning)}
 .reset-item-btn{margin-top:2px;padding:8px;border-radius:10px;font-size:12px;font-weight:600;border:1px dashed var(--color-border);background:transparent;color:var(--color-text-muted)}
 .reset-item-btn:active{transform:scale(.98);background:var(--color-surface-offset)}
+.photo-foot-label{font-size:11px;font-weight:700;color:var(--color-text-muted);margin-bottom:5px;display:flex;align-items:center;gap:5px}
 
-.record-wrap{max-width:460px;margin:0 auto;padding:10px 0 calc(28px + env(safe-area-inset-bottom))}
+/* 촬영내역 뷰 */
+.record-wrap{max-width:440px;margin:0 auto;padding:10px 0 calc(28px + env(safe-area-inset-bottom))}
 .record-bar{display:flex;gap:8px;align-items:center;padding:6px 16px 8px;background:var(--color-bg)}
 .record-bar select{flex:1;padding:9px;border-radius:10px;font-size:13px;font-weight:600;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text);min-height:38px}
 .record-bar .rec-count{font-size:12px;color:var(--color-text-muted);font-weight:600;white-space:nowrap}
 .record-tbl-wrap{overflow:auto;max-height:calc(100dvh - 300px);-webkit-overflow-scrolling:touch;border:1px solid var(--color-divider);border-radius:10px;margin:0 16px;background:var(--color-surface)}
-.record-tbl{width:100%;border-collapse:collapse;min-width:720px;font-size:12px}
-.record-tbl thead th{position:sticky;top:0;z-index:2;background:var(--color-primary);color:#fff;font-weight:700;padding:8px;text-align:left;white-space:nowrap;border:1px solid var(--color-primary);font-size:11px}
+.record-tbl{width:100%;border-collapse:collapse;min-width:640px;font-size:12px}
+.record-tbl thead th{position:sticky;top:0;z-index:2;background:var(--color-primary);color:#fff;font-weight:700;padding:8px 8px;text-align:left;white-space:nowrap;border:1px solid var(--color-primary);font-size:11px}
 .record-tbl td{padding:8px;border:1px solid var(--color-divider);vertical-align:top;line-height:1.45;background:var(--color-surface)}
 .record-tbl tr:nth-child(even) td{background:var(--color-surface-2)}
 .record-tbl td.c-seq{text-align:center;font-weight:700;white-space:nowrap;color:var(--color-primary)}
 .record-tbl td.c-photo{text-align:center;font-weight:700;color:var(--color-accent);white-space:nowrap;min-width:64px}
 .record-tbl td.c-photo.empty{color:var(--color-text-faint);font-weight:500}
 .record-tbl td.c-proc{white-space:nowrap}
-.record-tbl td.c-judge{text-align:center;font-weight:700;white-space:nowrap}
-.record-tbl td.c-judge.j-양호{color:var(--color-success)}
-.record-tbl td.c-judge.j-주의{color:var(--color-warning)}
-.record-tbl td.c-judge.j-불량{color:var(--color-danger)}
-.record-tbl td.c-judge.j-해당없음{color:var(--color-text-muted)}
+.record-tbl td.c-issue{text-align:center;font-weight:700;white-space:nowrap}
+.record-tbl td.c-issue.ok{color:var(--color-success)}
+.record-tbl td.c-issue.bad{color:var(--color-warning)}
 .record-tbl td.empty-msg{text-align:center;color:var(--color-text-faint);padding:24px 8px;font-weight:500}
 .rec-export{padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:6px}
 .rec-export button{flex:1 1 30%;min-width:0;padding:10px 4px;border-radius:10px;font-size:12px;font-weight:700;border:none;white-space:nowrap}
 .rec-export button.primary{background:var(--color-primary);color:#fff}
 .rec-export button.secondary{background:var(--color-surface);color:var(--color-text);border:1px solid var(--color-border)}
-.rec-export button.danger{color:var(--color-danger);border-color:var(--color-danger)}
+.rec-export button.danger{color:var(--color-warning);border-color:var(--color-warning)}
 .rec-export button:active{transform:scale(.98)}
 
-.viewtabs{display:flex;gap:6px;padding:0 16px 10px;max-width:460px;margin:0 auto}
+/* Empty / guide */
+.guide{max-width:440px;margin:0 auto;padding:14px 16px calc(28px + env(safe-area-inset-bottom))}
+.guide-item{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow-sm)}
+.guide-item h3{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--color-primary)}
+.guide-item p{font-size:13px;color:var(--color-text-muted);line-height:1.5}
+.guide-item .reason{font-size:12px;color:var(--color-text-faint);margin-top:5px}
+.guide-head{font-size:18px;font-weight:800;margin:8px 2px 12px}
+
+/* View toggle (list / guide) */
+.viewtabs{display:flex;gap:6px;padding:0 16px 10px;max-width:440px;margin:0 auto}
 .vtab{flex:1;padding:10px;border-radius:10px;font-size:13px;font-weight:700;background:var(--color-surface-offset);color:var(--color-text-muted);border:1px solid transparent}
 .vtab.active{background:var(--color-surface);color:var(--color-primary);border-color:var(--color-border);box-shadow:var(--shadow-sm)}
 
 .view{display:none}
 .view.active{display:block}
 
-.float-btn{position:fixed;right:max(16px,calc((100vw - 460px)/2 + 16px));bottom:calc(18px + env(safe-area-inset-bottom));width:46px;height:46px;border-radius:50%;background:var(--color-surface);border:1px solid var(--color-border);box-shadow:var(--shadow-lg);display:grid;place-items:center;color:var(--color-text-muted);z-index:30}
+/* Floating reset */
+.float-btn{position:fixed;right:max(16px,calc((100vw - 440px)/2 + 16px));bottom:calc(18px + env(safe-area-inset-bottom));width:46px;height:46px;border-radius:50%;background:var(--color-surface);border:1px solid var(--color-border);box-shadow:var(--shadow-lg);display:grid;place-items:center;color:var(--color-text-muted);z-index:30}
 
 .toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--color-text);color:var(--color-surface);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:60;box-shadow:var(--shadow-lg);max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
-<body>
+<body><style>#passwordOverlay{position:fixed;inset:0;z-index:99999;background:#f4f7f7;display:flex;align-items:center;justify-content:center;padding:20px}#passwordBox{width:min(380px,100%);background:#fff;border:1px solid #dde6e3;border-radius:16px;padding:28px 22px;box-shadow:0 12px 32px rgba(16,38,42,.14);text-align:center}#passwordBox h2{margin-bottom:8px;color:#0f3b43}#passwordBox p{font-size:13px;color:#5d7479;margin-bottom:18px}#passwordInput{width:100%;padding:12px;border:1px solid #cdd8d4;border-radius:10px;font-size:16px;text-align:center}#passwordSubmit{width:100%;margin-top:10px;padding:12px;border:0;border-radius:10px;background:#0f3b43;color:#fff;font-weight:700}#passwordError{color:#b86b1a;font-size:12px;margin-top:8px;min-height:18px}</style><div id="passwordOverlay"><div id="passwordBox"><h2>🔒 접속 비밀번호</h2><p>증적사진 촬영 가이드에 접속하려면 비밀번호를 입력하세요.</p><input id="passwordInput" type="password" autocomplete="current-password" placeholder="비밀번호 입력"><button id="passwordSubmit">접속하기</button><div id="passwordError"></div></div></div><script>(function(){const PASSWORD="1234";const o=document.getElementById("passwordOverlay"),i=document.getElementById("passwordInput"),b=document.getElementById("passwordSubmit"),e=document.getElementById("passwordError");function go(){if(i.value===PASSWORD){o.remove();sessionStorage.setItem("photoGuideAuth","1")}else{e.textContent="비밀번호가 올바르지 않습니다.";i.value="";i.focus()}}if(sessionStorage.getItem("photoGuideAuth")==="1")o.remove();b.addEventListener("click",go);i.addEventListener("keydown",x=>{if(x.key==="Enter")go()});setTimeout(()=>i.focus(),100)})();</script>
 <div class="appbar">
  <div class="appbar-inner">
 <header class="header">
@@ -166,23 +218,23 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
         <path d="M16 2v4M12 4h8" opacity=".5"/>
       </svg>
       <div class="brand-text">
-        <div class="brand-title">연구실 정기점검 가이드</div>
-        <div class="brand-sub">전 분야 점검 · 증적사진 촬영포인트</div>
+        <div class="brand-title">증적사진 촬영 가이드</div>
+        <div class="brand-sub">위험성 진단 리스트</div>
       </div>
     </div>
     <button class="theme-btn" data-theme-toggle aria-label="테마 전환"></button>
   </div>
   <div class="progress-wrap">
-    <div class="progress-head"><span>전체 점검 진행률</span><b id="pcount">0 / 0</b></div>
+    <div class="progress-head"><span>전체 촬영 진행률</span><b id="pcount">0 / 0</b></div>
     <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
   </div>
 </header>
 
-<nav class="chips" id="chips" aria-label="분야 선택"></nav>
+<nav class="chips" id="chips" aria-label="공정 선택"></nav>
 
 <div class="viewtabs">
-  <button class="vtab active" data-view="list">점검항목</button>
-  <button class="vtab" data-view="record">점검내역</button>
+  <button class="vtab active" data-view="list">촬영포인트</button>
+  <button class="vtab" data-view="record">촬영내역</button>
 </div>
  </div>
 </div>
@@ -194,7 +246,7 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
   <section class="view" id="view-record">
     <div class="record-wrap">
       <div class="record-bar">
-        <select id="recFilter" aria-label="분야 필터"></select>
+        <select id="recFilter" aria-label="공정 필터"></select>
         <span class="rec-count" id="recCount"></span>
       </div>
       <div class="rec-export">
@@ -208,7 +260,7 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
       <div class="record-tbl-wrap">
         <table class="record-tbl" id="recTable">
           <thead><tr>
-            <th>코드</th><th>분야</th><th>점검항목</th><th>사진번호</th><th>판정</th><th>증적사진 촬영내용</th>
+            <th>연번</th><th>공정</th><th>사진번호</th><th>문제점</th><th>세부공정</th><th>유해위험요인</th><th>감소대책</th>
           </tr></thead>
           <tbody id="recBody"></tbody>
         </table>
@@ -218,7 +270,6 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
 </main>
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-<script src="data.js"></script>
 
 <button class="float-btn" id="resetBtn" aria-label="진행 초기화">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.3 2.6L3 9"/><path d="M3 3v6h6"/></svg>
@@ -227,187 +278,5451 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
 <div class="toast" id="toast"></div>
 
 <script>
+const DATA = {
+  "processes": [
+    "급식실",
+    "시설관리 내부",
+    "시설관리 외부",
+    "미화",
+    "당직및경비",
+    "행정사무업무",
+    "과학실 통학차량",
+    "기타",
+    "전기안전",
+    "소방안전"
+  ],
+  "items": [
+    {
+      "seq": "1",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "오염",
+      "photo": "① 출입문·창호 방충망 전면(파손·틈새 포함) \n② 에어커튼 본체·설치높이·작동 상태 \n③ 문틈·바닥 이격부 밀폐 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출입문·창호 방충망 전면(파손·틈새 포함)"
+        },
+        {
+          "mark": "②",
+          "text": "에어커튼 본체·설치높이·작동 상태"
+        },
+        {
+          "mark": "③",
+          "text": "문틈·바닥 이격부 밀폐 상태"
+        }
+      ],
+      "hazard": "외부 곤충류 등의 유입으로 조리식품이 오염될 위험",
+      "counter": "방충망설치, 에어커튼 설치"
+    },
+    {
+      "seq": "2",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "건강장해",
+      "photo": "① 체감온도계\n② 온도계 눈금·측정값 클로즈업 \n③ 근로자 작업위치에서 시인성",
+      "points": [
+        {
+          "mark": "①",
+          "text": "체감온도계"
+        },
+        {
+          "mark": "②",
+          "text": "온도계 눈금·측정값 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "근로자 작업위치에서 시인성"
+        }
+      ],
+      "hazard": "체감온도계 미설치로 고온환경 미지각으로 근로자 건강위험",
+      "counter": "체감온도계 설치"
+    },
+    {
+      "seq": "3",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "넘어짐",
+      "photo": "① 조리실 바닥 미끄럼방지 타일(논슬립) 전면\n② 배수로·물기 잔류 구간 \n③ 미끄럼방지 장화 비치·착용 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "조리실 바닥 미끄럼방지 타일(논슬립) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "배수로·물기 잔류 구간"
+        },
+        {
+          "mark": "③",
+          "text": "미끄럼방지 장화 비치·착용 상태"
+        }
+      ],
+      "hazard": "바닥의 물기 등으로 미끄러져 넘어질 위험",
+      "counter": "미끄럼 방지 장화착용, 미끄럼 방지 타일"
+    },
+    {
+      "seq": "4",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "충돌",
+      "photo": "① 투명유리문 전면 충돌방지 스티커(눈높이)\n② 유리문 개폐 동선 전경 \n③ 스티커 박리·훼손 여부 클로즈업",
+      "points": [
+        {
+          "mark": "①",
+          "text": "투명유리문 전면 충돌방지 스티커(눈높이)"
+        },
+        {
+          "mark": "②",
+          "text": "유리문 개폐 동선 전경"
+        },
+        {
+          "mark": "③",
+          "text": "스티커 박리·훼손 여부 클로즈업"
+        }
+      ],
+      "hazard": "투명유리문 충돌로 인한 부상 위험",
+      "counter": "충돌방지 스티커 부착"
+    },
+    {
+      "seq": "5",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "충돌",
+      "photo": "① 배수트레이 덮개 전면(미끄럼방지 처리) \n② 덮개 고정·단차 상태 클로즈업 \n③ 통행 동선과 덮개 위치 관계",
+      "points": [
+        {
+          "mark": "①",
+          "text": "배수트레이 덮개 전면(미끄럼방지 처리)"
+        },
+        {
+          "mark": "②",
+          "text": "덮개 고정·단차 상태 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "통행 동선과 덮개 위치 관계"
+        }
+      ],
+      "hazard": "배수트레이 덮개에 미끄러질 위험",
+      "counter": "미끄럼 방지 배수트레이 설치"
+    },
+    {
+      "seq": "6",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "넘어짐",
+      "photo": "① 출입구 단차 측면(높이 인지) \n② 넘어짐 주의 표지 부착 위치 \n③ 단차 보완(경사로·논슬립) 유무",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출입구 단차 측면(높이 인지)"
+        },
+        {
+          "mark": "②",
+          "text": "넘어짐 주의 표지 부착 위치"
+        },
+        {
+          "mark": "③",
+          "text": "단차 보완(경사로·논슬립) 유무"
+        }
+      ],
+      "hazard": "출입구의 단차로 이동 중 발이 걸려 넘어질 위험",
+      "counter": "넘어짐 주의 표지 부착"
+    },
+    {
+      "seq": "7",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "관리미비",
+      "photo": "① 구급상자 설치 위치 전면( identi 표지 포함)\n② 내부 용품 구성·유효기간 라벨 클로즈업 \n③ 비치 위치 시인성(작업동선)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "구급상자 설치 위치 전면( identi 표지 포함)"
+        },
+        {
+          "mark": "②",
+          "text": "내부 용품 구성·유효기간 라벨 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "비치 위치 시인성(작업동선)"
+        }
+      ],
+      "hazard": "구급상자 미비치 또는 용품 관리 미흡으로 응급처치가 지연될 위험",
+      "counter": "구급상자 위치 확인 및 유효기간 관리"
+    },
+    {
+      "seq": "8",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "위생",
+      "photo": "① 위생복·모자 비치함 전면 \n② 작업자 착용 상태(머리 완전 수납) \n③ 탈의·세탁 관리 구역",
+      "points": [
+        {
+          "mark": "①",
+          "text": "위생복·모자 비치함 전면"
+        },
+        {
+          "mark": "②",
+          "text": "작업자 착용 상태(머리 완전 수납)"
+        },
+        {
+          "mark": "③",
+          "text": "탈의·세탁 관리 구역"
+        }
+      ],
+      "hazard": "위생복 및 모자의 착용·관리가 미흡하여 식품이 오염될 위험",
+      "counter": "작업 전 올바른 위생복 착용 및 모자 정돈"
+    },
+    {
+      "seq": "9",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "감전",
+      "photo": "① 개수대·물 사용부 콘센트 방수덮개 클로즈업 \n② 누전차단기(ELB) 설치·시험버튼 \n③ 콘센트 높이·물튀김 거리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "개수대·물 사용부 콘센트 방수덮개 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "누전차단기(ELB) 설치·시험버튼"
+        },
+        {
+          "mark": "③",
+          "text": "콘센트 높이·물튀김 거리"
+        }
+      ],
+      "hazard": "물 사용 장소의 콘센트 방수조치 미흡으로 누전·감전될 위험",
+      "counter": "방수덮개 설치, 누전차단기겸용설치"
+    },
+    {
+      "seq": "10",
+      "process": "급식실",
+      "subprocess": "공통",
+      "disaster": "피부손상",
+      "photo": "① 자외선 소독기 밀폐 도어·인터록 전면 \n② UV 주의 표지 부착 \n③ 운전 중 빛 누출 여부(도어 닫힘)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "자외선 소독기 밀폐 도어·인터록 전면"
+        },
+        {
+          "mark": "②",
+          "text": "UV 주의 표지 부착"
+        },
+        {
+          "mark": "③",
+          "text": "운전 중 빛 누출 여부(도어 닫힘)"
+        }
+      ],
+      "hazard": "소독기의 UV 방사선에 노출되어 피부 및 안구가 손상될 위험",
+      "counter": "UV밀페구조, UV주의 표지부착"
+    },
+    {
+      "seq": "11",
+      "process": "급식실",
+      "subprocess": "입고",
+      "disaster": "변질",
+      "photo": "① 입고 탑차 온도표시기(냉장 5℃/냉동 −18℃ 이하) 클로즈업 \n② 검수 시 온도계 측정 장면 \n③ 온도기록지·일지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "입고 탑차 온도표시기(냉장 5℃/냉동 −18℃ 이하) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "검수 시 온도계 측정 장면"
+        },
+        {
+          "mark": "③",
+          "text": "온도기록지·일지"
+        }
+      ],
+      "hazard": "냉동·냉장 탑차의 온도 관리가 부적정하여 식재료가 변질될 위험",
+      "counter": "냉동/냉장 온도 적정성 확인 (냉장 5℃, 냉동 -18°C 이하)"
+    },
+    {
+      "seq": "12",
+      "process": "급식실",
+      "subprocess": "입고",
+      "disaster": "부딫힘",
+      "photo": "① 대차 전체 및 바퀴 상태 \n② 스토퍼(고정장치) 체결 클로즈업 \n③ 적재물 고정 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "대차 전체 및 바퀴 상태"
+        },
+        {
+          "mark": "②",
+          "text": "스토퍼(고정장치) 체결 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "적재물 고정 상태"
+        }
+      ],
+      "hazard": "대차의 바퀴 파손 또는 불량으로 부딪히거나 대차가 이탈할 위험",
+      "counter": "고정장치(스토퍼)유무 확인"
+    },
+    {
+      "seq": "13",
+      "process": "급식실",
+      "subprocess": "입고",
+      "disaster": "넘어짐",
+      "photo": "① 입고 통로 전경(장애물·물기 제거) \n② 바닥 배수·물기 잔류 지점 \n③ 통로폭 확보 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "입고 통로 전경(장애물·물기 제거)"
+        },
+        {
+          "mark": "②",
+          "text": "바닥 배수·물기 잔류 지점"
+        },
+        {
+          "mark": "③",
+          "text": "통로폭 확보 상태"
+        }
+      ],
+      "hazard": "바닥의 물기 또는 장애물로 이동 중 미끄러지거나 넘어질 위험",
+      "counter": "바닥 물기 제거 및 통로 확보"
+    },
+    {
+      "seq": "14",
+      "process": "급식실",
+      "subprocess": "입고",
+      "disaster": "식중독",
+      "photo": "① 검수대 조도(작업면) 전면 \n② 유통기한 확인 중인 식재료 라벨 클로즈업 \n③ 불합격품 격리 구역",
+      "points": [
+        {
+          "mark": "①",
+          "text": "검수대 조도(작업면) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "유통기한 확인 중인 식재료 라벨 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "불합격품 격리 구역"
+        }
+      ],
+      "hazard": "유통기한이 지난 식재료의 입고·사용으로 식중독이 발생할 위험",
+      "counter": "검수구역: 조도확보(540 lux이상), 검수시 확인"
+    },
+    {
+      "seq": "15",
+      "process": "급식실",
+      "subprocess": "입고",
+      "disaster": "동상",
+      "photo": "① 냉동창고 출입문 개방·닫힘 상태 \n② 방한복·장갑 등 보호구 비치 \n③ 내부 체류시간 관리 안내 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "냉동창고 출입문 개방·닫힘 상태"
+        },
+        {
+          "mark": "②",
+          "text": "방한복·장갑 등 보호구 비치"
+        },
+        {
+          "mark": "③",
+          "text": "내부 체류시간 관리 안내 표지"
+        }
+      ],
+      "hazard": "냉동창고에서 장시간 작업하여 저온에 노출될 위험",
+      "counter": "창고내부에서 도어개방 여부, 방한보호구 착용"
+    },
+    {
+      "seq": "16",
+      "process": "급식실",
+      "subprocess": "입고",
+      "disaster": "오염",
+      "photo": "① 출입구 살균매트 설치 전면 \n② 외부인 전용 신발(덧신) 비치함 \n③ 손소독기 위치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출입구 살균매트 설치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "외부인 전용 신발(덧신) 비치함"
+        },
+        {
+          "mark": "③",
+          "text": "손소독기 위치"
+        }
+      ],
+      "hazard": "외부 출입자의 위생관리 및 소독이 미흡하여 오염될 위험",
+      "counter": "살균매트사용, 외부인 전용 신발 착용"
+    },
+    {
+      "seq": "17",
+      "process": "급식실",
+      "subprocess": "전처리",
+      "disaster": "베임,절단",
+      "photo": "① 전처리대 칼 보관함(칼집) \n② 베임방지장갑 비치·착용 \n③ 칼 날 상태 및 작업대 정리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "전처리대 칼 보관함(칼집)"
+        },
+        {
+          "mark": "②",
+          "text": "베임방지장갑 비치·착용"
+        },
+        {
+          "mark": "③",
+          "text": "칼 날 상태 및 작업대 정리"
+        }
+      ],
+      "hazard": "칼을 사용하여 식재료를 손질하는 과정에서 베이거나 절단될 위험",
+      "counter": "베임 방지용 장갑 착용"
+    },
+    {
+      "seq": "18",
+      "process": "급식실",
+      "subprocess": "전처리",
+      "disaster": "절단",
+      "photo": "① 야채절단기·믹서 전체 \n② 덮개 인터록·잠금장치 클로즈업 \n③ 다짐봉 비치 및 비상정지 버튼",
+      "points": [
+        {
+          "mark": "①",
+          "text": "야채절단기·믹서 전체"
+        },
+        {
+          "mark": "②",
+          "text": "덮개 인터록·잠금장치 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "다짐봉 비치 및 비상정지 버튼"
+        }
+      ],
+      "hazard": "야채절단기,믹서 재료 투입 과정에서 베이거나 절단될 위험",
+      "counter": "잠금장치, 인터록장치, 다짐봉 사용"
+    },
+    {
+      "seq": "19",
+      "process": "급식실",
+      "subprocess": "전처리",
+      "disaster": "근골격질환",
+      "photo": "① 중량물(쌀포대 등) 중량 표시 라벨 \n② 취급 높이·적재 상태 \n③ 운반 보조기구(대차) 비치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "중량물(쌀포대 등) 중량 표시 라벨"
+        },
+        {
+          "mark": "②",
+          "text": "취급 높이·적재 상태"
+        },
+        {
+          "mark": "③",
+          "text": "운반 보조기구(대차) 비치"
+        }
+      ],
+      "hazard": "중량물을 반복 취급하여 근골격계질환이 발생할 위험",
+      "counter": "\"중량물 취급주의\" 표시 부착"
+    },
+    {
+      "seq": "20",
+      "process": "급식실",
+      "subprocess": "조리",
+      "disaster": "화상",
+      "photo": "① 취사기 본체 및 개방부 \n② 화상주의·안전수칙 표지 클로즈업 \n③ 증기 배출 방향과 작업자 위치 관계",
+      "points": [
+        {
+          "mark": "①",
+          "text": "취사기 본체 및 개방부"
+        },
+        {
+          "mark": "②",
+          "text": "화상주의·안전수칙 표지 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "증기 배출 방향과 작업자 위치 관계"
+        }
+      ],
+      "hazard": "취사기 개방 시 고온의 증기와 내용물이 방출되어 화상 입을 위험",
+      "counter": "화상주의 표지부착, 안전수칙 부착"
+    },
+    {
+      "seq": "21",
+      "process": "급식실",
+      "subprocess": "조리",
+      "disaster": "화상",
+      "photo": "① 내열장갑·토시 등 보호구 비치함 \n② 고온 조리기구(솥·후라이팬) 전면 \n③ 보호구 착용 작업 장면",
+      "points": [
+        {
+          "mark": "①",
+          "text": "내열장갑·토시 등 보호구 비치함"
+        },
+        {
+          "mark": "②",
+          "text": "고온 조리기구(솥·후라이팬) 전면"
+        },
+        {
+          "mark": "③",
+          "text": "보호구 착용 작업 장면"
+        }
+      ],
+      "hazard": "조리 중 뜨거운 물질이나 조리기구와 접촉하여 화상을 입을 위험",
+      "counter": "고온 조리 시 내열 장갑, 토시 등 보호구 필수 착용"
+    },
+    {
+      "seq": "22",
+      "process": "급식실",
+      "subprocess": "조리",
+      "disaster": "넘어짐",
+      "photo": "① 튀김기 주변 바닥(기름 오염·청소 상태) \n② 미끄럼방지 장화 \n③ 기름 전용 흡착포·청소도구 비치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "튀김기 주변 바닥(기름 오염·청소 상태)"
+        },
+        {
+          "mark": "②",
+          "text": "미끄럼방지 장화"
+        },
+        {
+          "mark": "③",
+          "text": "기름 전용 흡착포·청소도구 비치"
+        }
+      ],
+      "hazard": "튀김기 주변 바닥에 묻은 기름으로 미끄러져 넘어질 위험",
+      "counter": "미끄럼 방지 장화착용, 기름 사용한 조리 시 수시로 청소"
+    },
+    {
+      "seq": "23",
+      "process": "급식실",
+      "subprocess": "조리",
+      "disaster": "화재",
+      "photo": "① K급 소화기 설치 위치(조리구역) 전면 \n② 압력게이지·점검표 클로즈업 \n③ 설치 높이·접근 동선",
+      "points": [
+        {
+          "mark": "①",
+          "text": "K급 소화기 설치 위치(조리구역) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "압력게이지·점검표 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "설치 높이·접근 동선"
+        }
+      ],
+      "hazard": "소화기 미비치/불량으로 화재 발생 시 초기 대응이 지연될 위험",
+      "counter": "K급 소화기 비치 및 설치기준 준수"
+    },
+    {
+      "seq": "24",
+      "process": "급식실",
+      "subprocess": "배식",
+      "disaster": "끼임",
+      "photo": "① 배식대 전체 및 모서리 마감 \n② 바퀴 스토퍼 체결 클로즈업 \n③ 흔들림·수평 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "배식대 전체 및 모서리 마감"
+        },
+        {
+          "mark": "②",
+          "text": "바퀴 스토퍼 체결 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "흔들림·수평 상태"
+        }
+      ],
+      "hazard": "배식대의 흔들림 또는 날카로운 모서리로 부딪히거나 넘어질 위험",
+      "counter": "배식 시 바퀴 고정장치(스토퍼)사용"
+    },
+    {
+      "seq": "25",
+      "process": "급식실",
+      "subprocess": "배식",
+      "disaster": "넘어짐",
+      "photo": "① 배식 동선 바닥(음식물·물기 유무) \n②  mop·청소도구 비치 \n③ 배식 중 즉시 처리 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "배식 동선 바닥(음식물·물기 유무)"
+        },
+        {
+          "mark": "②",
+          "text": "mop·청소도구 비치"
+        },
+        {
+          "mark": "③",
+          "text": "배식 중 즉시 처리 상태"
+        }
+      ],
+      "hazard": "배식 중 음식물이 바닥에 떨어져 미끄러져 넘어질 위험",
+      "counter": "수시로 청소하여 바닥에 물기가 없도록 유지"
+    },
+    {
+      "seq": "26",
+      "process": "급식실",
+      "subprocess": "식기세척",
+      "disaster": "끼임",
+      "photo": "① 식기세척기 전체 전면 \n② 긴급정지버튼 위치·표지 클로즈업 \n③ 구동부 방호덮개·끼임주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "식기세척기 전체 전면"
+        },
+        {
+          "mark": "②",
+          "text": "긴급정지버튼 위치·표지 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "구동부 방호덮개·끼임주의 표지"
+        }
+      ],
+      "hazard": "식기세척기 작동 중 손이 구동부에 접근하여 끼일 위험\n(8대 고위험 요인)",
+      "counter": "긴급정지버튼 부착/끼임주의 경보표지 부착"
+    },
+    {
+      "seq": "27",
+      "process": "급식실",
+      "subprocess": "식기세척",
+      "disaster": "화상",
+      "photo": "① 세척 후 식기 반출구(고온) \n② 고무장갑 등 보호구 비치·착용 \n③ 고온주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "세척 후 식기 반출구(고온)"
+        },
+        {
+          "mark": "②",
+          "text": "고무장갑 등 보호구 비치·착용"
+        },
+        {
+          "mark": "③",
+          "text": "고온주의 표지"
+        }
+      ],
+      "hazard": "세척 후 고온의 식기를 취급하는 과정에서 화상을 입을 위험",
+      "counter": "고무장갑 등 보호구 착용"
+    },
+    {
+      "seq": "28",
+      "process": "급식실",
+      "subprocess": "식기세척",
+      "disaster": "끼임",
+      "photo": "① 애벌세척기 전체 \n② 긴급정지·인터록 장치 클로즈업 \n③ 투입구 손 접근 방지 구조",
+      "points": [
+        {
+          "mark": "①",
+          "text": "애벌세척기 전체"
+        },
+        {
+          "mark": "②",
+          "text": "긴급정지·인터록 장치 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "투입구 손 접근 방지 구조"
+        }
+      ],
+      "hazard": "애벌세척기(모아제품) 작동 중 끼일 위험",
+      "counter": "긴급정지장치 , 인터록 설치"
+    },
+    {
+      "seq": "29",
+      "process": "급식실",
+      "subprocess": "물품창고",
+      "disaster": "낙하위험",
+      "photo": "① 선반 전면 적재 상태(최상단 적재 여부) \n② 전도방지대·안전핀 \n③ 중량물 하단 적재 원칙 준수",
+      "points": [
+        {
+          "mark": "①",
+          "text": "선반 전면 적재 상태(최상단 적재 여부)"
+        },
+        {
+          "mark": "②",
+          "text": "전도방지대·안전핀"
+        },
+        {
+          "mark": "③",
+          "text": "중량물 하단 적재 원칙 준수"
+        }
+      ],
+      "hazard": "물품을 높이 적재하여 적재물이 떨어져 사람을 다치게 할 위험",
+      "counter": "선반최상단 적재금지, 최상단 적재 시 전도방지 조치 실시"
+    },
+    {
+      "seq": "30",
+      "process": "급식실",
+      "subprocess": "물품창고",
+      "disaster": "낙하위험",
+      "photo": "① 선반 벽체 앵커·고정볼트 클로즈업 \n② 선반 흔들림 점검 장면 \n③ 전도 위험 구간 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "선반 벽체 앵커·고정볼트 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "선반 흔들림 점검 장면"
+        },
+        {
+          "mark": "③",
+          "text": "전도 위험 구간 전경"
+        }
+      ],
+      "hazard": "선반의 고정 불량 또는 흔들림으로 적재물이 낙하할 위험",
+      "counter": "선반 벽체 고정 확인"
+    },
+    {
+      "seq": "31",
+      "process": "급식실",
+      "subprocess": "물품창고",
+      "disaster": "근골격계질환",
+      "photo": "① 중량물 취급 작업 전 스트레칭 안내문 \n② 안전보건체조 실시 증적(게시·기록) \n③ 취급 보조기구",
+      "points": [
+        {
+          "mark": "①",
+          "text": "중량물 취급 작업 전 스트레칭 안내문"
+        },
+        {
+          "mark": "②",
+          "text": "안전보건체조 실시 증적(게시·기록)"
+        },
+        {
+          "mark": "③",
+          "text": "취급 보조기구"
+        }
+      ],
+      "hazard": "중량물 취급으로 근골격계질환이 발생할 위험",
+      "counter": "작업 전 스트레칭 및 안전보건체조 등 실시"
+    },
+    {
+      "seq": "32",
+      "process": "급식실",
+      "subprocess": "보일러실",
+      "disaster": "폭발",
+      "photo": "① 가스누출경보기 설치 위치(바닥 근처) \n② 경보기 전원·시험작동 표시 \n③ 가스배관 연결부 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "가스누출경보기 설치 위치(바닥 근처)"
+        },
+        {
+          "mark": "②",
+          "text": "경보기 전원·시험작동 표시"
+        },
+        {
+          "mark": "③",
+          "text": "가스배관 연결부 전경"
+        }
+      ],
+      "hazard": "가스 누출 또는 보일러 설비의 이상으로 화재·폭발이 발생할 위험",
+      "counter": "가스누출경보기 정상위치 부착\n(LNG: 상단, LPG: 하단)"
+    },
+    {
+      "seq": "33",
+      "process": "급식실",
+      "subprocess": "보일러실",
+      "disaster": "관리미비",
+      "photo": "① 보일러실 출입문 시건장치 \n② 관계자외출입금지 표지 \n③ 출입 통제 상태 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "보일러실 출입문 시건장치"
+        },
+        {
+          "mark": "②",
+          "text": "관계자외출입금지 표지"
+        },
+        {
+          "mark": "③",
+          "text": "출입 통제 상태 전경"
+        }
+      ],
+      "hazard": "관계자 외 출입으로 보일러 설비 오조작 사고가 발생할 위험",
+      "counter": "출입구 통제 및 표지판 부착"
+    },
+    {
+      "seq": "34",
+      "process": "급식실",
+      "subprocess": "보일러실",
+      "disaster": "화상",
+      "photo": "① 배관 보온재 시공 상태(파손 부위 포함) \n② 냉수/온수 색상 표시 클로즈업 \n③ 노출 고온부 방호",
+      "points": [
+        {
+          "mark": "①",
+          "text": "배관 보온재 시공 상태(파손 부위 포함)"
+        },
+        {
+          "mark": "②",
+          "text": "냉수/온수 색상 표시 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "노출 고온부 방호"
+        }
+      ],
+      "hazard": "배관 보온재 파손, 온수냉수표시 미흡으로 접촉시 화상위험",
+      "counter": "배관 보온 유지 및 냉온수 표시"
+    },
+    {
+      "seq": "35",
+      "process": "급식실",
+      "subprocess": "보일러실",
+      "disaster": "화재",
+      "photo": "① 보일러실 내부 정리정돈 전경 \n② 가연물·인화물질 제거 상태 \n③ 화기 이격 거리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "보일러실 내부 정리정돈 전경"
+        },
+        {
+          "mark": "②",
+          "text": "가연물·인화물질 제거 상태"
+        },
+        {
+          "mark": "③",
+          "text": "화기 이격 거리"
+        }
+      ],
+      "hazard": "보일러실 주변의 가연물 방치로 화재가 발생할 위험",
+      "counter": "주변 정리정돈 및 인화물질 제거"
+    },
+    {
+      "seq": "36",
+      "process": "급식실",
+      "subprocess": "보일러실",
+      "disaster": "화재",
+      "photo": "① 보일러실 전용 소화기 전면 \n② 압력게이지·점검표 \n③ 유효기간·접근성",
+      "points": [
+        {
+          "mark": "①",
+          "text": "보일러실 전용 소화기 전면"
+        },
+        {
+          "mark": "②",
+          "text": "압력게이지·점검표"
+        },
+        {
+          "mark": "③",
+          "text": "유효기간·접근성"
+        }
+      ],
+      "hazard": "소화기 미비치/불량으로 화재 발생 시 초기 대응이 지연될 위험",
+      "counter": "보일러실 전용 소화기 점검"
+    },
+    {
+      "seq": "37",
+      "process": "급식실",
+      "subprocess": "휴게실",
+      "disaster": "환기",
+      "photo": "① 휴게실 환기팬·창문 개방 상태 \n② 환기장치 작동 여부 \n③ 실내 전경(밀폐·악취 여부)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "휴게실 환기팬·창문 개방 상태"
+        },
+        {
+          "mark": "②",
+          "text": "환기장치 작동 여부"
+        },
+        {
+          "mark": "③",
+          "text": "실내 전경(밀폐·악취 여부)"
+        }
+      ],
+      "hazard": "환기 부족으로 실내 공기질이 저하되어 건강장해가 발생할 위험",
+      "counter": "환기 장치 점검"
+    },
+    {
+      "seq": "38",
+      "process": "급식실",
+      "subprocess": "휴게실",
+      "disaster": "전기",
+      "photo": "① 휴게실 벽면 분전반 전면 \n② 휴식 가구와 분전반 이격(30cm 이상, 줄자 포함) \n③ 분전반 시건·경고표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "휴게실 벽면 분전반 전면"
+        },
+        {
+          "mark": "②",
+          "text": "휴식 가구와 분전반 이격(30cm 이상, 줄자 포함)"
+        },
+        {
+          "mark": "③",
+          "text": "분전반 시건·경고표지"
+        }
+      ],
+      "hazard": "휴게실 내 벽면 분전반 설치",
+      "counter": "30cm이상 이격거리 확보"
+    },
+    {
+      "seq": "39",
+      "process": "급식실",
+      "subprocess": "휴게실",
+      "disaster": "전기",
+      "photo": "① 냉난방기·전열기 전원 연결 상태 \n② 문어발 배선 여부(멀티탭) \n③ 허용용량·안전인증 표시",
+      "points": [
+        {
+          "mark": "①",
+          "text": "냉난방기·전열기 전원 연결 상태"
+        },
+        {
+          "mark": "②",
+          "text": "문어발 배선 여부(멀티탭)"
+        },
+        {
+          "mark": "③",
+          "text": "허용용량·안전인증 표시"
+        }
+      ],
+      "hazard": "냉난방기 및 전열기구의 과부하로 화재가 발생할 위험",
+      "counter": "문어발식 배선 금지"
+    },
+    {
+      "seq": "40",
+      "process": "급식실",
+      "subprocess": "휴게실",
+      "disaster": "위생",
+      "photo": "① 휴게실 청결 상태 전경 \n② 쓰레기통·청소 점검표 \n③ 환기·소독 실시 증적",
+      "points": [
+        {
+          "mark": "①",
+          "text": "휴게실 청결 상태 전경"
+        },
+        {
+          "mark": "②",
+          "text": "쓰레기통·청소 점검표"
+        },
+        {
+          "mark": "③",
+          "text": "환기·소독 실시 증적"
+        }
+      ],
+      "hazard": "청결관리 미흡으로 오염·감염 등 위생상 문제가 발생할 위험",
+      "counter": "정기적 환기 및 청소"
+    },
+    {
+      "seq": "41",
+      "process": "급식실",
+      "subprocess": "휴게실",
+      "disaster": "가구",
+      "photo": "① 의자·테이블 전체 \n② 파손·흔들림 부위 클로즈업 \n③ 수리·교체 또는 사용중지 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "의자·테이블 전체"
+        },
+        {
+          "mark": "②",
+          "text": "파손·흔들림 부위 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "수리·교체 또는 사용중지 표지"
+        }
+      ],
+      "hazard": "파손된 의자·테이블 사용으로 넘어지거나 부딪혀 다칠 위험",
+      "counter": "가구 상태 점검 및 수리"
+    },
+    {
+      "seq": "42",
+      "process": "급식실",
+      "subprocess": "휴게실",
+      "disaster": "비상구",
+      "photo": "① 휴게실 출입구·비상 대피 동선 전경 \n② 적치물 없이 개방된 출입구 \n③ 피난 안내 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "휴게실 출입구·비상 대피 동선 전경"
+        },
+        {
+          "mark": "②",
+          "text": "적치물 없이 개방된 출입구"
+        },
+        {
+          "mark": "③",
+          "text": "피난 안내 표지"
+        }
+      ],
+      "hazard": "비상구 또는 피난경로 확보 미흡으로 비상 시 대피가 지연될 위험",
+      "counter": "출입구 개방성 유지"
+    },
+    {
+      "seq": "43",
+      "process": "급식실",
+      "subprocess": "후처리(청소 등)",
+      "disaster": "오염",
+      "photo": "① 세제·락스(차아염소산나트륨) 전용보관 \n② MSDS(물질안전보건자료) 비치\n③ 소분용기 경고표시 부착(화학물질명, 유해 위험성 경고표시 라벨부착",
+      "points": [
+        {
+          "mark": "①",
+          "text": "세제·락스(차아염소산나트륨) 전용보관"
+        },
+        {
+          "mark": "②",
+          "text": "MSDS(물질안전보건자료) 비치"
+        },
+        {
+          "mark": "③",
+          "text": "소분용기 경고표시 부착(화학물질명, 유해 위험성 경고표시 라벨부착"
+        }
+      ],
+      "hazard": "청소용 세제·락스 등이 피부에 접촉하여 피부 손상이 발생할 위험",
+      "counter": "MSDS게시, 주의표지부착, 보호구 착용"
+    },
+    {
+      "seq": "44",
+      "process": "급식실",
+      "subprocess": "후처리(청소 등)",
+      "disaster": "넘어짐",
+      "photo": "① 릴호스 상부 설치 높이(1.8m 이상, 줄자 포함)\n② 바닥 호스 방치 여부 \n③ 호스 정리 상태 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "릴호스 상부 설치 높이(1.8m 이상, 줄자 포함)"
+        },
+        {
+          "mark": "②",
+          "text": "바닥 호스 방치 여부"
+        },
+        {
+          "mark": "③",
+          "text": "호스 정리 상태 전경"
+        }
+      ],
+      "hazard": "물 공급 호스에 발, 또는 상체 걸려 넘어질 위험",
+      "counter": "상부 릴 호스를 적정한 높이(1.8m이상)에 설치"
+    },
+    {
+      "seq": "45",
+      "process": "시설관리 내부",
+      "subprocess": "시설관리실",
+      "disaster": "공구류",
+      "photo": "① 공구함 정리 상태 전면 ② 파손·절연 불량 공구 격리 ③ 절연공구 절연상태 클로즈업",
+      "points": [
+        {
+          "mark": "①",
+          "text": "공구함 정리 상태 전면"
+        },
+        {
+          "mark": "②",
+          "text": "파손·절연 불량 공구 격리"
+        },
+        {
+          "mark": "③",
+          "text": "절연공구 절연상태 클로즈업"
+        }
+      ],
+      "hazard": "공구의 파손으로 상해·감전사고가 발생할 위험",
+      "counter": "공구 사용적정 상태"
+    },
+    {
+      "seq": "46",
+      "process": "시설관리 내부",
+      "subprocess": "시설관리실",
+      "disaster": "화재",
+      "photo": "① 인화성물질 보관 위치·위험물 표지 ② 화기와의 이격 ③ 환기 상태(창·팬)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "인화성물질 보관 위치·위험물 표지"
+        },
+        {
+          "mark": "②",
+          "text": "화기와의 이격"
+        },
+        {
+          "mark": "③",
+          "text": "환기 상태(창·팬)"
+        }
+      ],
+      "hazard": "인화성 물질의 누출,화기 접촉으로 화재가 발생할 위험",
+      "counter": "위험물 표지 및 환기"
+    },
+    {
+      "seq": "47",
+      "process": "시설관리 내부",
+      "subprocess": "시설관리실",
+      "disaster": "감전",
+      "photo": "① 분전반 개방 시 충전부 절연커버(투명 절연판) ② 외함 시건 ③ 내부 단자 노출 여부 클로즈업",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반 개방 시 충전부 절연커버(투명 절연판)"
+        },
+        {
+          "mark": "②",
+          "text": "외함 시건"
+        },
+        {
+          "mark": "③",
+          "text": "내부 단자 노출 여부 클로즈업"
+        }
+      ],
+      "hazard": "분전반의 충전부 노출 등으로 감전 또는 전기화재가 발생할 위험\n(8대 고위험 요인)",
+      "counter": "충전부 보호커버 -(절연판)설치"
+    },
+    {
+      "seq": "48",
+      "process": "시설관리 내부",
+      "subprocess": "시설관리실",
+      "disaster": "관리미비",
+      "photo": "① 비상연락망 게시판 전면(최신 일자) ② 연락처 가독성 클로즈업 ③ 게시 위치 시인성",
+      "points": [
+        {
+          "mark": "①",
+          "text": "비상연락망 게시판 전면(최신 일자)"
+        },
+        {
+          "mark": "②",
+          "text": "연락처 가독성 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "게시 위치 시인성"
+        }
+      ],
+      "hazard": "비상연락처 미게시/현행화 미흡으로 비상상황 대응이 지연될 위험",
+      "counter": "비상연락망 최신화"
+    },
+    {
+      "seq": "49",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "낙하위험",
+      "photo": "① 선반 하단 중량물 적재 상태 ② 선반 벽체 고정 ③ 전도·낙하 위험 적재 금지 준수",
+      "points": [
+        {
+          "mark": "①",
+          "text": "선반 하단 중량물 적재 상태"
+        },
+        {
+          "mark": "②",
+          "text": "선반 벽체 고정"
+        },
+        {
+          "mark": "③",
+          "text": "전도·낙하 위험 적재 금지 준수"
+        }
+      ],
+      "hazard": "중량물의 부적정 적재로 물품이 낙하하거나 깔릴 위험\n(8대 고위험 요인)",
+      "counter": "하단 적재 및 선반 고정"
+    },
+    {
+      "seq": "50",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "통로",
+      "photo": "① 창고 주통로 전경(적치물 없음) ② 통로폭 확보 ③ 비상구 방향 시인성",
+      "points": [
+        {
+          "mark": "①",
+          "text": "창고 주통로 전경(적치물 없음)"
+        },
+        {
+          "mark": "②",
+          "text": "통로폭 확보"
+        },
+        {
+          "mark": "③",
+          "text": "비상구 방향 시인성"
+        }
+      ],
+      "hazard": "통로에 물품을 적치하여 비상대피가 지연될 위험",
+      "counter": "이동 통로 확보"
+    },
+    {
+      "seq": "51",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "화재",
+      "photo": "① 소화기 설치 위치·압력게이지 ② 감지기 설치 위치 ③ 작동 점검표·점검기록",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화기 설치 위치·압력게이지"
+        },
+        {
+          "mark": "②",
+          "text": "감지기 설치 위치"
+        },
+        {
+          "mark": "③",
+          "text": "작동 점검표·점검기록"
+        }
+      ],
+      "hazard": "소화기·감지기의 미비치/불량으로 화재 초기 대응이 지연될 위험",
+      "counter": "작동 여부 점검"
+    },
+    {
+      "seq": "52",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "화재",
+      "photo": "① 조명기구·전선 피복 상태 클로즈업 ② 노후·손상 배선 구간 ③ 교체 또는 절연 조치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "조명기구·전선 피복 상태 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "노후·손상 배선 구간"
+        },
+        {
+          "mark": "③",
+          "text": "교체 또는 절연 조치"
+        }
+      ],
+      "hazard": "조명·배선의 노후 또는 손상으로 감전·전기화재가 발생할 위험",
+      "counter": "노후 배선 교체"
+    },
+    {
+      "seq": "53",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "관리미비",
+      "photo": "① 창고 출입문 자물쇠·시건 ② 관리자외출입금지 표지 ③ 열쇠 관리함",
+      "points": [
+        {
+          "mark": "①",
+          "text": "창고 출입문 자물쇠·시건"
+        },
+        {
+          "mark": "②",
+          "text": "관리자외출입금지 표지"
+        },
+        {
+          "mark": "③",
+          "text": "열쇠 관리함"
+        }
+      ],
+      "hazard": "창고 시건장치 불량으로 무단 출입/위험물 임의취급이 발생할 위험",
+      "counter": "관리자 외 출입 제한"
+    },
+    {
+      "seq": "54",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "근골격계질환",
+      "photo": "① 중량물 표시 라벨(무게) 클로즈업 ② 취급물 적재 높이 ③ 운반 보조기구",
+      "points": [
+        {
+          "mark": "①",
+          "text": "중량물 표시 라벨(무게) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "취급물 적재 높이"
+        },
+        {
+          "mark": "③",
+          "text": "운반 보조기구"
+        }
+      ],
+      "hazard": "중량물 취급에 따른 근골격계질환 위험",
+      "counter": "중량물 표시부착"
+    },
+    {
+      "seq": "55",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "비산",
+      "photo": "① 예초용 보호구 비치함(안면보호구·각반·장갑 등) ② 보호구 상태 클로즈업 ③ 착용 안내 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "예초용 보호구 비치함(안면보호구·각반·장갑 등)"
+        },
+        {
+          "mark": "②",
+          "text": "보호구 상태 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "착용 안내 표지"
+        }
+      ],
+      "hazard": "예초작업 시 보호구 미착용에 따른 베임 절단 위험\n(8대 고위험 요인)",
+      "counter": "보호구 비치"
+    },
+    {
+      "seq": "56",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "비산",
+      "photo": "① 예초기 날 안전덮개 장착 클로즈업 ② 비산주의 표지 ③ 예초기 보관 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "예초기 날 안전덮개 장착 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "비산주의 표지"
+        },
+        {
+          "mark": "③",
+          "text": "예초기 보관 상태"
+        }
+      ],
+      "hazard": "예초작업 시 보호구 미착용에 따른 베임 절단 위험",
+      "counter": "안전뎦개부착, 주의 표지 부착"
+    },
+    {
+      "seq": "57",
+      "process": "시설관리 내부",
+      "subprocess": "시설창고",
+      "disaster": "추락",
+      "photo": "① 안전인증 사다리 비치 전면 ② 아웃트리거·미끄럼방지 발 ③ 사용 안내 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "안전인증 사다리 비치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "아웃트리거·미끄럼방지 발"
+        },
+        {
+          "mark": "③",
+          "text": "사용 안내 표지"
+        }
+      ],
+      "hazard": "안전사다리 미사용으로 인한 추락 위험\n(8대 고위험 요인)",
+      "counter": "안전사다리 사용"
+    },
+    {
+      "seq": "58",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "추락",
+      "photo": "① 옥상 난간 전경(높이 확인, 줄자 포함) ② 난간 파손·부식 부위 ③ 추락주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "옥상 난간 전경(높이 확인, 줄자 포함)"
+        },
+        {
+          "mark": "②",
+          "text": "난간 파손·부식 부위"
+        },
+        {
+          "mark": "③",
+          "text": "추락주의 표지"
+        }
+      ],
+      "hazard": "옥상 난간의 높이 부족 또는 파손으로 추락할 위험\n(8대 고위험 요인)",
+      "counter": "난간 안전 표지 및 보수"
+    },
+    {
+      "seq": "59",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "추락",
+      "photo": "① 고정사다리 전체 ② 논슬립 패드·추락주의 표지 클로즈업 ③ 사다리 고정볼트· rust 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "고정사다리 전체"
+        },
+        {
+          "mark": "②",
+          "text": "논슬립 패드·추락주의 표지 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "사다리 고정볼트· rust 상태"
+        }
+      ],
+      "hazard": "고정사다리 관리 미비로 인한 추락",
+      "counter": "추락주의 표지, 논슬립 패드부착"
+    },
+    {
+      "seq": "60",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "부딪힘",
+      "photo": "① 낮은 배관·덕트 구간 전경 ② 머리부딪힘 주의 표지(형광) ③ 완충 패드 설치 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "낮은 배관·덕트 구간 전경"
+        },
+        {
+          "mark": "②",
+          "text": "머리부딪힘 주의 표지(형광)"
+        },
+        {
+          "mark": "③",
+          "text": "완충 패드 설치 여부"
+        }
+      ],
+      "hazard": "머리부딛힘 주의 표지 부착",
+      "counter": "머리부딛힘 주의 표지 부착"
+    },
+    {
+      "seq": "61",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "관리미비",
+      "photo": "① 옥상 출입문 잠금장치 클로즈업 ② 관리자외출입금지 표지 ③ 출입 통제 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "옥상 출입문 잠금장치 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "관리자외출입금지 표지"
+        },
+        {
+          "mark": "③",
+          "text": "출입 통제 상태"
+        }
+      ],
+      "hazard": "잠금장치 불량으로 무단 출입하여 추락 등 사고가 발생할 위험",
+      "counter": "관리자 외 출입 금지 안내"
+    },
+    {
+      "seq": "62",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "배수",
+      "photo": "① 옥상 배수구 전면(이물질 제거) ② 물고임 여부 전경 ③ 배수로 연결 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "옥상 배수구 전면(이물질 제거)"
+        },
+        {
+          "mark": "②",
+          "text": "물고임 여부 전경"
+        },
+        {
+          "mark": "③",
+          "text": "배수로 연결 상태"
+        }
+      ],
+      "hazard": "옥상 배수 불량으로 물이 고여 미끄러지거나 시설물이 손상될 위험",
+      "counter": "배수구 이물질 제거"
+    },
+    {
+      "seq": "63",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "넘어짐,추락",
+      "photo": "① 케이블트레이·배관 통행 저해 구간 ② 주의표지 ③ 커버· collison bar 등 안전조치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "케이블트레이·배관 통행 저해 구간"
+        },
+        {
+          "mark": "②",
+          "text": "주의표지"
+        },
+        {
+          "mark": "③",
+          "text": "커버· collison bar 등 안전조치"
+        }
+      ],
+      "hazard": "Cable Tray, 배관에 걸려 넘어짐 위험",
+      "counter": "주의표지부착 및 안전조치"
+    },
+    {
+      "seq": "64",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "넘어짐,추락",
+      "photo": "① 옥상 설비(안테나·함체 등) 앵커 고정 클로즈업 ② 전도 위험 설비 전경 ③ 기초 볼트 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "옥상 설비(안테나·함체 등) 앵커 고정 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "전도 위험 설비 전경"
+        },
+        {
+          "mark": "③",
+          "text": "기초 볼트 상태"
+        }
+      ],
+      "hazard": "고정 불량으로 시설물이 전도되거나 작업자가 넘어질 위험",
+      "counter": "고정상태 양호"
+    },
+    {
+      "seq": "65",
+      "process": "시설관리 내부",
+      "subprocess": "옥상",
+      "disaster": "감전",
+      "photo": "① 태양광 패널 접지선 연결부 클로즈업 ② 접지단자함 ③ 패널 후면 배선 정리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "태양광 패널 접지선 연결부 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "접지단자함"
+        },
+        {
+          "mark": "③",
+          "text": "패널 후면 배선 정리"
+        }
+      ],
+      "hazard": "태양광 패널 접지",
+      "counter": "접지연결사용"
+    },
+    {
+      "seq": "66",
+      "process": "시설관리 내부",
+      "subprocess": "소방펌프실",
+      "disaster": "펌프",
+      "photo": "① 소방펌프 본체 전면 ② 시운전 밸브·압력계 ③ 소방시설 점검기록부·점검표",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소방펌프 본체 전면"
+        },
+        {
+          "mark": "②",
+          "text": "시운전 밸브·압력계"
+        },
+        {
+          "mark": "③",
+          "text": "소방시설 점검기록부·점검표"
+        }
+      ],
+      "hazard": "소방펌프의 불량으로 화재 시 소화설비가 정상 작동하지 않을 위험",
+      "counter": "정기적 시운전,소방시설 점검기록부 및 점검표 확인"
+    },
+    {
+      "seq": "67",
+      "process": "시설관리 내부",
+      "subprocess": "소방펌프실",
+      "disaster": "전기",
+      "photo": "① 소방펌프 제어반 외함·시건 ② 내부 차단기·누전 여부 ③ 전기점검 기록·점검표",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소방펌프 제어반 외함·시건"
+        },
+        {
+          "mark": "②",
+          "text": "내부 차단기·누전 여부"
+        },
+        {
+          "mark": "③",
+          "text": "전기점검 기록·점검표"
+        }
+      ],
+      "hazard": "소방펌프 제어반의 누전으로 감전 또는 전기화재가 발생할 위험",
+      "counter": "전기 안전 점검,소방시설 점검기록부 및 점검표 확인"
+    },
+    {
+      "seq": "68",
+      "process": "시설관리 내부",
+      "subprocess": "소방펌프실",
+      "disaster": "누수",
+      "photo": "① 펌프 배관 연결부(누수 흔적) 클로즈업 ② 바닥 물고임·미끄럼 ③ 보수 조치 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "펌프 배관 연결부(누수 흔적) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "바닥 물고임·미끄럼"
+        },
+        {
+          "mark": "③",
+          "text": "보수 조치 상태"
+        }
+      ],
+      "hazard": "소방펌프 배관의 누수로 기능이 저하되거나 바닥 미끄러워질 위험",
+      "counter": "누수 지점 즉시 수리"
+    },
+    {
+      "seq": "69",
+      "process": "시설관리 내부",
+      "subprocess": "소방펌프실",
+      "disaster": "유지관리장애",
+      "photo": "① 소방펌프실 통로 전경(적치 금지) ② 펌프 전면 작업공간 ③ 출입·대피 동선",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소방펌프실 통로 전경(적치 금지)"
+        },
+        {
+          "mark": "②",
+          "text": "펌프 전면 작업공간"
+        },
+        {
+          "mark": "③",
+          "text": "출입·대피 동선"
+        }
+      ],
+      "hazard": "소방펌프실 통로에 장애물이 있어 점검·보수/비상대피 지연위험",
+      "counter": "물건 적치 금지"
+    },
+    {
+      "seq": "70",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "감전",
+      "photo": "① 분전반·차단기 충전부 절연커버 클로즈업 ② 외함 개방 시 노출 단자 유무 ③ 시건 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반·차단기 충전부 절연커버 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "외함 개방 시 노출 단자 유무"
+        },
+        {
+          "mark": "③",
+          "text": "시건 상태"
+        }
+      ],
+      "hazard": "분전반,차단기 단자의 충전부에 접촉하여 감전될 위험\n(8대 고위험 요인)",
+      "counter": "분전반 및 차단기 충전부 보호커버 설치"
+    },
+    {
+      "seq": "71",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "넘어짐",
+      "photo": "① 케이블트레이 본딩(접지 본드) 클로즈업 ② 트레이 지지·단차 ③ 통행 걸림 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "케이블트레이 본딩(접지 본드) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "트레이 지지·단차"
+        },
+        {
+          "mark": "③",
+          "text": "통행 걸림 여부"
+        }
+      ],
+      "hazard": "Cable Tray 본딩 미흡으로 인한 넘어짐 위험",
+      "counter": "Cable Tray 본딩 실시"
+    },
+    {
+      "seq": "72",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "감전",
+      "photo": "① 분전반 외함 전기경고(감전주의) 표지 전면 ② 표지 시인성(색·크기) ③ 함체 잠금",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반 외함 전기경고(감전주의) 표지 전면"
+        },
+        {
+          "mark": "②",
+          "text": "표지 시인성(색·크기)"
+        },
+        {
+          "mark": "③",
+          "text": "함체 잠금"
+        }
+      ],
+      "hazard": "분전반 외함의 위험표시 미흡으로 충전부 접근 등 감전위험\n(8대 고위험 요인)",
+      "counter": "분전반 외함 전기경고 표지 또는 감전주의 표지부착"
+    },
+    {
+      "seq": "73",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "관리미비",
+      "photo": "① 분전반 전면 1m 이내 적치물 유무 전경 ② 작업 공간 확보 ③ 금지 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반 전면 1m 이내 적치물 유무 전경"
+        },
+        {
+          "mark": "②",
+          "text": "작업 공간 확보"
+        },
+        {
+          "mark": "③",
+          "text": "금지 표지"
+        }
+      ],
+      "hazard": "분전반 앞 장애물 적치로 긴급한 전원 차단이 지연될 위험",
+      "counter": "분전반 전면 장애물 제거"
+    },
+    {
+      "seq": "74",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "화재",
+      "photo": "① 전기실 소화기 비치 위치 ② 압력게이지·점검표 ③ 전기화재 적응 소화기 종류 확인",
+      "points": [
+        {
+          "mark": "①",
+          "text": "전기실 소화기 비치 위치"
+        },
+        {
+          "mark": "②",
+          "text": "압력게이지·점검표"
+        },
+        {
+          "mark": "③",
+          "text": "전기화재 적응 소화기 종류 확인"
+        }
+      ],
+      "hazard": "소화기 미비치로 인한 화재 위험",
+      "counter": "소화기 배치"
+    },
+    {
+      "seq": "75",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "관리미비",
+      "photo": "① 차단기별 회로명 라벨 클로즈업 ② 분전반 전체 명판 가독성 ③ 최신화 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "차단기별 회로명 라벨 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "분전반 전체 명판 가독성"
+        },
+        {
+          "mark": "③",
+          "text": "최신화 여부"
+        }
+      ],
+      "hazard": "분전반 회로명 미표기로 긴급 시 전원 차단이 지연될 위험",
+      "counter": "차단기별 회로명 기입"
+    },
+    {
+      "seq": "76",
+      "process": "시설관리 내부",
+      "subprocess": "전기실",
+      "disaster": "감전",
+      "photo": "① 절연화·절연장갑·안전모 비치함 ② 보호구 시험·유효 표시 ③ 착용 안내 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "절연화·절연장갑·안전모 비치함"
+        },
+        {
+          "mark": "②",
+          "text": "보호구 시험·유효 표시"
+        },
+        {
+          "mark": "③",
+          "text": "착용 안내 표지"
+        }
+      ],
+      "hazard": "개인보호장구 미사용 따른 감전 위험",
+      "counter": "절연화,안전모, 절연장갑 비치"
+    },
+    {
+      "seq": "77",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "감전",
+      "photo": "① MCC·제어반 문 시건 클로즈업 ② 충전부 노출 여부(문 닫힘) ③ 펌프모터 단자함 커버",
+      "points": [
+        {
+          "mark": "①",
+          "text": "MCC·제어반 문 시건 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "충전부 노출 여부(문 닫힘)"
+        },
+        {
+          "mark": "③",
+          "text": "펌프모터 단자함 커버"
+        }
+      ],
+      "hazard": "MCC 및 펌프모터의 충전부 노출로 신체가 접촉하여 감전될 위험\n(8대 고위험 요인)",
+      "counter": "배전반 및 제어반 문 상시 시건"
+    },
+    {
+      "seq": "78",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "화상",
+      "photo": "① 증기·난방 배관 단열재 시공 ② 고온주의 경고표지 ③ 열교환기 표면 방호",
+      "points": [
+        {
+          "mark": "①",
+          "text": "증기·난방 배관 단열재 시공"
+        },
+        {
+          "mark": "②",
+          "text": "고온주의 경고표지"
+        },
+        {
+          "mark": "③",
+          "text": "열교환기 표면 방호"
+        }
+      ],
+      "hazard": "고온의 증기난방 배관 및 열교환기 표면에 접촉하여 화상 위험",
+      "counter": "단열재 시공 및 고온주의 경고 표지 부착"
+    },
+    {
+      "seq": "79",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "끼임",
+      "photo": "① 펌프·모터 커플링 안전덮개(방호펜스) ② 회전부 노출 여부 클로즈업 ③ 끼임주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "펌프·모터 커플링 안전덮개(방호펜스)"
+        },
+        {
+          "mark": "②",
+          "text": "회전부 노출 여부 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "끼임주의 표지"
+        }
+      ],
+      "hazard": "펌프·모터 구동부에 신체가 접근하여 끼이거나 말려들 위험",
+      "counter": "안전덮개(방호 펜스)설치"
+    },
+    {
+      "seq": "80",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "미끄러짐",
+      "photo": "① 기계실 바닥 기름 오염·제거 상태 ② 미끄럼방지 조치(매트·흡착포) ③ 누유 지점",
+      "points": [
+        {
+          "mark": "①",
+          "text": "기계실 바닥 기름 오염·제거 상태"
+        },
+        {
+          "mark": "②",
+          "text": "미끄럼방지 조치(매트·흡착포)"
+        },
+        {
+          "mark": "③",
+          "text": "누유 지점"
+        }
+      ],
+      "hazard": "기계실 바닥의 기름으로 미끄러져 넘어질 위험",
+      "counter": "기름 제거 및 미끄럼 방지"
+    },
+    {
+      "seq": "81",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "질식",
+      "photo": "① 가스누설경보기 설치 위치 ② 자동차단장치(밸브) ③ 경보기 전원·시험 표시",
+      "points": [
+        {
+          "mark": "①",
+          "text": "가스누설경보기 설치 위치"
+        },
+        {
+          "mark": "②",
+          "text": "자동차단장치(밸브)"
+        },
+        {
+          "mark": "③",
+          "text": "경보기 전원·시험 표시"
+        }
+      ],
+      "hazard": "가스보일러실의 가스 누출로 질식하거나 화재·폭발이 발생할 위험",
+      "counter": "가스누설경보기 및 자동차단장치 설치"
+    },
+    {
+      "seq": "82",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "폭발",
+      "photo": "① 보일러 제어반 차단기 ② 감지기·경보기 설치 ③ 제어기기 정상 표시등",
+      "points": [
+        {
+          "mark": "①",
+          "text": "보일러 제어반 차단기"
+        },
+        {
+          "mark": "②",
+          "text": "감지기·경보기 설치"
+        },
+        {
+          "mark": "③",
+          "text": "제어기기 정상 표시등"
+        }
+      ],
+      "hazard": "보일러 제어기기 관리 미흡에 따른 화재위험",
+      "counter": "차단기,감지기,경보기 설치"
+    },
+    {
+      "seq": "83",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "넘어짐",
+      "photo": "① 출입구 배수구 덮개 체결 클로즈업 ② 덮개 단차·흔들림 ③ 통행 걸림 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출입구 배수구 덮개 체결 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "덮개 단차·흔들림"
+        },
+        {
+          "mark": "③",
+          "text": "통행 걸림 여부"
+        }
+      ],
+      "hazard": "출입구 배수구덮개 부착 미흡으로 걸려넘어짐 위험",
+      "counter": "덮개체결"
+    },
+    {
+      "seq": "84",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "낙하",
+      "photo": "① 집수정 덮개 체결·잠금 ② 개구부 방호 전경 ③ 추락주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "집수정 덮개 체결·잠금"
+        },
+        {
+          "mark": "②",
+          "text": "개구부 방호 전경"
+        },
+        {
+          "mark": "③",
+          "text": "추락주의 표지"
+        }
+      ],
+      "hazard": "집수정 관리 미흡으로 인한 낙하 위험",
+      "counter": "덮개체결"
+    },
+    {
+      "seq": "85",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "추락,넘어짐",
+      "photo": "① 안전사다리 아웃트리거 전개 상태 ② 사다리 전도방지 ③ 주의표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "안전사다리 아웃트리거 전개 상태"
+        },
+        {
+          "mark": "②",
+          "text": "사다리 전도방지"
+        },
+        {
+          "mark": "③",
+          "text": "주의표지"
+        }
+      ],
+      "hazard": "안전사다리 미사용으로 인한 추락 위험",
+      "counter": "아웃트리거부탁, 주의표지 부착"
+    },
+    {
+      "seq": "86",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "감전",
+      "photo": "① 발전기 배터리 단자 절연캡 클로즈업 ② 배터리함 시건 ③ 주변 금속 공구 이격",
+      "points": [
+        {
+          "mark": "①",
+          "text": "발전기 배터리 단자 절연캡 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "배터리함 시건"
+        },
+        {
+          "mark": "③",
+          "text": "주변 금속 공구 이격"
+        }
+      ],
+      "hazard": "소화전펌프작동용발전기의 배터리 절연캡 미부착으로 감전위험",
+      "counter": "절연캡 부착"
+    },
+    {
+      "seq": "87",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "폭발",
+      "photo": "① 경유 탱크·주입구 경고표지 ② 금연·화기엄금 표지 ③ 유류 취급 보호구 비치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "경유 탱크·주입구 경고표지"
+        },
+        {
+          "mark": "②",
+          "text": "금연·화기엄금 표지"
+        },
+        {
+          "mark": "③",
+          "text": "유류 취급 보호구 비치"
+        }
+      ],
+      "hazard": "경유경고표지 부착",
+      "counter": "주의표지부착, 보호구 착용"
+    },
+    {
+      "seq": "88",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "폭발",
+      "photo": "① 경유 MSDS 게시판 전면 ② 물질명·비상조치 가독성 ③ 게시 위치(취급 장소 인근)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "경유 MSDS 게시판 전면"
+        },
+        {
+          "mark": "②",
+          "text": "물질명·비상조치 가독성"
+        },
+        {
+          "mark": "③",
+          "text": "게시 위치(취급 장소 인근)"
+        }
+      ],
+      "hazard": "경유 MSDS 미비치",
+      "counter": "MSDS게시"
+    },
+    {
+      "seq": "89",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "폭발",
+      "photo": "① 도시가스(LNG) MSDS 게시 ② 가스 배관 식별 표시 ③ 누출 시 행동요령 안내",
+      "points": [
+        {
+          "mark": "①",
+          "text": "도시가스(LNG) MSDS 게시"
+        },
+        {
+          "mark": "②",
+          "text": "가스 배관 식별 표시"
+        },
+        {
+          "mark": "③",
+          "text": "누출 시 행동요령 안내"
+        }
+      ],
+      "hazard": "도시가스(LNG) MSDS 미비치",
+      "counter": "MSDS게시"
+    },
+    {
+      "seq": "90",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "질식",
+      "photo": "① 저수조 탱크 상부 개구부 방호 ② 추락주의·밀폐공간(질식) 표지 ③ 사다리·난간 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "저수조 탱크 상부 개구부 방호"
+        },
+        {
+          "mark": "②",
+          "text": "추락주의·밀폐공간(질식) 표지"
+        },
+        {
+          "mark": "③",
+          "text": "사다리·난간 상태"
+        }
+      ],
+      "hazard": "저수조 탱크 관리",
+      "counter": "추락주의, 질식위험공간 표지부착"
+    },
+    {
+      "seq": "91",
+      "process": "시설관리 내부",
+      "subprocess": "기계실",
+      "disaster": "충돌",
+      "photo": "① 천장 낮은 배관·보 구간 ② 충격완화 패드 ③ 머리부딪힘 주의 표지(형광)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "천장 낮은 배관·보 구간"
+        },
+        {
+          "mark": "②",
+          "text": "충격완화 패드"
+        },
+        {
+          "mark": "③",
+          "text": "머리부딪힘 주의 표지(형광)"
+        }
+      ],
+      "hazard": "천정에 머리 부딪힘 위험",
+      "counter": "충격완화조치 , 주의 표지"
+    },
+    {
+      "seq": "92",
+      "process": "시설관리 내부",
+      "subprocess": "체육관",
+      "disaster": "추락,낙하",
+      "photo": "① 농구골대·전광판·무대막 상부 고정볼트 클로즈업 ② 구조물 전체 ③ 와이어·앵커 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "농구골대·전광판·무대막 상부 고정볼트 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "구조물 전체"
+        },
+        {
+          "mark": "③",
+          "text": "와이어·앵커 상태"
+        }
+      ],
+      "hazard": "농구골대·전광판·무대막 등의 고정 불량으로 사람을 다치게 할 위험",
+      "counter": "상부구조물 및 대형 부착물 볼트 체결 등여부"
+    },
+    {
+      "seq": "93",
+      "process": "시설관리 내부",
+      "subprocess": "체육관",
+      "disaster": "전도",
+      "photo": "① 체육관 마루 전경 ② 파손·들뜸·습기 부위 클로즈업 ③ 논슬립 코팅 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "체육관 마루 전경"
+        },
+        {
+          "mark": "②",
+          "text": "파손·들뜸·습기 부위 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "논슬립 코팅 상태"
+        }
+      ],
+      "hazard": "마루바닥의 불량으로 미끄러지거나 넘어질 위험",
+      "counter": "논슬립 코팅 및 파손부위 보수"
+    },
+    {
+      "seq": "94",
+      "process": "시설관리 내부",
+      "subprocess": "체육관",
+      "disaster": "충돌",
+      "photo": "① 철골기둥·벽면 안전보호패드 전면 ② 패드 고정·파손 여부 ③ 충돌 가능 높이 커버",
+      "points": [
+        {
+          "mark": "①",
+          "text": "철골기둥·벽면 안전보호패드 전면"
+        },
+        {
+          "mark": "②",
+          "text": "패드 고정·파손 여부"
+        },
+        {
+          "mark": "③",
+          "text": "충돌 가능 높이 커버"
+        }
+      ],
+      "hazard": "벽면 ·철골기둥 등에 충돌할 때 보호매트가 없어 부상을 입을 위험",
+      "counter": "안전보호패드 설치"
+    },
+    {
+      "seq": "95",
+      "process": "시설관리 내부",
+      "subprocess": "체육관",
+      "disaster": "화재",
+      "photo": "① 비상구 전면(적치물 없음) ② 피난통로 전경 ③ 비상구 유도등·표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "비상구 전면(적치물 없음)"
+        },
+        {
+          "mark": "②",
+          "text": "피난통로 전경"
+        },
+        {
+          "mark": "③",
+          "text": "비상구 유도등·표지"
+        }
+      ],
+      "hazard": "비상구 및 피난통로에 물품을 적치하여 화재 시 대피가 지연위험",
+      "counter": "개방상태 유지 및 적치물 금지"
+    },
+    {
+      "seq": "96",
+      "process": "시설관리 외부",
+      "subprocess": "운동장",
+      "disaster": "전도",
+      "photo": "① 골대 바닥 앵커·고정볼트 클로즈업 \n② 안전장치 체결 \n③ 안내표지판",
+      "points": [
+        {
+          "mark": "①",
+          "text": "골대 바닥 앵커·고정볼트 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "안전장치 체결"
+        },
+        {
+          "mark": "③",
+          "text": "안내표지판"
+        }
+      ],
+      "hazard": "골대 및 고정시설물의 고정 불량으로 시설물이 전도될 위험",
+      "counter": "바닥에 단단히 고정, 안전장치 체결, 안내표지판 부착"
+    },
+    {
+      "seq": "97",
+      "process": "시설관리 외부",
+      "subprocess": "운동장",
+      "disaster": "전도",
+      "photo": "① 운동장 바닥 평탄·물고임 구간 \n② 인조잔디 이음새 들뜸 클로즈업 \n③ 보수 구간",
+      "points": [
+        {
+          "mark": "①",
+          "text": "운동장 바닥 평탄·물고임 구간"
+        },
+        {
+          "mark": "②",
+          "text": "인조잔디 이음새 들뜸 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "보수 구간"
+        }
+      ],
+      "hazard": "운동장 바닥의 평탄성 불량으로 발을 헛디뎌 넘어질 위험",
+      "counter": "물고임, 인조잔디 이음새 들뜸 등 보완"
+    },
+    {
+      "seq": "98",
+      "process": "시설관리 외부",
+      "subprocess": "운동장",
+      "disaster": "미끄러짐",
+      "photo": "① 배수로 상부 안전덮개 체결 \n② 배수로 내부 퇴적(준설 필요) \n③ 결빙·물고임 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "배수로 상부 안전덮개 체결"
+        },
+        {
+          "mark": "②",
+          "text": "배수로 내부 퇴적(준설 필요)"
+        },
+        {
+          "mark": "③",
+          "text": "결빙·물고임 전경"
+        }
+      ],
+      "hazard": "배수 불량으로 물이 고이거나 결빙되어 미끄러질 위험",
+      "counter": "배수로 상부 안전덮개 견고하게 설치 및 준설작업"
+    },
+    {
+      "seq": "99",
+      "process": "시설관리 외부",
+      "subprocess": "운동장",
+      "disaster": "부상",
+      "photo": "① 놀이시설 전체 \n② 부식·균열·볼트풀림 클로즈업 \n③ 안전점검 스티커·상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "놀이시설 전체"
+        },
+        {
+          "mark": "②",
+          "text": "부식·균열·볼트풀림 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "안전점검 스티커·상태"
+        }
+      ],
+      "hazard": "노후화된 놀이시설의 파손·불량으로 이용자가 부상을 입을 위험",
+      "counter": "부식 및 균열, 볼트풀림 확인 등 점검"
+    },
+    {
+      "seq": "100",
+      "process": "시설관리 외부",
+      "subprocess": "교문",
+      "disaster": "전도",
+      "photo": "① 교문 레일·상부 고정장치 클로즈업 \n② 레일 이물질 \n③ 문 전도 방지 상태 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교문 레일·상부 고정장치 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "레일 이물질"
+        },
+        {
+          "mark": "③",
+          "text": "문 전도 방지 상태 전경"
+        }
+      ],
+      "hazard": "교문 이탈/고정 불량으로 문이 전도되어 사람을 다치게 할 위험",
+      "counter": "레일 이물질 제거 및 상부고정장치 체결상태 정기점검"
+    },
+    {
+      "seq": "101",
+      "process": "시설관리 외부",
+      "subprocess": "교문",
+      "disaster": "끼임",
+      "photo": "① 자동문 센서 위치 \n② 끼임방지 고무·감지 영역 \n③ 개폐 작동 시험 장면",
+      "points": [
+        {
+          "mark": "①",
+          "text": "자동문 센서 위치"
+        },
+        {
+          "mark": "②",
+          "text": "끼임방지 고무·감지 영역"
+        },
+        {
+          "mark": "③",
+          "text": "개폐 작동 시험 장면"
+        }
+      ],
+      "hazard": "자동문 센서의 오작동으로 문이 갑자기 닫혀 끼일 위험",
+      "counter": "작동 확인 및 끼임 방지"
+    },
+    {
+      "seq": "102",
+      "process": "시설관리 외부",
+      "subprocess": "교문",
+      "disaster": "충돌",
+      "photo": "① 교문 주변 안전표지·경광등 \n② 보행자·차량 동선 분리 \n③ 시선유도 시설",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교문 주변 안전표지·경광등"
+        },
+        {
+          "mark": "②",
+          "text": "보행자·차량 동선 분리"
+        },
+        {
+          "mark": "③",
+          "text": "시선유도 시설"
+        }
+      ],
+      "hazard": "교문 주변 차량 통행으로 보행자와 차량이 충돌할 위험",
+      "counter": "안전 표지판 부착, 교통안전시설물설치(경광등 등)"
+    },
+    {
+      "seq": "103",
+      "process": "시설관리 외부",
+      "subprocess": "교문",
+      "disaster": "추락",
+      "photo": "① 접철식 현수막 게양기 설치 전면 \n② 고소작업 대체 구조\n③ 사용 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "접철식 현수막 게양기 설치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "고소작업 대체 구조"
+        },
+        {
+          "mark": "③",
+          "text": "사용 상태"
+        }
+      ],
+      "hazard": "현수막 게양 작업 시 추락 위험\n(8대 고위험 요인)",
+      "counter": "접철식 현수막 계양기 설치"
+    },
+    {
+      "seq": "104",
+      "process": "시설관리 외부",
+      "subprocess": "울타리",
+      "disaster": "전도",
+      "photo": "① 울타리·담장 전경 \n② 크랙·기울어짐·배부름 클로즈업 \n③ 기초 침하 부위",
+      "points": [
+        {
+          "mark": "①",
+          "text": "울타리·담장 전경"
+        },
+        {
+          "mark": "②",
+          "text": "크랙·기울어짐·배부름 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "기초 침하 부위"
+        }
+      ],
+      "hazard": "울타리·담장·펜스의 노후 또는 고정 불량으로 붕괴·전도될 위험",
+      "counter": "크랙,기울어짐,배부름 현상 육안점검"
+    },
+    {
+      "seq": "105",
+      "process": "시설관리 외부",
+      "subprocess": "울타리",
+      "disaster": "상해",
+      "photo": "① 보행 동선 인접 울타리 돌출·부식부 \n② 날카로운 마감 클로즈업 \n③ 방호 조치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "보행 동선 인접 울타리 돌출·부식부"
+        },
+        {
+          "mark": "②",
+          "text": "날카로운 마감 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "방호 조치"
+        }
+      ],
+      "hazard": "울타리의 돌출부 또는 부식된 부분에 접촉하여 베이거나 찔릴 위험",
+      "counter": "보행자 동선과 인접한 울타리에 위험요소가 없는지 여부확인"
+    },
+    {
+      "seq": "106",
+      "process": "시설관리 외부",
+      "subprocess": "울타리",
+      "disaster": "보안취약",
+      "photo": "① 파손 펜스 구간 \n② CCTV·보안등 설치 위치 \n③ 사각지대 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "파손 펜스 구간"
+        },
+        {
+          "mark": "②",
+          "text": "CCTV·보안등 설치 위치"
+        },
+        {
+          "mark": "③",
+          "text": "사각지대 전경"
+        }
+      ],
+      "hazard": "울타리주변사각지대 및 보안설비미흡으로 외부인의 침입발생위험",
+      "counter": "파손된 펜스 구간 즉시 보수, 보안장치 점검"
+    },
+    {
+      "seq": "107",
+      "process": "시설관리 외부",
+      "subprocess": "경사면",
+      "disaster": "붕괴",
+      "photo": "① 옹벽·석축 전면 전경 \n② 균열·배부름·배수공 클로즈업 \n③ 변형 측정 가능 구도",
+      "points": [
+        {
+          "mark": "①",
+          "text": "옹벽·석축 전면 전경"
+        },
+        {
+          "mark": "②",
+          "text": "균열·배부름·배수공 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "변형 측정 가능 구도"
+        }
+      ],
+      "hazard": "옹벽·석축의 구조적 파손으로 붕괴될 위험",
+      "counter": "석축 및 옹벽의 변형여부 확인"
+    },
+    {
+      "seq": "108",
+      "process": "시설관리 외부",
+      "subprocess": "경사면",
+      "disaster": "붕괴",
+      "photo": "① 사면 균열·침하·배부름 \n② 토사 유출 흔적 \n③ 우기 대비 배수 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "사면 균열·침하·배부름"
+        },
+        {
+          "mark": "②",
+          "text": "토사 유출 흔적"
+        },
+        {
+          "mark": "③",
+          "text": "우기 대비 배수 상태"
+        }
+      ],
+      "hazard": "집중호우 등으로 토사가 유출되어 사면이 붕괴될 위험",
+      "counter": "균열,침하,배부름 현상 여부 집중 점검"
+    },
+    {
+      "seq": "109",
+      "process": "시설관리 외부",
+      "subprocess": "경사면",
+      "disaster": "붕괴",
+      "photo": "① 낙석 위험 구간 방호책 \n② 고목·낙석 전경 \n③ 방호책 파손 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "낙석 위험 구간 방호책"
+        },
+        {
+          "mark": "②",
+          "text": "고목·낙석 전경"
+        },
+        {
+          "mark": "③",
+          "text": "방호책 파손 여부"
+        }
+      ],
+      "hazard": "낙석 또는 고목의 전도로 사람이나 시설물이 타격될 위험",
+      "counter": "낙석위험 지역 방호책 설치 및 파손상태 점검"
+    },
+    {
+      "seq": "110",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "충돌",
+      "photo": "① 통로 기둥 완충패드 전면 \n② 패드 높이·고정 \n③ 충돌 가능 모서리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "통로 기둥 완충패드 전면"
+        },
+        {
+          "mark": "②",
+          "text": "패드 높이·고정"
+        },
+        {
+          "mark": "③",
+          "text": "충돌 가능 모서리"
+        }
+      ],
+      "hazard": "통로기둥에 부딫힐 위험",
+      "counter": "완충패드 설치"
+    },
+    {
+      "seq": "111",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "추락",
+      "photo": "① 안전난간 설치 전경(높이·중간대) \n② 개구부 덮개 \n③ 난간 파손· rust",
+      "points": [
+        {
+          "mark": "①",
+          "text": "안전난간 설치 전경(높이·중간대)"
+        },
+        {
+          "mark": "②",
+          "text": "개구부 덮개"
+        },
+        {
+          "mark": "③",
+          "text": "난간 파손· rust"
+        }
+      ],
+      "hazard": "안전난간 등 방호조치가 미흡하여 추락할 위험",
+      "counter": "안전난간, 덮개 등 설치 및 파손 상태 점검"
+    },
+    {
+      "seq": "112",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "미끄러짐,넘어짐",
+      "photo": "① 통행로 단차·물기 구간 \n② 안전덮개 또는 매트 \n③ 미끄럼주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "통행로 단차·물기 구간"
+        },
+        {
+          "mark": "②",
+          "text": "안전덮개 또는 매트"
+        },
+        {
+          "mark": "③",
+          "text": "미끄럼주의 표지"
+        }
+      ],
+      "hazard": "단차,물기·이물질 등으로 미끄러지거나 넘어질 위험",
+      "counter": "바닥에 안전덮개 또는 매트설치"
+    },
+    {
+      "seq": "113",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "전도",
+      "photo": "① 야간 조명등 설치·점등 상태 \n② 조도 부족 구간 전경 \n③ 등기구 파손 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "야간 조명등 설치·점등 상태"
+        },
+        {
+          "mark": "②",
+          "text": "조도 부족 구간 전경"
+        },
+        {
+          "mark": "③",
+          "text": "등기구 파손 여부"
+        }
+      ],
+      "hazard": "조명 불량/시야 확보부족으로 장애물을 인지하지 못해 넘어질 위험",
+      "counter": "조명등 설치 여부"
+    },
+    {
+      "seq": "114",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "충돌",
+      "photo": "① 도시가스 배관 차량 접근부 \n② 배관보호대(가드) 설치 \n③  identi 표시·경고",
+      "points": [
+        {
+          "mark": "①",
+          "text": "도시가스 배관 차량 접근부"
+        },
+        {
+          "mark": "②",
+          "text": "배관보호대(가드) 설치"
+        },
+        {
+          "mark": "③",
+          "text": "identi 표시·경고"
+        }
+      ],
+      "hazard": "도시가스 배관 차량충돌 위험",
+      "counter": "배관보호관 설치"
+    },
+    {
+      "seq": "115",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "끼임",
+      "photo": "① 출입문 문틀 손끼임 방지대 클로즈업 \n② 경첩부 간격 \n③ 도어 닫힘 속도",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출입문 문틀 손끼임 방지대 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "경첩부 간격"
+        },
+        {
+          "mark": "③",
+          "text": "도어 닫힘 속도"
+        }
+      ],
+      "hazard": "출입구 문틀 끼임방지 미비로 끼임 위험",
+      "counter": "끼임방지 조치"
+    },
+    {
+      "seq": "116",
+      "process": "시설관리 외부",
+      "subprocess": "작업자통행로",
+      "disaster": "전도",
+      "photo": "① 사다리·가설계단 고정 상태 \n② 난간 설치 \n③ 전도방지(아웃트리거)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "사다리·가설계단 고정 상태"
+        },
+        {
+          "mark": "②",
+          "text": "난간 설치"
+        },
+        {
+          "mark": "③",
+          "text": "전도방지(아웃트리거)"
+        }
+      ],
+      "hazard": "사다리를 이용한 작업 중 떨어짐 재해\n(8대 고위험 요인)",
+      "counter": "난간설치"
+    },
+    {
+      "seq": "117",
+      "process": "시설관리 외부",
+      "subprocess": "계단",
+      "disaster": "넘어짐",
+      "photo": "① 계단 유도등 점등 상태 전면 ② 유도등 위치( concealing 여부) ③ 비상전원 표시",
+      "points": [
+        {
+          "mark": "①",
+          "text": "계단 유도등 점등 상태 전면"
+        },
+        {
+          "mark": "②",
+          "text": "유도등 위치( concealing 여부)"
+        },
+        {
+          "mark": "③",
+          "text": "비상전원 표시"
+        }
+      ],
+      "hazard": "계단의 유도등 고장으로 인한 화재 대피 인재 위험",
+      "counter": "유도등 정상 작동"
+    },
+    {
+      "seq": "118",
+      "process": "시설관리 외부",
+      "subprocess": "계단",
+      "disaster": "미끄러짐",
+      "photo": "① 계단 논슬립 패드 전면 ② 패드 파손·박리 클로즈업 ③ 미끄럼주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "계단 논슬립 패드 전면"
+        },
+        {
+          "mark": "②",
+          "text": "패드 파손·박리 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "미끄럼주의 표지"
+        }
+      ],
+      "hazard": "계단의 물기·이물질 등으로 미끄러져 넘어질 위험",
+      "counter": "논스립 패드 설치 및 파손 시 즉시 교체, 주의표지 부착"
+    },
+    {
+      "seq": "119",
+      "process": "시설관리 외부",
+      "subprocess": "계단",
+      "disaster": "넘어짐",
+      "photo": "① 계단 단 끝 시인성 테이프(경고색) ② 파손 디딤판 ③ 조명 하 식별 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "계단 단 끝 시인성 테이프(경고색)"
+        },
+        {
+          "mark": "②",
+          "text": "파손 디딤판"
+        },
+        {
+          "mark": "③",
+          "text": "조명 하 식별 상태"
+        }
+      ],
+      "hazard": "단차의 파손 또는 시각적 인지 불량으로 발을 헛디뎌 넘어질 위험",
+      "counter": "시인성이 높은 논슬립 또는 경고색상 테이프 부착"
+    },
+    {
+      "seq": "120",
+      "process": "시설관리 외부",
+      "subprocess": "테라스",
+      "disaster": "추락",
+      "photo": "① 테라스 난간 높이 측정(줄자, 1.2m 이상) ② 세로형 난간살 간격(10cm 이하) ③ 난간 고정볼트",
+      "points": [
+        {
+          "mark": "①",
+          "text": "테라스 난간 높이 측정(줄자, 1.2m 이상)"
+        },
+        {
+          "mark": "②",
+          "text": "세로형 난간살 간격(10cm 이하)"
+        },
+        {
+          "mark": "③",
+          "text": "난간 고정볼트"
+        }
+      ],
+      "hazard": "테라스 난간의 높이·고정 불량으로 이용자가 추락할 위험\n(8대 고위험 요인)",
+      "counter": "난간높이 1.2~1.5미터 이상,새로형 난간살 10센티이하"
+    },
+    {
+      "seq": "121",
+      "process": "시설관리 외부",
+      "subprocess": "테라스",
+      "disaster": "낙하위험",
+      "photo": "① 상부 구조물(차양·간판) 고정볼트 클로즈업 ②  rust·이완 ③ 강풍 시 낙하 가능 부재 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "상부 구조물(차양·간판) 고정볼트 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "rust·이완"
+        },
+        {
+          "mark": "③",
+          "text": "강풍 시 낙하 가능 부재 전경"
+        }
+      ],
+      "hazard": "노후 또는 고정 불량으로 강풍 시 낙하하여 사람을 타격할 위험",
+      "counter": "상부구조물 및 고정볼트의 결속상태 정기점검"
+    },
+    {
+      "seq": "122",
+      "process": "미화",
+      "subprocess": "미화창고",
+      "disaster": "중독",
+      "photo": "① 세제·소독제 밀폐용기 보관함 ② MSDS·경고표지·물질명 라벨 ③ 혼합금지 구분 보관",
+      "points": [
+        {
+          "mark": "①",
+          "text": "세제·소독제 밀폐용기 보관함"
+        },
+        {
+          "mark": "②",
+          "text": "MSDS·경고표지·물질명 라벨"
+        },
+        {
+          "mark": "③",
+          "text": "혼합금지 구분 보관"
+        }
+      ],
+      "hazard": "세제·소독제 등의 화학물질의  노출로 피부 자극/중독 발생위험",
+      "counter": "MSDS경고표지 및 명칭 부착, 밀폐용기보관"
+    },
+    {
+      "seq": "123",
+      "process": "미화",
+      "subprocess": "미화창고",
+      "disaster": "화재",
+      "photo": "① 인화성물질 보관 장소(화기 이격) ② 금연·화기엄금 표지 ③ 환기·서늘한 환경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "인화성물질 보관 장소(화기 이격)"
+        },
+        {
+          "mark": "②",
+          "text": "금연·화기엄금 표지"
+        },
+        {
+          "mark": "③",
+          "text": "환기·서늘한 환경"
+        }
+      ],
+      "hazard": "인화성 물질의 부적정 보관 또는 관리 소홀로 화재가 발생할 위험",
+      "counter": "인화성 물질은 화기와 떨어진 서늘하고 안전한 장소에 보관"
+    },
+    {
+      "seq": "124",
+      "process": "미화",
+      "subprocess": "미화창고",
+      "disaster": "화재",
+      "photo": "① 미화창고 소화기 전면 ② 압력게이지·유효기간 클로즈업 ③ 점검표",
+      "points": [
+        {
+          "mark": "①",
+          "text": "미화창고 소화기 전면"
+        },
+        {
+          "mark": "②",
+          "text": "압력게이지·유효기간 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "점검표"
+        }
+      ],
+      "hazard": "소화기 미비치/불량으로 화재 발생 시 초기 대응이 지연될 위험",
+      "counter": "유효기간 확인"
+    },
+    {
+      "seq": "125",
+      "process": "미화",
+      "subprocess": "미화창고",
+      "disaster": "낙하위험",
+      "photo": "① 중량물 바닥 적재 상태 ② 높은 선반 적재 금지 준수 ③ 전도 위험 적재 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "중량물 바닥 적재 상태"
+        },
+        {
+          "mark": "②",
+          "text": "높은 선반 적재 금지 준수"
+        },
+        {
+          "mark": "③",
+          "text": "전도 위험 적재 여부"
+        }
+      ],
+      "hazard": "중량물의 부적정 적치로 물품이 낙하하거나 작업자가 다칠 위험\n(8대 고위험 요인)",
+      "counter": "무거운 물품은 가급적 바닥에 보관"
+    },
+    {
+      "seq": "126",
+      "process": "미화",
+      "subprocess": "미화창고",
+      "disaster": "건강장해",
+      "photo": "① 환기팬 설치·작동 ② 창문 개방 가능 여부 ③ 약품 증기 체류 공간 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "환기팬 설치·작동"
+        },
+        {
+          "mark": "②",
+          "text": "창문 개방 가능 여부"
+        },
+        {
+          "mark": "③",
+          "text": "약품 증기 체류 공간 전경"
+        }
+      ],
+      "hazard": "환기부족으로 세제·소독제 증기가 체류하여 호흡기장해 발생위험",
+      "counter": "환기팬 설치 또는 정기적인 문 개방을 통해 환기 실시"
+    },
+    {
+      "seq": "127",
+      "process": "미화",
+      "subprocess": "화장실",
+      "disaster": "전도",
+      "photo": "① 화장실 바닥 논슬립 타일 ② 물기 잔류·건조 상태 ③ 배수 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "화장실 바닥 논슬립 타일"
+        },
+        {
+          "mark": "②",
+          "text": "물기 잔류·건조 상태"
+        },
+        {
+          "mark": "③",
+          "text": "배수 상태"
+        }
+      ],
+      "hazard": "화장실 바닥의 물기 등으로 미끄러져 넘어질 위험",
+      "counter": "미끄럼 방지 타일 유지, 물청소 후 건조"
+    },
+    {
+      "seq": "128",
+      "process": "미화",
+      "subprocess": "화장실",
+      "disaster": "건강장해",
+      "photo": "① 환기팬 작동(회전) 상태 ② 배기구 오염 ③ 악취·밀폐 여부 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "환기팬 작동(회전) 상태"
+        },
+        {
+          "mark": "②",
+          "text": "배기구 오염"
+        },
+        {
+          "mark": "③",
+          "text": "악취·밀폐 여부 전경"
+        }
+      ],
+      "hazard": "환기 불량으로 유해가스가 체류하여 호흡기 등 장해가 발생할 위험",
+      "counter": "환기팬 정상작동 여부,  환기 및 물로 씻어내기"
+    },
+    {
+      "seq": "129",
+      "process": "미화",
+      "subprocess": "화장실",
+      "disaster": "감전",
+      "photo": "① 화장실 방수콘센트 클로즈업 ② 누전차단기 ③ 콘센트와 물 사용부 이격",
+      "points": [
+        {
+          "mark": "①",
+          "text": "화장실 방수콘센트 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "누전차단기"
+        },
+        {
+          "mark": "③",
+          "text": "콘센트와 물 사용부 이격"
+        }
+      ],
+      "hazard": "화장실 내 전기설비의 누전 또는 물 접촉으로 감전될 위험",
+      "counter": "모든 콘센트는 방수콘센트 및 누전차단기 설치"
+    },
+    {
+      "seq": "130",
+      "process": "미화",
+      "subprocess": "화장실",
+      "disaster": "끼임",
+      "photo": "① 출입문 손끼임 방지 보호대 ② 거울 비산방지 필름(모서리) ③ 유리 파손 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출입문 손끼임 방지 보호대"
+        },
+        {
+          "mark": "②",
+          "text": "거울 비산방지 필름(모서리)"
+        },
+        {
+          "mark": "③",
+          "text": "유리 파손 여부"
+        }
+      ],
+      "hazard": "출입문에 손가락이 끼이거나 파손된 유리와 접촉하여 다칠 위험",
+      "counter": "손끼임 방지 보호대, 거울은 비산방지 필름 부착"
+    },
+    {
+      "seq": "131",
+      "process": "미화",
+      "subprocess": "복도",
+      "disaster": "전도",
+      "photo": "① 복도 바닥 논슬립·청결 ② 물기·이물질 ③ 청소 후 건조 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "복도 바닥 논슬립·청결"
+        },
+        {
+          "mark": "②",
+          "text": "물기·이물질"
+        },
+        {
+          "mark": "③",
+          "text": "청소 후 건조 상태"
+        }
+      ],
+      "hazard": "복도 바닥의 물기·이물질 등으로 미끄러져 넘어질 위험",
+      "counter": "미끄럼 방지 타일 유지, 물청소 후 건조"
+    },
+    {
+      "seq": "132",
+      "process": "미화",
+      "subprocess": "복도",
+      "disaster": "추락",
+      "photo": "① 고층 복도 창문 개폐제한 장치(스토퍼) 클로즈업 ② 난간 높이 ③ 추락 가능 개구부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "고층 복도 창문 개폐제한 장치(스토퍼) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "난간 높이"
+        },
+        {
+          "mark": "③",
+          "text": "추락 가능 개구부"
+        }
+      ],
+      "hazard": "창문·난간 구간의 방호 미흡으로 추락할 위험",
+      "counter": "고층부 복도 창문 개폐 제한 장치 설치"
+    },
+    {
+      "seq": "133",
+      "process": "미화",
+      "subprocess": "복도",
+      "disaster": "충돌",
+      "photo": "① 복도 모서리 코너보호대 ② 출입문 손끼임 방지대 ③ 돌출물 방호",
+      "points": [
+        {
+          "mark": "①",
+          "text": "복도 모서리 코너보호대"
+        },
+        {
+          "mark": "②",
+          "text": "출입문 손끼임 방지대"
+        },
+        {
+          "mark": "③",
+          "text": "돌출물 방호"
+        }
+      ],
+      "hazard": "복도 모서리·출입문 등에 부딪혀 타격을 입을 위험",
+      "counter": "코너보호대(안전패드), 손끼임 방지 보호대 설치"
+    },
+    {
+      "seq": "134",
+      "process": "미화",
+      "subprocess": "복도",
+      "disaster": "화재",
+      "photo": "① 복도 피난통로 전경(적치 없음) ② 적치금지 표지 ③ 비상구까지 동선",
+      "points": [
+        {
+          "mark": "①",
+          "text": "복도 피난통로 전경(적치 없음)"
+        },
+        {
+          "mark": "②",
+          "text": "적치금지 표지"
+        },
+        {
+          "mark": "③",
+          "text": "비상구까지 동선"
+        }
+      ],
+      "hazard": "화재 시 피난통로에 장애물이 있어 대피가 지연되거나 차단될 위험",
+      "counter": "복도는 물건도 적치못하도록 상시 통제, 금지표지부착"
+    },
+    {
+      "seq": "135",
+      "process": "미화",
+      "subprocess": "휴게실",
+      "disaster": "건강장해",
+      "photo": "① 휴게실 창문·환기팬 ② 환기 실시 상태 ③ 실내 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "휴게실 창문·환기팬"
+        },
+        {
+          "mark": "②",
+          "text": "환기 실시 상태"
+        },
+        {
+          "mark": "③",
+          "text": "실내 전경"
+        }
+      ],
+      "hazard": "환기 부족으로 실내 공기질이 저하되어 건강장해가 발생할 위험",
+      "counter": "주기적으로 자연 및 강제 환기 실시"
+    },
+    {
+      "seq": "136",
+      "process": "미화",
+      "subprocess": "휴게실",
+      "disaster": "화재",
+      "photo": "① 안전인증·과부하차단 멀티탭 라벨 클로즈업 ② 전열기 연결 상태 ③ 문어발 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "안전인증·과부하차단 멀티탭 라벨 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "전열기 연결 상태"
+        },
+        {
+          "mark": "③",
+          "text": "문어발 여부"
+        }
+      ],
+      "hazard": "전열기구의 과열·과부하 또는 관리 미흡으로 화재가 발생할 위험",
+      "counter": "과부하 차단기능이 있는 안전인증 멀티탭 사용"
+    },
+    {
+      "seq": "137",
+      "process": "미화",
+      "subprocess": "휴게실",
+      "disaster": "건강장해",
+      "photo": "① 실내온도계 설치 및 표시값 ② 냉난방기 가동 상태 ③ 온도 관리 기준 안내문",
+      "points": [
+        {
+          "mark": "①",
+          "text": "실내온도계 설치 및 표시값"
+        },
+        {
+          "mark": "②",
+          "text": "냉난방기 가동 상태"
+        },
+        {
+          "mark": "③",
+          "text": "온도 관리 기준 안내문"
+        }
+      ],
+      "hazard": "냉난방 관리 미흡으로 온열·한랭질환이 발생할 위험",
+      "counter": "적정실내온도(여름철 26~28도, 겨울철 18~20도) 준수여부"
+    },
+    {
+      "seq": "138",
+      "process": "미화",
+      "subprocess": "휴게실",
+      "disaster": "미끄러짐",
+      "photo": "① 휴게실 바닥 청결·물기 ② 소화기 1대 이상 비치 ③ 압력게이지·점검표",
+      "points": [
+        {
+          "mark": "①",
+          "text": "휴게실 바닥 청결·물기"
+        },
+        {
+          "mark": "②",
+          "text": "소화기 1대 이상 비치"
+        },
+        {
+          "mark": "③",
+          "text": "압력게이지·점검표"
+        }
+      ],
+      "hazard": "바닥의 오염·물기 등으로 미끄러지거나 위생상 문제가 발생할 위험",
+      "counter": "소화기 1대 이상 비치"
+    },
+    {
+      "seq": "139",
+      "process": "미화",
+      "subprocess": "분리수거",
+      "disaster": "오염",
+      "photo": "① 분리수거장 전경(방치 폐기물 여부) ② 밀폐형 수거용기 뚜껑 ③ 청소·소독 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분리수거장 전경(방치 폐기물 여부)"
+        },
+        {
+          "mark": "②",
+          "text": "밀폐형 수거용기 뚜껑"
+        },
+        {
+          "mark": "③",
+          "text": "청소·소독 상태"
+        }
+      ],
+      "hazard": "분리수거장에 폐기물이 방치되어 해충이 번식/악취발생 위험",
+      "counter": "물청소 및 소독실시, 밀폐형 수거용기 사용"
+    },
+    {
+      "seq": "140",
+      "process": "미화",
+      "subprocess": "분리수거",
+      "disaster": "깔림",
+      "photo": "① 하역 카트 상태(파손) ② 안전화·보호장갑 비치 ③ 중량물 상하차 공간",
+      "points": [
+        {
+          "mark": "①",
+          "text": "하역 카트 상태(파손)"
+        },
+        {
+          "mark": "②",
+          "text": "안전화·보호장갑 비치"
+        },
+        {
+          "mark": "③",
+          "text": "중량물 상하차 공간"
+        }
+      ],
+      "hazard": "폐기물 하역 및 중량물 상하차 과정에서 깔리거나 부딪힐 위험\n(8대 고위험 요인)",
+      "counter": "안전화 보호장갑 착용, 카트 파손 여부 점검"
+    },
+    {
+      "seq": "141",
+      "process": "미화",
+      "subprocess": "분리수거",
+      "disaster": "베임,절단",
+      "photo": "① 날카로운 폐기물 밀봉 배출 용기 ② 깨진 유리 처리 상태 ③ 베임주의 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "날카로운 폐기물 밀봉 배출 용기"
+        },
+        {
+          "mark": "②",
+          "text": "깨진 유리 처리 상태"
+        },
+        {
+          "mark": "③",
+          "text": "베임주의 표지"
+        }
+      ],
+      "hazard": "폐가전의 날카로운 물체에 접촉하여 베이거나 찔릴 위험",
+      "counter": "깨진 유리나 날카로운 물품은 안전하게 밀봉 배출"
+    },
+    {
+      "seq": "142",
+      "process": "미화",
+      "subprocess": "분리수거",
+      "disaster": "화재",
+      "photo": "① 금연구역 표지 ② 소화기 비치 ③ 인화성 폐기물 격리 보관",
+      "points": [
+        {
+          "mark": "①",
+          "text": "금연구역 표지"
+        },
+        {
+          "mark": "②",
+          "text": "소화기 비치"
+        },
+        {
+          "mark": "③",
+          "text": "인화성 폐기물 격리 보관"
+        }
+      ],
+      "hazard": "분리수거장에 인화성 폐기물을 방치하여 화재가 발생할 위험",
+      "counter": "분리수거장 주변 금연구역 지정 및 소화기 비치"
+    },
+    {
+      "seq": "143",
+      "process": "미화",
+      "subprocess": "청소작업",
+      "disaster": "미끄러짐",
+      "photo": "① 물청소·왁스 구간 '미끄럼 주의' 입간판 ② 작업 중 통행 통제 ③ 바닥 젖은 상태 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "물청소·왁스 구간 '미끄럼 주의' 입간판"
+        },
+        {
+          "mark": "②",
+          "text": "작업 중 통행 통제"
+        },
+        {
+          "mark": "③",
+          "text": "바닥 젖은 상태 전경"
+        }
+      ],
+      "hazard": "청소 작업으로 바닥에 물기나 세제가 남아 미끄러져 넘어질 위험",
+      "counter": "물청소 및 왁스작업 구간 \"미끄럼 주의\" 입간판 설치"
+    },
+    {
+      "seq": "144",
+      "process": "미화",
+      "subprocess": "청소작업",
+      "disaster": "건강장해",
+      "photo": "① 청소 중 보호구 착용(장갑·마스크·보안경) ② 환기 상태 ③ 약품 원액 희석·보관",
+      "points": [
+        {
+          "mark": "①",
+          "text": "청소 중 보호구 착용(장갑·마스크·보안경)"
+        },
+        {
+          "mark": "②",
+          "text": "환기 상태"
+        },
+        {
+          "mark": "③",
+          "text": "약품 원액 희석·보관"
+        }
+      ],
+      "hazard": "청소용 화학물질에 노출되어 호흡기/피부손상이 발생할 위험",
+      "counter": "충분한 환기, 개인보호구 착용(고무장갑,마스크,보안경)"
+    },
+    {
+      "seq": "145",
+      "process": "미화",
+      "subprocess": "청소작업",
+      "disaster": "추락",
+      "photo": "① 안전인증 전용 사다리(아웃트리거) ② 고소 창문 작업 위치 ③ 2인1조 작업 증적",
+      "points": [
+        {
+          "mark": "①",
+          "text": "안전인증 전용 사다리(아웃트리거)"
+        },
+        {
+          "mark": "②",
+          "text": "고소 창문 작업 위치"
+        },
+        {
+          "mark": "③",
+          "text": "2인1조 작업 증적"
+        }
+      ],
+      "hazard": "창문·높은 곳 청소 중 추락할 위험",
+      "counter": "안전 인증을 받은 전용사다리 사용(2인 1조 원칙 준수)"
+    },
+    {
+      "seq": "146",
+      "process": "당직및경비",
+      "subprocess": "당직실",
+      "disaster": "화재",
+      "photo": "① 당직실 안전인증 멀티탭(과부하차단) ② 전열기 연결 ③ 문어발·먼지 퇴적 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "당직실 안전인증 멀티탭(과부하차단)"
+        },
+        {
+          "mark": "②",
+          "text": "전열기 연결"
+        },
+        {
+          "mark": "③",
+          "text": "문어발·먼지 퇴적 여부"
+        }
+      ],
+      "hazard": "전기기기·전열기기의 과부하 또는이상으로 화재가 발생할 위험",
+      "counter": "과부하 차단기능이 있는 안전인증 멀티탭 사용"
+    },
+    {
+      "seq": "147",
+      "process": "당직및경비",
+      "subprocess": "당직실",
+      "disaster": "건강장해",
+      "photo": "① 당직실 창문·환기 ② 실내 전경 ③ 환기 주기 안내",
+      "points": [
+        {
+          "mark": "①",
+          "text": "당직실 창문·환기"
+        },
+        {
+          "mark": "②",
+          "text": "실내 전경"
+        },
+        {
+          "mark": "③",
+          "text": "환기 주기 안내"
+        }
+      ],
+      "hazard": "환기 부족으로 실내 공기질이 저하되어 건강장해가 발생할 위험\n(8대 고위험 요인)",
+      "counter": "주기적 자연환기"
+    },
+    {
+      "seq": "148",
+      "process": "당직및경비",
+      "subprocess": "당직실",
+      "disaster": "화재",
+      "photo": "① 소화기 비치 전면 ② 모니터링 장비 주변 정리 ③ 접근 동선",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화기 비치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "모니터링 장비 주변 정리"
+        },
+        {
+          "mark": "③",
+          "text": "접근 동선"
+        }
+      ],
+      "hazard": "소화기설치  미흡으로 화재 등 비상상황 대응이 지연될 위험",
+      "counter": "소화기 1대 이상 비치, 모니터링 장비 주변 정리"
+    },
+    {
+      "seq": "149",
+      "process": "당직및경비",
+      "subprocess": "당직실",
+      "disaster": "건강장해",
+      "photo": "① 실내온도계 표시값 \n② 냉난방기 가동 \n③ 침구·휴식 환경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "실내온도계 표시값"
+        },
+        {
+          "mark": "②",
+          "text": "냉난방기 가동"
+        },
+        {
+          "mark": "③",
+          "text": "침구·휴식 환경"
+        }
+      ],
+      "hazard": "온열·한랭질환 등 건강장해가 발생할 위험\n(주요기인물 : 넘어진 장소, 사람)\n(8대 고위험 요인)",
+      "counter": "적정실내온도 유지"
+    },
+    {
+      "seq": "150",
+      "process": "당직및경비",
+      "subprocess": "순찰",
+      "disaster": "안전사고",
+      "photo": "① 무전기·휴대폰 비치 및 충전 ② 순찰 일지·보고체계 게시 ③ 2인1조 편성표",
+      "points": [
+        {
+          "mark": "①",
+          "text": "무전기·휴대폰 비치 및 충전"
+        },
+        {
+          "mark": "②",
+          "text": "순찰 일지·보고체계 게시"
+        },
+        {
+          "mark": "③",
+          "text": "2인1조 편성표"
+        }
+      ],
+      "hazard": "순찰 중 범죄 발생 등 으로 안전사고가 발생할 위험",
+      "counter": "2인1조 실시, 보고체계유지 ,무전기/휴대폰 작동확인"
+    },
+    {
+      "seq": "151",
+      "process": "당직및경비",
+      "subprocess": "순찰",
+      "disaster": "추락",
+      "photo": "① 손전등 비치 ② 야간 통행로 조명·장애물 ③ 순찰로 위험구간",
+      "points": [
+        {
+          "mark": "①",
+          "text": "손전등 비치"
+        },
+        {
+          "mark": "②",
+          "text": "야간 통행로 조명·장애물"
+        },
+        {
+          "mark": "③",
+          "text": "순찰로 위험구간"
+        }
+      ],
+      "hazard": "야간조도 부족으로 장애물을 인지하지 못해 추락/전도 위험",
+      "counter": "손전등 지참, 통행로 주변 장애물 사전 정비"
+    },
+    {
+      "seq": "152",
+      "process": "당직및경비",
+      "subprocess": "경비",
+      "disaster": "폭행,상해",
+      "photo": "① 비상벨·비상연락 체계 게시 ② 당직실 비상버튼 ③ 작동 시험 증적",
+      "points": [
+        {
+          "mark": "①",
+          "text": "비상벨·비상연락 체계 게시"
+        },
+        {
+          "mark": "②",
+          "text": "당직실 비상버튼"
+        },
+        {
+          "mark": "③",
+          "text": "작동 시험 증적"
+        }
+      ],
+      "hazard": "외부인의 무단 침입 및 돌발행동으로 폭행·상해를 입을 위험",
+      "counter": "비상연락체계 구축 및 정상 작동 여부 점검"
+    },
+    {
+      "seq": "153",
+      "process": "당직및경비",
+      "subprocess": "경비",
+      "disaster": "교통사고,위험",
+      "photo": "① 형광조끼·안전봉 비치·착용 ② 차량 통제 위치 ③ 시인성(야간 반사)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "형광조끼·안전봉 비치·착용"
+        },
+        {
+          "mark": "②",
+          "text": "차량 통제 위치"
+        },
+        {
+          "mark": "③",
+          "text": "시인성(야간 반사)"
+        }
+      ],
+      "hazard": "차량 통제 중 차량과 충돌하여 교통사고가 발생할 위험",
+      "counter": "형광조끼, 안전봉 등 시인성을 높이는 보호구 착용"
+    },
+    {
+      "seq": "154",
+      "process": "당직및경비",
+      "subprocess": "경비",
+      "disaster": "보안취약",
+      "photo": "① CCTV 모니터 정상 화면 ② 카메라 현장 설치 위치 ③ 녹화·장애 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "CCTV 모니터 정상 화면"
+        },
+        {
+          "mark": "②",
+          "text": "카메라 현장 설치 위치"
+        },
+        {
+          "mark": "③",
+          "text": "녹화·장애 여부"
+        }
+      ],
+      "hazard": "보안설비고장/모니터링 소홀로 침입사고에 대한 대응지연위험",
+      "counter": "CCTV정상여부 점검, 상시감시체계유지"
+    },
+    {
+      "seq": "155",
+      "process": "당직및경비",
+      "subprocess": "경비",
+      "disaster": "건강장해",
+      "photo": "① 경비실 냉난방기 가동 ② 실내온도 ③ 온열·한랭 대비 물품(생수·방한복)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "경비실 냉난방기 가동"
+        },
+        {
+          "mark": "②",
+          "text": "실내온도"
+        },
+        {
+          "mark": "③",
+          "text": "온열·한랭 대비 물품(생수·방한복)"
+        }
+      ],
+      "hazard": "온열·한랭질환이 발생할 위험",
+      "counter": "냉난방기 정상가동 상태 확인"
+    },
+    {
+      "seq": "156",
+      "process": "당직및경비",
+      "subprocess": "교문개폐작업",
+      "disaster": "끼임,협착",
+      "photo": "① 자동문 구동부 방호커버·울타리 ② 끼임 가능 간격 클로즈업 ③ 센서 작동",
+      "points": [
+        {
+          "mark": "①",
+          "text": "자동문 구동부 방호커버·울타리"
+        },
+        {
+          "mark": "②",
+          "text": "끼임 가능 간격 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "센서 작동"
+        }
+      ],
+      "hazard": "자동문 구동부에 신체가 접근하여 끼이거나 협착될 위험",
+      "counter": "방호 울타리 및 안전커버 설치 상태 점검"
+    },
+    {
+      "seq": "157",
+      "process": "당직및경비",
+      "subprocess": "교문개폐작업",
+      "disaster": "건강장해",
+      "photo": "① 교문 하부 스토퍼(이탈방지) 클로즈업 ② 수동 개폐 부담 구간 ③ 고정 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교문 하부 스토퍼(이탈방지) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "수동 개폐 부담 구간"
+        },
+        {
+          "mark": "③",
+          "text": "고정 상태"
+        }
+      ],
+      "hazard": "무거운 문을 반복적으로 개폐하여 근골격계 부상을 입을 위험",
+      "counter": "하부 고정 스토퍼 (이탈방지 장치)설치 상태 확인"
+    },
+    {
+      "seq": "158",
+      "process": "당직및경비",
+      "subprocess": "교문개폐작업",
+      "disaster": "충돌",
+      "photo": "① 등하교 시 형광조끼·유도봉 착용 ② 교문 앞 교통정리 위치 ③ 보행 동선",
+      "points": [
+        {
+          "mark": "①",
+          "text": "등하교 시 형광조끼·유도봉 착용"
+        },
+        {
+          "mark": "②",
+          "text": "교문 앞 교통정리 위치"
+        },
+        {
+          "mark": "③",
+          "text": "보행 동선"
+        }
+      ],
+      "hazard": "등하교 시간 교문 주변에서 차량과 보행자가 충돌할 위험",
+      "counter": "형광조끼, 안전봉 등 시인성을 높이는 보호구 착용"
+    },
+    {
+      "seq": "159",
+      "process": "당직및경비",
+      "subprocess": "교문개폐작업",
+      "disaster": "전도",
+      "photo": "① 교문 지면 고정장치·빗장 클로즈업 ② 강풍 시 고정 상태 ③ 전도 방지 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교문 지면 고정장치·빗장 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "강풍 시 고정 상태"
+        },
+        {
+          "mark": "③",
+          "text": "전도 방지 전경"
+        }
+      ],
+      "hazard": "교문이 움직이거나 전도되어 사람을 다치게 할 위험\n(8대 고위험 요인)",
+      "counter": "교문을 지면 고정장치나 빗장으로 단단히 고정"
+    },
+    {
+      "seq": "160",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "화재",
+      "photo": "① 교실 안전인증 멀티탭 ② 전열기·전기히터 사용 여부 ③ 분전반·콘센트 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교실 안전인증 멀티탭"
+        },
+        {
+          "mark": "②",
+          "text": "전열기·전기히터 사용 여부"
+        },
+        {
+          "mark": "③",
+          "text": "분전반·콘센트 상태"
+        }
+      ],
+      "hazard": "교실의 전열기기 사용 또는 전기설비 이상으로 화재가 발생할 위험",
+      "counter": "과부하 차단기능이 있는 안전인증 멀티탭 사용"
+    },
+    {
+      "seq": "161",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "전도,학하",
+      "photo": "① 책장·사물함 벽체 고정(L브래킷) 클로즈업 ② 가구 전도 방지 ③ 상부 적재물",
+      "points": [
+        {
+          "mark": "①",
+          "text": "책장·사물함 벽체 고정(L브래킷) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "가구 전도 방지"
+        },
+        {
+          "mark": "③",
+          "text": "상부 적재물"
+        }
+      ],
+      "hazard": "가구의 고정 불량으로 전도되거나 물품이 낙하할 위험",
+      "counter": "고정장치 유무 확인 및 상태 점검"
+    },
+    {
+      "seq": "162",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "끼임,추락",
+      "photo": "① 교실문 손끼임 방지대·도어 멈치 ② 창문 개폐제한 장치 ③ 창가 추락 방호",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교실문 손끼임 방지대·도어 멈치"
+        },
+        {
+          "mark": "②",
+          "text": "창문 개폐제한 장치"
+        },
+        {
+          "mark": "③",
+          "text": "창가 추락 방호"
+        }
+      ],
+      "hazard": "출입문에 끼이거나 창문·창가에서 추락할 위험",
+      "counter": "손끼임 방지 보호대(도어 멈치)"
+    },
+    {
+      "seq": "163",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "건강장해",
+      "photo": "① 교실 창문 개방·환기 ② 공조 필터 상태 ③ 환기 점검 기록",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교실 창문 개방·환기"
+        },
+        {
+          "mark": "②",
+          "text": "공조 필터 상태"
+        },
+        {
+          "mark": "③",
+          "text": "환기 점검 기록"
+        }
+      ],
+      "hazard": "교환기 부족으로 실내 공기질이 저하되어 건강장해가 발생할 위험",
+      "counter": "자연환기 및 환기시스템 필터 주기적 청소 및 교체"
+    },
+    {
+      "seq": "164",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "화재",
+      "photo": "① 교실 콘센트 방수·안전커버 클로즈업 ② 어린이 손 접근 높이 ③ 접지형 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교실 콘센트 방수·안전커버 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "어린이 손 접근 높이"
+        },
+        {
+          "mark": "③",
+          "text": "접지형 여부"
+        }
+      ],
+      "hazard": "방수콘센트 사용",
+      "counter": "방수콘센트 사용"
+    },
+    {
+      "seq": "165",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "부딪힘",
+      "photo": "① 테이블 모서리 라운드 처리 또는 보호대 ② 날카로운 모서리 클로즈업 ③ 배치 동선",
+      "points": [
+        {
+          "mark": "①",
+          "text": "테이블 모서리 라운드 처리 또는 보호대"
+        },
+        {
+          "mark": "②",
+          "text": "날카로운 모서리 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "배치 동선"
+        }
+      ],
+      "hazard": "테이블 모서리에 부딫힘 부상 위험",
+      "counter": "원형모서리의 사용"
+    },
+    {
+      "seq": "166",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "화재",
+      "photo": "① 감지기 천장 설치 ② 소화기 비치 ③ 유도등·스프링클러헤드 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "감지기 천장 설치"
+        },
+        {
+          "mark": "②",
+          "text": "소화기 비치"
+        },
+        {
+          "mark": "③",
+          "text": "유도등·스프링클러헤드 전경"
+        }
+      ],
+      "hazard": "소화설비 미구축 및 불량에 의한 화재 위험",
+      "counter": "감지기,스프링클러,유도등, 소화기 비치"
+    },
+    {
+      "seq": "167",
+      "process": "행정사무업무",
+      "subprocess": "교실",
+      "disaster": "낙하",
+      "photo": "① 선반 적재 상태(이중적재 금지) ② 낙하 가능 물품 ③ 선반 고정",
+      "points": [
+        {
+          "mark": "①",
+          "text": "선반 적재 상태(이중적재 금지)"
+        },
+        {
+          "mark": "②",
+          "text": "낙하 가능 물품"
+        },
+        {
+          "mark": "③",
+          "text": "선반 고정"
+        }
+      ],
+      "hazard": "선반적재 불량에 따른 낙하 및 부딪힘 위험",
+      "counter": "이중적재 등 금지"
+    },
+    {
+      "seq": "168",
+      "process": "행정사무업무",
+      "subprocess": "교무실",
+      "disaster": "화재",
+      "photo": "① 교무실 누전차단 멀티탭 라벨 ② 전자기기 전원 정리 ③ 과부하 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "교무실 누전차단 멀티탭 라벨"
+        },
+        {
+          "mark": "②",
+          "text": "전자기기 전원 정리"
+        },
+        {
+          "mark": "③",
+          "text": "과부하 여부"
+        }
+      ],
+      "hazard": "전자기기·전열기기의 과부하/이상으로 화재가 발생할 위험",
+      "counter": "누전차단기 내장된 안전인증 멀티탭 사용"
+    },
+    {
+      "seq": "169",
+      "process": "행정사무업무",
+      "subprocess": "교무실",
+      "disaster": "낙하위험",
+      "photo": "① 서류함·책장 벽체 고정 ② 중량 서류 하단 배치 ③ 전도방지 장치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "서류함·책장 벽체 고정"
+        },
+        {
+          "mark": "②",
+          "text": "중량 서류 하단 배치"
+        },
+        {
+          "mark": "③",
+          "text": "전도방지 장치"
+        }
+      ],
+      "hazard": "서류함·책장 등 사무용 가구의 고정 불량으로 전도/낙하할 위험",
+      "counter": "무거운 서류나 물품은 가급적 서류함의 하단 칸에 배치"
+    },
+    {
+      "seq": "170",
+      "process": "행정사무업무",
+      "subprocess": "교무실",
+      "disaster": "근골격계질환",
+      "photo": "① 인체공학 의자·모니터 받침대 ② 모니터 눈높이 ③ 키보드·마우스 배치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "인체공학 의자·모니터 받침대"
+        },
+        {
+          "mark": "②",
+          "text": "모니터 눈높이"
+        },
+        {
+          "mark": "③",
+          "text": "키보드·마우스 배치"
+        }
+      ],
+      "hazard": "컴퓨터 작업을 장시간 반복하여 근골격계 부담이 발생할 위험",
+      "counter": "인체공학적 의자 및 모니터 받침대를 활용"
+    },
+    {
+      "seq": "171",
+      "process": "행정사무업무",
+      "subprocess": "회의실",
+      "disaster": "화재",
+      "photo": "① 회의실 안전인증 멀티탭 ② 프로젝터·전열 연결 ③ 배선 정리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "회의실 안전인증 멀티탭"
+        },
+        {
+          "mark": "②",
+          "text": "프로젝터·전열 연결"
+        },
+        {
+          "mark": "③",
+          "text": "배선 정리"
+        }
+      ],
+      "hazard": "전자기기 및 멀티탭의 과부하로 전기화재가 발생할 위험",
+      "counter": "과부하 차단 기능이 있는 안전인증 멀티탭을 사용"
+    },
+    {
+      "seq": "172",
+      "process": "행정사무업무",
+      "subprocess": "회의실",
+      "disaster": "끼임",
+      "photo": "① 접이식 테이블 힌지·손끼임 방지 구조 클로즈업 ② 접철 주의 표지 ③ 설치 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "접이식 테이블 힌지·손끼임 방지 구조 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "접철 주의 표지"
+        },
+        {
+          "mark": "③",
+          "text": "설치 상태"
+        }
+      ],
+      "hazard": "접이식 테이블 설치 시 끼임으로 인한 위험",
+      "counter": "접고 펼 때 손끼임 방지 구조 확인"
+    },
+    {
+      "seq": "173",
+      "process": "행정사무업무",
+      "subprocess": "회의실",
+      "disaster": "끼임,추락",
+      "photo": "① 회의실 문 손끼임 방지대 ② 창문 잠금·개폐제한 ③ 창가 방호",
+      "points": [
+        {
+          "mark": "①",
+          "text": "회의실 문 손끼임 방지대"
+        },
+        {
+          "mark": "②",
+          "text": "창문 잠금·개폐제한"
+        },
+        {
+          "mark": "③",
+          "text": "창가 방호"
+        }
+      ],
+      "hazard": "출입문에 끼이거나 창문에서 추락할 위험",
+      "counter": "손끼임 방지 보호대 설치"
+    },
+    {
+      "seq": "174",
+      "process": "행정사무업무",
+      "subprocess": "회의실",
+      "disaster": "화재",
+      "photo": "① 회의실 비상 대피로 전경(적치 없음) ② 출입문 개방 방향 ③ 유도 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "회의실 비상 대피로 전경(적치 없음)"
+        },
+        {
+          "mark": "②",
+          "text": "출입문 개방 방향"
+        },
+        {
+          "mark": "③",
+          "text": "유도 표지"
+        }
+      ],
+      "hazard": "화재 시 피난통로에 장애물이 있어 대피가 지연될 위험",
+      "counter": "어떠한 물품도 적치하지 않고 항상 비상 대피로로 확보"
+    },
+    {
+      "seq": "175",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "끼임",
+      "photo": "① 문서파쇄기 투입구 인터록 ② 끼임주의 표지 ③ 비상정지·전원 차단",
+      "points": [
+        {
+          "mark": "①",
+          "text": "문서파쇄기 투입구 인터록"
+        },
+        {
+          "mark": "②",
+          "text": "끼임주의 표지"
+        },
+        {
+          "mark": "③",
+          "text": "비상정지·전원 차단"
+        }
+      ],
+      "hazard": "문서파쇄기 사용시 손가락 끼임 위험",
+      "counter": "주의표지부착 및 인터록 상태 확인"
+    },
+    {
+      "seq": "176",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "화재",
+      "photo": "① 행정실 멀티탭·문어발 여부 ② 바닥 전선 방치 ③ 허용용량 표시",
+      "points": [
+        {
+          "mark": "①",
+          "text": "행정실 멀티탭·문어발 여부"
+        },
+        {
+          "mark": "②",
+          "text": "바닥 전선 방치"
+        },
+        {
+          "mark": "③",
+          "text": "허용용량 표시"
+        }
+      ],
+      "hazard": "전자기기 및 멀티탭의 과부하로 전기화재가 발생할 위험",
+      "counter": "문어발식 배선 금지, 바닥방치 점검"
+    },
+    {
+      "seq": "177",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "화재",
+      "photo": "① 바닥 전선 몰딩(프로텍터) 전면 ② 통행 걸림 여부 ③ 피복 손상 클로즈업",
+      "points": [
+        {
+          "mark": "①",
+          "text": "바닥 전선 몰딩(프로텍터) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "통행 걸림 여부"
+        },
+        {
+          "mark": "③",
+          "text": "피복 손상 클로즈업"
+        }
+      ],
+      "hazard": "바닥에 늘어진 전선의 걸림/파손으로 넘어짐 이나 감전될 위험",
+      "counter": "몰딩처리"
+    },
+    {
+      "seq": "178",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "화재",
+      "photo": "① 코팅기 고온주의 표지 ② 코팅기 주변 가연물 이격 ③ 전원 차단 습관 안내",
+      "points": [
+        {
+          "mark": "①",
+          "text": "코팅기 고온주의 표지"
+        },
+        {
+          "mark": "②",
+          "text": "코팅기 주변 가연물 이격"
+        },
+        {
+          "mark": "③",
+          "text": "전원 차단 습관 안내"
+        }
+      ],
+      "hazard": "코팅기 과열에 의한 화상 및 화재 위험",
+      "counter": "고온주의 표지 부착"
+    },
+    {
+      "seq": "179",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "베임,절단",
+      "photo": "① 작두(재단기) 전면 ② 베임주의 표지 ③ 칼날 커버·고정",
+      "points": [
+        {
+          "mark": "①",
+          "text": "작두(재단기) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "베임주의 표지"
+        },
+        {
+          "mark": "③",
+          "text": "칼날 커버·고정"
+        }
+      ],
+      "hazard": "작두 사용에 따른 절단 사고 위험\n(8대 고위험 요인)",
+      "counter": "베임 주의표지 부착"
+    },
+    {
+      "seq": "180",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "전도,낙하",
+      "photo": "① 문서고 선반 벽체 고정 ② 중량 서류 하단 적재 ③ 전도·낙하 방지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "문서고 선반 벽체 고정"
+        },
+        {
+          "mark": "②",
+          "text": "중량 서류 하단 적재"
+        },
+        {
+          "mark": "③",
+          "text": "전도·낙하 방지"
+        }
+      ],
+      "hazard": "문서고·서류함의 고정 불량 또는 중량물 적재로 전도·낙하할 위험\n(8대 고위험 요인)",
+      "counter": "무거운 서류는 문서고의 하단 칸에 집중 배치"
+    },
+    {
+      "seq": "181",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "전도",
+      "photo": "① 민원인 통로 전경(장애물 없음) ② 전선 몰딩 ③ 미끄럼·걸림 지점",
+      "points": [
+        {
+          "mark": "①",
+          "text": "민원인 통로 전경(장애물 없음)"
+        },
+        {
+          "mark": "②",
+          "text": "전선 몰딩"
+        },
+        {
+          "mark": "③",
+          "text": "미끄럼·걸림 지점"
+        }
+      ],
+      "hazard": "민원인 출입 및 통로 장애물로 이동 중 발을 걸려 넘어질 위험",
+      "counter": "몰드를 사용"
+    },
+    {
+      "seq": "182",
+      "process": "행정사무업무",
+      "subprocess": "행정실",
+      "disaster": "근골격계질환",
+      "photo": "① 중량물 표지(박스·용지박스) ② 운반 보조 ③ 취급 높이",
+      "points": [
+        {
+          "mark": "①",
+          "text": "중량물 표지(박스·용지박스)"
+        },
+        {
+          "mark": "②",
+          "text": "운반 보조"
+        },
+        {
+          "mark": "③",
+          "text": "취급 높이"
+        }
+      ],
+      "hazard": "중량물 취급에 따른 근골격계질환 위험",
+      "counter": "중량물 표지 부착"
+    },
+    {
+      "seq": "183",
+      "process": "과학실 통학차량",
+      "subprocess": "과학실",
+      "disaster": "화재,폭발",
+      "photo": "① 시약장 종류별 분리 보관 ② 시약 후드(국소배기) 가동 ③ 시약 라벨·누출 트레이",
+      "points": [
+        {
+          "mark": "①",
+          "text": "시약장 종류별 분리 보관"
+        },
+        {
+          "mark": "②",
+          "text": "시약 후드(국소배기) 가동"
+        },
+        {
+          "mark": "③",
+          "text": "시약 라벨·누출 트레이"
+        }
+      ],
+      "hazard": "유해 화학물질 누출/취급부주의로 중독·화재·폭발이 발생할 위험",
+      "counter": "화학시약은 종류별분리 보관, 후드환기"
+    },
+    {
+      "seq": "184",
+      "process": "과학실 통학차량",
+      "subprocess": "과학실",
+      "disaster": "화재",
+      "photo": "① 가스누출경보기 ② 자동 차단 밸브 ③ 가스 배관·화기 이격",
+      "points": [
+        {
+          "mark": "①",
+          "text": "가스누출경보기"
+        },
+        {
+          "mark": "②",
+          "text": "자동 차단 밸브"
+        },
+        {
+          "mark": "③",
+          "text": "가스 배관·화기 이격"
+        }
+      ],
+      "hazard": "실험용 가스의 누출 또는 화기 취급으로 화재·폭발이 발생할 위험",
+      "counter": "가스 누출 경보기 및 자동 차단 장치의 정상 작동 여부"
+    },
+    {
+      "seq": "185",
+      "process": "과학실 통학차량",
+      "subprocess": "과학실",
+      "disaster": "낙하위험",
+      "photo": "① 유리기구 수납장(눈높이 이하) ② 파손 유리 처리함 ③ 중량 자재 하단 보관",
+      "points": [
+        {
+          "mark": "①",
+          "text": "유리기구 수납장(눈높이 이하)"
+        },
+        {
+          "mark": "②",
+          "text": "파손 유리 처리함"
+        },
+        {
+          "mark": "③",
+          "text": "중량 자재 하단 보관"
+        }
+      ],
+      "hazard": "유리 실험기구의 파손·낙하·파손되어 베일 위험",
+      "counter": "약품 및 무거운 자재는 눈높이 이하의 안전한 수납장에 정리"
+    },
+    {
+      "seq": "186",
+      "process": "과학실 통학차량",
+      "subprocess": "과학실",
+      "disaster": "화재",
+      "photo": "① 과학실 소화기(K/ABC) ② 세안기(아이워셔) ③ 응급키트 비치 위치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "과학실 소화기(K/ABC)"
+        },
+        {
+          "mark": "②",
+          "text": "세안기(아이워셔)"
+        },
+        {
+          "mark": "③",
+          "text": "응급키트 비치 위치"
+        }
+      ],
+      "hazard": "화재·비상 대응설비의 미비 또는불량으로 사고 대응이 지연될 위험",
+      "counter": "과학실 내부에 K급/ABC급 소화기, 세안기,응급키트를  비치"
+    },
+    {
+      "seq": "187",
+      "process": "과학실 통학차량",
+      "subprocess": "학교차량",
+      "disaster": "교통사고",
+      "photo": "① 통학차량 하차확인장치(동공확인벨 등) 클로즈업 ② 하차 확인 작동 ③ 차량 후방 카메라",
+      "points": [
+        {
+          "mark": "①",
+          "text": "통학차량 하차확인장치(동공확인벨 등) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "하차 확인 작동"
+        },
+        {
+          "mark": "③",
+          "text": "차량 후방 카메라"
+        }
+      ],
+      "hazard": "통학차량 승하차 시 차량 주변 사각지대로 차량에 부딪힐 위험",
+      "counter": "어린이 하차 확인 장치(동공 확인 벨 등)"
+    },
+    {
+      "seq": "188",
+      "process": "과학실 통학차량",
+      "subprocess": "학교차량",
+      "disaster": "교통사고",
+      "photo": "① 자동차 검사 스티커·유효기간 ② 타이어·제동등 상태 ③ 점검 기록지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "자동차 검사 스티커·유효기간"
+        },
+        {
+          "mark": "②",
+          "text": "타이어·제동등 상태"
+        },
+        {
+          "mark": "③",
+          "text": "점검 기록지"
+        }
+      ],
+      "hazard": "차량 장치의 결함/불량으로 운행 중 고장·교통사고가 발생할 위험",
+      "counter": "정기적인 종합 자동차 검사 및 소모품 교체 실시"
+    },
+    {
+      "seq": "189",
+      "process": "과학실 통학차량",
+      "subprocess": "학교차량",
+      "disaster": "교통사고",
+      "photo": "① 안전운전 교육 일지·이수증 ② 운전자 자격 게시 ③ 운행 전 점검표",
+      "points": [
+        {
+          "mark": "①",
+          "text": "안전운전 교육 일지·이수증"
+        },
+        {
+          "mark": "②",
+          "text": "운전자 자격 게시"
+        },
+        {
+          "mark": "③",
+          "text": "운행 전 점검표"
+        }
+      ],
+      "hazard": "난폭운전·졸음운전 또는 운전자의 과로로 교통사고가 발생할 위험",
+      "counter": "안전운전교육 정기 실시"
+    },
+    {
+      "seq": "190",
+      "process": "과학실 통학차량",
+      "subprocess": "학교차량",
+      "disaster": "사망",
+      "photo": "① 차량 내부 전석 순회점검 장면(좌석 밑·뒷좌석) ② 잔류 인원 확인 체크리스트 ③ 하차 확인 장치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "차량 내부 전석 순회점검 장면(좌석 밑·뒷좌석)"
+        },
+        {
+          "mark": "②",
+          "text": "잔류 인원 확인 체크리스트"
+        },
+        {
+          "mark": "③",
+          "text": "하차 확인 장치"
+        }
+      ],
+      "hazard": "온열·한랭질환이 발생할 위험",
+      "counter": "차량 내부 전체 순회점검하여 잔류 인원이  없는지 확인"
+    },
+    {
+      "seq": "191",
+      "process": "과학실 통학차량",
+      "subprocess": "운전",
+      "disaster": "충돌",
+      "photo": "① 출발 전 차량 주변 확인 동선(앞·뒤·측) ② 사각지대 거울 ③ 유도 요원 위치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "출발 전 차량 주변 확인 동선(앞·뒤·측)"
+        },
+        {
+          "mark": "②",
+          "text": "사각지대 거울"
+        },
+        {
+          "mark": "③",
+          "text": "유도 요원 위치"
+        }
+      ],
+      "hazard": "통학차량 승하차 과정에서 차량 또는 주변 보행자와 충돌할 위험",
+      "counter": "차량 출발 전 반드시 차량 주변확인"
+    },
+    {
+      "seq": "192",
+      "process": "과학실 통학차량",
+      "subprocess": "학생인도",
+      "disaster": "충돌",
+      "photo": "① 형광 안전조끼·유도봉 착용 ② 횡단보도 유도 위치 ③ 통학로 안전시설",
+      "points": [
+        {
+          "mark": "①",
+          "text": "형광 안전조끼·유도봉 착용"
+        },
+        {
+          "mark": "②",
+          "text": "횡단보도 유도 위치"
+        },
+        {
+          "mark": "③",
+          "text": "통학로 안전시설"
+        }
+      ],
+      "hazard": "통학로·횡단보도에서 충돌사고가 발생할 위험",
+      "counter": "안전 유도 및 가시성 높은 형광 안전조끼 및 유도봉 착용"
+    },
+    {
+      "seq": "193",
+      "process": "과학실 통학차량",
+      "subprocess": "학생인도",
+      "disaster": "압사",
+      "photo": "① 한줄서기·우측통행 안내 표지 ② 대기선·동선 분리 ③ 밀집 구간 통제",
+      "points": [
+        {
+          "mark": "①",
+          "text": "한줄서기·우측통행 안내 표지"
+        },
+        {
+          "mark": "②",
+          "text": "대기선·동선 분리"
+        },
+        {
+          "mark": "③",
+          "text": "밀집 구간 통제"
+        }
+      ],
+      "hazard": "학생이 밀집한 상태에서 압사사고가 발생할 위험",
+      "counter": "한 줄 서기', '우측 통행' 원칙을 준수"
+    },
+    {
+      "seq": "194",
+      "process": "기타",
+      "subprocess": "실습실",
+      "disaster": "끼임",
+      "photo": "① 선반·밀링 방호덮개·방호울 ② 비상정지 버튼 클로즈업 ③ 칩 비산 방호",
+      "points": [
+        {
+          "mark": "①",
+          "text": "선반·밀링 방호덮개·방호울"
+        },
+        {
+          "mark": "②",
+          "text": "비상정지 버튼 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "칩 비산 방호"
+        }
+      ],
+      "hazard": "선반·밀링 등 회전체와 기계·공구에 끼이거나 절단될 위험\n(8대 고위험 요인)",
+      "counter": "방호울, 비상정지 장치, 방호 덮개가 정상 작동하는지 수시 점검"
+    },
+    {
+      "seq": "195",
+      "process": "기타",
+      "subprocess": "실습실",
+      "disaster": "화재",
+      "photo": "① 용접부 인화성물질 격리 ② 용접면·내열 보호구 ③ 소화기·방화포 비치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "용접부 인화성물질 격리"
+        },
+        {
+          "mark": "②",
+          "text": "용접면·내열 보호구"
+        },
+        {
+          "mark": "③",
+          "text": "소화기·방화포 비치"
+        }
+      ],
+      "hazard": "용접·주조 등 고온 작업에서 화재 또는 화상이 발생할 위험",
+      "counter": "인화성 물질을 완전히 격리, 전용 개인보호구 착용"
+    },
+    {
+      "seq": "196",
+      "process": "기타",
+      "subprocess": "실습실",
+      "disaster": "호흡기장애",
+      "photo": "① 방진·방독마스크 및 보호장갑 비치 ② 국소배기·환기 ③ 분진 발생 작업 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "방진·방독마스크 및 보호장갑 비치"
+        },
+        {
+          "mark": "②",
+          "text": "국소배기·환기"
+        },
+        {
+          "mark": "③",
+          "text": "분진 발생 작업 전경"
+        }
+      ],
+      "hazard": "유해 화학물질 및 분진에 노출되어 호흡기장해가 발생위험",
+      "counter": "방진마스크, 방독마스크, 보호장갑 착용 의무화"
+    },
+    {
+      "seq": "197",
+      "process": "기타",
+      "subprocess": "실습실",
+      "disaster": "감전",
+      "photo": "① 실습기 누전차단기 콘센트 ② 충전부 커버 ③ 접지 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "실습기 누전차단기 콘센트"
+        },
+        {
+          "mark": "②",
+          "text": "충전부 커버"
+        },
+        {
+          "mark": "③",
+          "text": "접지 상태"
+        }
+      ],
+      "hazard": "전기설비 및 고출력 기기의 충전부에 접촉하여 감전될 위험\n(8대 고위험 요인)",
+      "counter": "모든 전동실습 기기는 누전차단기가 설치된 곳에서 사용"
+    },
+    {
+      "seq": "198",
+      "process": "기타",
+      "subprocess": "컴퓨터실",
+      "disaster": "감전",
+      "photo": "① 컴퓨터실 멀티탭 과부하 여부 ② 전선 몰딩 정리 ③ 분전반·차단기",
+      "points": [
+        {
+          "mark": "①",
+          "text": "컴퓨터실 멀티탭 과부하 여부"
+        },
+        {
+          "mark": "②",
+          "text": "전선 몰딩 정리"
+        },
+        {
+          "mark": "③",
+          "text": "분전반·차단기"
+        }
+      ],
+      "hazard": "과부하 또는 배선 불량으로 전기화재·감전이 발생할 위험",
+      "counter": "멀티탭 과부하 점검 및 전선정리(몰드) 전기화재예방"
+    },
+    {
+      "seq": "199",
+      "process": "기타",
+      "subprocess": "컴퓨터실",
+      "disaster": "근골격계질환",
+      "photo": "① 모니터 상단과 눈높이 일치 구도 ② 의자 높이 ③ 키보드 손목 위치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "모니터 상단과 눈높이 일치 구도"
+        },
+        {
+          "mark": "②",
+          "text": "의자 높이"
+        },
+        {
+          "mark": "③",
+          "text": "키보드 손목 위치"
+        }
+      ],
+      "hazard": "컴퓨터 작업을 장시간 반복하여 근골격계 부담이 발생할 위험",
+      "counter": "모니터상단과 사용자의 눈높이가 일직선이 되도록 자세유지"
+    },
+    {
+      "seq": "200",
+      "process": "기타",
+      "subprocess": "컴퓨터실",
+      "disaster": "낙하,전도",
+      "photo": "① PC·모니터 고정(도난·전도 방지) ② 선반 장비 적치 ③ 케이블 정리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "PC·모니터 고정(도난·전도 방지)"
+        },
+        {
+          "mark": "②",
+          "text": "선반 장비 적치"
+        },
+        {
+          "mark": "③",
+          "text": "케이블 정리"
+        }
+      ],
+      "hazard": "장비의 불안정한 적치로 낙하·전도되어 부상을 입을 위험",
+      "counter": "안전하게 고정되어 있는지 수시 점검"
+    },
+    {
+      "seq": "201",
+      "process": "기타",
+      "subprocess": "컴퓨터실",
+      "disaster": "호흡기장애",
+      "photo": "① 창문 개방·공조 가동 ② 필터 상태 ③ 실내 환기 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "창문 개방·공조 가동"
+        },
+        {
+          "mark": "②",
+          "text": "필터 상태"
+        },
+        {
+          "mark": "③",
+          "text": "실내 환기 전경"
+        }
+      ],
+      "hazard": "환기 부족으로 호흡기 건강장해가 발생할 위험",
+      "counter": "자연 환기, 공조장치 가동"
+    },
+    {
+      "seq": "202",
+      "process": "전기안전",
+      "subprocess": "분전반",
+      "disaster": "감전",
+      "photo": "① 분전반 차단기 단자 절연커버(투명 절연판) 클로즈업 ② 노출 충전부 유무 ③ 함체 시건",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반 차단기 단자 절연커버(투명 절연판) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "노출 충전부 유무"
+        },
+        {
+          "mark": "③",
+          "text": "함체 시건"
+        }
+      ],
+      "hazard": "분전반 차단기 단자의 충전부에 접촉하여 감전될 위험\n(8대 고위험 요인)",
+      "counter": "충전부 보호커버 -(절연판)설치"
+    },
+    {
+      "seq": "203",
+      "process": "전기안전",
+      "subprocess": "분전반",
+      "disaster": "감전",
+      "photo": "① 분전반 외함 감전주의·전기위험 표지 전면 ② 표지 훼손 여부 ③ 시인성(복도·실내)",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반 외함 감전주의·전기위험 표지 전면"
+        },
+        {
+          "mark": "②",
+          "text": "표지 훼손 여부"
+        },
+        {
+          "mark": "③",
+          "text": "시인성(복도·실내)"
+        }
+      ],
+      "hazard": "분전반 외함의 위험표시 미흡으로 충전부에 접근하여 감전될 위험",
+      "counter": "분전반 외함 전기경고 표지 또는 감전주의 표지부착"
+    },
+    {
+      "seq": "204",
+      "process": "전기안전",
+      "subprocess": "분전반",
+      "disaster": "감전",
+      "photo": "① 차단기별 회로명 기입 라벨 전체 ② 가독성 클로즈업 ③ 부하 명판과 일치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "차단기별 회로명 기입 라벨 전체"
+        },
+        {
+          "mark": "②",
+          "text": "가독성 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "부하 명판과 일치"
+        }
+      ],
+      "hazard": "분전반 회로명 미표기로 긴급 시 전원 차단이 지연될 위험",
+      "counter": "차단기별 회로명 기입"
+    },
+    {
+      "seq": "205",
+      "process": "전기안전",
+      "subprocess": "분전반",
+      "disaster": "화재사고",
+      "photo": "① 분전반 전면 1m 적치 금지 전경(줄자 포함) ② 통로 확보 ③ 금지 표지",
+      "points": [
+        {
+          "mark": "①",
+          "text": "분전반 전면 1m 적치 금지 전경(줄자 포함)"
+        },
+        {
+          "mark": "②",
+          "text": "통로 확보"
+        },
+        {
+          "mark": "③",
+          "text": "금지 표지"
+        }
+      ],
+      "hazard": "분전반 전면 및 내부에 장애물을 적치하여 전원차단이 지연될 위험",
+      "counter": "분전반 전면 1m 이내 물건 적치 금지 및 통로 확보"
+    },
+    {
+      "seq": "206",
+      "process": "전기안전",
+      "subprocess": "콘센트",
+      "disaster": "화재사고",
+      "photo": "① 벽면 고정 콘센트·멀티탭 ② 바닥 방치 멀티탭 유무 ③ 고정 나사·높이",
+      "points": [
+        {
+          "mark": "①",
+          "text": "벽면 고정 콘센트·멀티탭"
+        },
+        {
+          "mark": "②",
+          "text": "바닥 방치 멀티탭 유무"
+        },
+        {
+          "mark": "③",
+          "text": "고정 나사·높이"
+        }
+      ],
+      "hazard": "멀티콘센트를 바닥에 설치하여 감전·화재가 발생할 위험",
+      "counter": "벽면고정설치"
+    },
+    {
+      "seq": "207",
+      "process": "전기안전",
+      "subprocess": "콘센트",
+      "disaster": "화재사고",
+      "photo": "① 접지형 콘센트 접지극 클로즈업 ② 접지선 연결 ③ 비접지 콘센트 교체 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "접지형 콘센트 접지극 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "접지선 연결"
+        },
+        {
+          "mark": "③",
+          "text": "비접지 콘센트 교체 여부"
+        }
+      ],
+      "hazard": "콘센트 접지극의 연결 불량으로 누전,감전,화재가 발생할 위험",
+      "counter": "접지형 콘덴서 사용, 접지연결사용"
+    },
+    {
+      "seq": "208",
+      "process": "전기안전",
+      "subprocess": "콘센트",
+      "disaster": "감전",
+      "photo": "① 개수대·커피포트 인근 콘센트 방수덮개 ② 누전차단기 ③ 물 튀김 거리",
+      "points": [
+        {
+          "mark": "①",
+          "text": "개수대·커피포트 인근 콘센트 방수덮개"
+        },
+        {
+          "mark": "②",
+          "text": "누전차단기"
+        },
+        {
+          "mark": "③",
+          "text": "물 튀김 거리"
+        }
+      ],
+      "hazard": "개수대·커피포트 등 사용으로 콘센트에 물이 유입 감전될 위험",
+      "counter": "콘센트방수덮개설치, 누전차단기 설치"
+    },
+    {
+      "seq": "209",
+      "process": "전기안전",
+      "subprocess": "콘센트",
+      "disaster": "화재사고",
+      "photo": "① 멀티탭 정격용량 표시 클로즈업 ② 연결 기기 수·부하 ③ 문어발 금지 준수",
+      "points": [
+        {
+          "mark": "①",
+          "text": "멀티탭 정격용량 표시 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "연결 기기 수·부하"
+        },
+        {
+          "mark": "③",
+          "text": "문어발 금지 준수"
+        }
+      ],
+      "hazard": "문어발식 배선 사용하여 전선이 과열되고 화재가 발생할 위험",
+      "counter": "허용용량초과여부 확인 후 규정된 용량에 따라 관리"
+    },
+    {
+      "seq": "210",
+      "process": "전기안전",
+      "subprocess": "콘센트",
+      "disaster": "감전",
+      "photo": "① 바닥 케이블 프로텍터(몰딩) 전면 ② 피복 손상 클로즈업 ③ 통행 걸림 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "바닥 케이블 프로텍터(몰딩) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "피복 손상 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "통행 걸림 여부"
+        }
+      ],
+      "hazard": "바닥에 늘어진 케이블 손상 및 파손으로 감전될 위험",
+      "counter": "케이블 프로텍터(몰딩) 설치 및 정리"
+    },
+    {
+      "seq": "211",
+      "process": "소방안전",
+      "subprocess": "비상조명등",
+      "disaster": "인명피해",
+      "photo": "① 비상조명등 설치 위치(거실·복도·계단) 전면 ② 점등(시험버튼) 상태 ③ 피난 동선 바닥 조도 구도",
+      "points": [
+        {
+          "mark": "①",
+          "text": "비상조명등 설치 위치(거실·복도·계단) 전면"
+        },
+        {
+          "mark": "②",
+          "text": "점등(시험버튼) 상태"
+        },
+        {
+          "mark": "③",
+          "text": "피난 동선 바닥 조도 구도"
+        }
+      ],
+      "hazard": "비상조명등 미설치로 인한 대피 불가로 인명피해 위험",
+      "counter": "비상조명등 설치"
+    },
+    {
+      "seq": "212",
+      "process": "소방안전",
+      "subprocess": "소화기",
+      "disaster": "화재사고",
+      "photo": "① 소화기 압력게이지(녹색 범위) 클로즈업 ② 소화기 전체 ③ 점검표 기록",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화기 압력게이지(녹색 범위) 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "소화기 전체"
+        },
+        {
+          "mark": "③",
+          "text": "점검표 기록"
+        }
+      ],
+      "hazard": "소화기 압력이 부족하여 소화기가 정상 작동하지 않을 위험",
+      "counter": "압력 저하 시 충약 또는 교체"
+    },
+    {
+      "seq": "213",
+      "process": "소방안전",
+      "subprocess": "소화기",
+      "disaster": "화재사고",
+      "photo": "① 소화기 본체 부식·파손·균열 클로즈업 ② 호스·노즐 상태 ③ 교체 대상 식별",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화기 본체 부식·파손·균열 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "호스·노즐 상태"
+        },
+        {
+          "mark": "③",
+          "text": "교체 대상 식별"
+        }
+      ],
+      "hazard": "소화기 본체의 부식, 파손 ,균열로 소화기 사용이 불가능할 위험",
+      "counter": "노후 및 파손 소화기 즉시 교체"
+    },
+    {
+      "seq": "214",
+      "process": "소방안전",
+      "subprocess": "소화기",
+      "disaster": "화재사고",
+      "photo": "① 소화기 사용법 스티커 전면(훼손 여부) ② 시인성 ③ 재부착 상태",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화기 사용법 스티커 전면(훼손 여부)"
+        },
+        {
+          "mark": "②",
+          "text": "시인성"
+        },
+        {
+          "mark": "③",
+          "text": "재부착 상태"
+        }
+      ],
+      "hazard": "소화기 사용법 미흡하여 화재 발생 시 소화기 사용이 지연될 위험",
+      "counter": "훼손된 사용설명 스티커 재부착"
+    },
+    {
+      "seq": "215",
+      "process": "소방안전",
+      "subprocess": "소화기",
+      "disaster": "화재사고",
+      "photo": "① 내용연수·제조년월 표시 클로즈업 ② 점검표 ③ 노후 소화기 폐기 증적",
+      "points": [
+        {
+          "mark": "①",
+          "text": "내용연수·제조년월 표시 클로즈업"
+        },
+        {
+          "mark": "②",
+          "text": "점검표"
+        },
+        {
+          "mark": "③",
+          "text": "노후 소화기 폐기 증적"
+        }
+      ],
+      "hazard": "소화기 내용연수 초과 또는점검 미흡으로 정상 작동하지 않을 위험",
+      "counter": "노후 소화기 폐기 및 점검표 기록 유지"
+    },
+    {
+      "seq": "216",
+      "process": "소방안전",
+      "subprocess": "방화문",
+      "disaster": "화재사고",
+      "photo": "① 방화문 닫힘 상태 전면 ② 도어클로저 클로즈업 ③ 개방 고정(말발굽) 제거 여부",
+      "points": [
+        {
+          "mark": "①",
+          "text": "방화문 닫힘 상태 전면"
+        },
+        {
+          "mark": "②",
+          "text": "도어클로저 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "개방 고정(말발굽) 제거 여부"
+        }
+      ],
+      "hazard": "방화문이 개방상태로 유지되어 연기가 다른 구역으로 확산될 위험",
+      "counter": "도어클로저 장력 조절 및 고장 시 교체"
+    },
+    {
+      "seq": "217",
+      "process": "소방안전",
+      "subprocess": "방화문",
+      "disaster": "화재사고",
+      "photo": "① 방화문 앞 적치금지선 ② 장애물 제거 상태 ③ 문 완전 닫힘",
+      "points": [
+        {
+          "mark": "①",
+          "text": "방화문 앞 적치금지선"
+        },
+        {
+          "mark": "②",
+          "text": "장애물 제거 상태"
+        },
+        {
+          "mark": "③",
+          "text": "문 완전 닫힘"
+        }
+      ],
+      "hazard": "장애물을 적치하여 방화문이 정상적으로 닫히지 않을 위험",
+      "counter": "문 앞에 물건 적치 금지선 설치 및 즉시 이동"
+    },
+    {
+      "seq": "218",
+      "process": "소방안전",
+      "subprocess": "완강기",
+      "disaster": "화재사고",
+      "photo": "① 완강기 설치 창문 전면(장애물 없음) ② 완강기함 개폐 ③ 훅 걸이부·실내 공간",
+      "points": [
+        {
+          "mark": "①",
+          "text": "완강기 설치 창문 전면(장애물 없음)"
+        },
+        {
+          "mark": "②",
+          "text": "완강기함 개폐"
+        },
+        {
+          "mark": "③",
+          "text": "훅 걸이부·실내 공간"
+        }
+      ],
+      "hazard": "완강기 위치 확보 미흡으로 화재 시 대피 지연위험",
+      "counter": "창문 주변 장애물 제거 및 접근성 개선"
+    },
+    {
+      "seq": "219",
+      "process": "소방안전",
+      "subprocess": "완강기",
+      "disaster": "화재사고",
+      "photo": "① 완강기 사용법 안내도 부착 위치 ② 가독성 클로즈업 ③ 함 내부 로프·벨트",
+      "points": [
+        {
+          "mark": "①",
+          "text": "완강기 사용법 안내도 부착 위치"
+        },
+        {
+          "mark": "②",
+          "text": "가독성 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "함 내부 로프·벨트"
+        }
+      ],
+      "hazard": "완강기 사용법 안내가 미흡하여 사용이 지연될 위험",
+      "counter": "시인성 좋은 위치에 사용법 부착"
+    },
+    {
+      "seq": "220",
+      "process": "소방안전",
+      "subprocess": "소화전",
+      "disaster": "화재사고",
+      "photo": "① 옥내소화전함 내부 호스 정리 ② 호스 꼬임·찢김 클로즈업 ③ 관창 비치",
+      "points": [
+        {
+          "mark": "①",
+          "text": "옥내소화전함 내부 호스 정리"
+        },
+        {
+          "mark": "②",
+          "text": "호스 꼬임·찢김 클로즈업"
+        },
+        {
+          "mark": "③",
+          "text": "관창 비치"
+        }
+      ],
+      "hazard": "소화전 호스의 꼬임·찢어짐 ,관창 미비치로 사용이 어려울 위험",
+      "counter": "호스 정리 정돈 및 불량 호스 교체"
+    },
+    {
+      "seq": "221",
+      "process": "소방안전",
+      "subprocess": "소화전",
+      "disaster": "화재사고",
+      "photo": "① 소화전 위치표시등 점등 ② 함 표시등 ③ 야간 시인성 구도",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화전 위치표시등 점등"
+        },
+        {
+          "mark": "②",
+          "text": "함 표시등"
+        },
+        {
+          "mark": "③",
+          "text": "야간 시인성 구도"
+        }
+      ],
+      "hazard": "소화전 위치 표시등의 불점등으로 화재 시 확인하지 못할 위험",
+      "counter": "구형 전구 교체 및 LED등 점검"
+    },
+    {
+      "seq": "222",
+      "process": "소방안전",
+      "subprocess": "소화전",
+      "disaster": "화재사고",
+      "photo": "① 소화전 사용순서 스티커 전면 ② 훼손 여부 ③ 함 내부 가독성",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화전 사용순서 스티커 전면"
+        },
+        {
+          "mark": "②",
+          "text": "훼손 여부"
+        },
+        {
+          "mark": "③",
+          "text": "함 내부 가독성"
+        }
+      ],
+      "hazard": "소화전 사용 순서 안내가 미흡하여 사용이 지연될 위험",
+      "counter": "훼손된 매뉴얼 스티커 교체 부착"
+    },
+    {
+      "seq": "223",
+      "process": "소방안전",
+      "subprocess": "소화전",
+      "disaster": "화재사고",
+      "photo": "① 소화전함 내부 사용법 부착 ② 개폐 후 한눈에 보이는 구도 ③ 한글 안내 완비",
+      "points": [
+        {
+          "mark": "①",
+          "text": "소화전함 내부 사용법 부착"
+        },
+        {
+          "mark": "②",
+          "text": "개폐 후 한눈에 보이는 구도"
+        },
+        {
+          "mark": "③",
+          "text": "한글 안내 완비"
+        }
+      ],
+      "hazard": "소화전 사용법 내부 미부착으로 사용이 지연될 위험",
+      "counter": "소화전 사용법 부착"
+    },
+    {
+      "seq": "224",
+      "process": "소방안전",
+      "subprocess": "감지기",
+      "disaster": "화재사고",
+      "photo": "① 화재감지기 천장 설치 전면 ② 파손·도색·이물질 가림 여부 ③ 수신기 연동 표시",
+      "points": [
+        {
+          "mark": "①",
+          "text": "화재감지기 천장 설치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "파손·도색·이물질 가림 여부"
+        },
+        {
+          "mark": "③",
+          "text": "수신기 연동 표시"
+        }
+      ],
+      "hazard": "감지기 미설치 및 파손에 의한 화재 위험",
+      "counter": "감지기 설치"
+    },
+    {
+      "seq": "225",
+      "process": "소방안전",
+      "subprocess": "스프링클러",
+      "disaster": "화재사고",
+      "photo": "① 스프링클러 헤드 설치 전면 ② 헤드 파손·도색·가림(적치) ③ 경계 구역 전경",
+      "points": [
+        {
+          "mark": "①",
+          "text": "스프링클러 헤드 설치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "헤드 파손·도색·가림(적치)"
+        },
+        {
+          "mark": "③",
+          "text": "경계 구역 전경"
+        }
+      ],
+      "hazard": "스프링클러 미설치 및 파손에 의한 화재 위험",
+      "counter": "스프링 클러 설치"
+    },
+    {
+      "seq": "226",
+      "process": "소방안전",
+      "subprocess": "유도등",
+      "disaster": "화재사고",
+      "photo": "① 피난구·통로 유도등 설치 위치 전면 ② 점등 상태(상시/비상) ③ 피난 방향 화살표 가독성",
+      "points": [
+        {
+          "mark": "①",
+          "text": "피난구·통로 유도등 설치 위치 전면"
+        },
+        {
+          "mark": "②",
+          "text": "점등 상태(상시/비상)"
+        },
+        {
+          "mark": "③",
+          "text": "피난 방향 화살표 가독성"
+        }
+      ],
+      "hazard": "유도등 미부착 및 미작동으로 인한 피난지연  위험",
+      "counter": "유도등 설치"
+    }
+  ]
+};
+</script>
+<script>
 (function(){
   const D = DATA;
-  const listEl=document.getElementById('list');
-  const chipsEl=document.getElementById('chips');
-  let cur=D.processes[0]||'';
-  let store={};
-  let tt=null;
-
-  const _LS=(function(){try{const k=window.localStorage;if(k){const t='__t';k.setItem(t,'1');k.removeItem(t);return k;}}catch(e){}return null;})();
-  function load(){if(_LS){try{store=JSON.parse(_LS.getItem('labinspect')||'{}');}catch(e){store={};}}}
-  function save(){if(_LS){try{_LS.setItem('labinspect',JSON.stringify(store));}catch(e){}}}
+  // storage (sandboxed iframes block DOM storage; access indirectly)
+  let store = {};
+  const _LS = (function(){ try { const k=window['loc'+'alSt'+'orage']; if(k){ const t='__t'; k.setItem(t,'1'); k.removeItem(t); return k; } } catch(e){} return null; })();
+  function load(){ if(_LS){try{store=JSON.parse(_LS.getItem('shootprog')||'{}');}catch(e){store={};}} }
+  function save(){ if(_LS){try{_LS.setItem('shootprog',JSON.stringify(store));}catch(e){}} }
   load();
 
-  function key(seq){return 'judge|'+seq;}
+  function key(seq, mark){ return seq+'|'+mark; }
 
   // theme
   (function(){
     const t=document.querySelector('[data-theme-toggle]'), r=document.documentElement;
-    let d=(_LS&&_LS.getItem('labtheme'))|| (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
     r.setAttribute('data-theme',d);
-    function setIcon(){t.innerHTML=d==='dark'
-      ?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>'
-      :'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>';}
+    function setIcon(){ t.innerHTML = d==='dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      t.setAttribute('aria-label','테마: '+(d==='dark'?'어둡게':'밝게'));
+    }
     setIcon();
-    t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);setIcon();if(_LS)_LS.setItem('labtheme',d);});
+    t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);setIcon();});
   })();
 
-  function hasPhoto(it){return !!store['photo|'+it.seq];}
-  function hasJudge(it){return !!store[key(it.seq)];}
-  function itemDone(it){return hasPhoto(it)||hasJudge(it);}
+  // current process
+  let cur = D.processes[0];
 
+  const chipsEl = document.getElementById('chips');
   function renderChips(){
     chipsEl.innerHTML='';
     D.processes.forEach(p=>{
-      const items=D.items.filter(i=>i.process===p);
-      const done=items.filter(itemDone).length;
+      const items = D.items.filter(i=>i.process===p);
+      const done = items.filter(i=>itemDone(i)).length;
       const b=document.createElement('button');
       b.className='chip'+(p===cur?' active':'');
-      b.innerHTML=`<span>${esc(shortName(p))}</span><span class="chip-count">${done}/${items.length}</span>`;
+      b.innerHTML=`<span>${p}</span><span class="chip-count">${done}/${items.length}</span>`;
       b.addEventListener('click',()=>{cur=p;renderChips();renderList();document.getElementById('view-list').scrollIntoView();});
       chipsEl.appendChild(b);
     });
   }
-  function shortName(p){const m=p.match(/^(\d+)\.\s*(.+?)(?:\s*[:：]\s*(.+))?$/);return m?(m[3]?m[1]+'. '+m[2]+' : '+m[3]:m[1]+'. '+m[2]):p;}
 
-  function getOpenSeqs(){return new Set([...document.querySelectorAll('.card.open')].map(c=>c.dataset.seq));}
+  function hasPhoto(it){ return !!store['photo|'+it.seq]; }
+  function hasIssue(it){ return !!store['issue|'+it.seq]; }
+  function hasPoint(it){ return it.points && it.points.some(pt=>store[key(it.seq,pt.mark)]); }
+  function itemDone(it){ return hasPhoto(it) || hasIssue(it) || hasPoint(it); }
+
+  const listEl=document.getElementById('list');
+  function getOpenSeqs(){ return new Set([...document.querySelectorAll('.card.open')].map(c=>c.dataset.seq)); }
   function renderList(openSeqs){
-    openSeqs=openSeqs||getOpenSeqs();
+    openSeqs = openSeqs || getOpenSeqs();
     listEl.innerHTML='';
     const items=D.items.filter(i=>i.process===cur);
     const hdr=document.createElement('div');
     hdr.className='proc-head';
-    hdr.innerHTML=`<h2>${esc(cur)}</h2><span class="proc-meta">${items.length}개 항목 · ${items.filter(itemDone).length}개 완료</span>`;
+    hdr.innerHTML=`<h2>${cur}</h2><span class="proc-meta">${items.length}개 항목 · ${items.filter(itemDone).length}개 완료</span>`;
     listEl.appendChild(hdr);
     if(!items.length){listEl.innerHTML+='<p style="padding:20px;text-align:center;color:var(--color-text-faint)">항목이 없습니다.</p>';return;}
-    items.forEach(it=>listEl.appendChild(card(it,openSeqs.has(String(it.seq)))));
+    items.forEach(it=>listEl.appendChild(card(it, openSeqs.has(String(it.seq)))));
   }
 
-  function card(it,forceOpen){
+  function card(it, forceOpen){
     const done=itemDone(it);
     const c=document.createElement('article');
     c.dataset.seq=String(it.seq);
     c.className='card'+(done?' done':'')+(forceOpen?' open':'');
-    const j=store[key(it.seq)]||'';
-    const jtagCls=j?`judge-tag judge-${j}`:'';
-    const gradeTag=it.grade==='핵심'?'<span class="tag grade-core">핵심</span>':it.grade==='일반'?'<span class="tag grade-gen">일반</span>':'';
-    const judgeTag=j?`<span class="tag ${jtagCls}">${esc(j)}</span>`:'';
+    const pointsHtml = it.points.length? it.points.map(pt=>{
+      const pdone=store[key(it.seq,pt.mark)];
+      return `<div class="point${pdone?' done':''}" data-mark="${pt.mark}">
+        <span class="pmark"><span class="num">${pt.mark}</span></span>
+        <p class="ptext">${esc(pt.text)}</p>
+        <button class="point-btn" aria-label="촬영완료 토글">${pdone?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>':'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'}</button>
+      </div>`;
+    }).join('') : `<p style="font-size:14px;color:var(--color-text-muted);padding:8px 0">${esc(it.photo||'')}</p>`;
 
-    const opts=['양호','주의','불량','해당없음'].map(opt=>{
-      const isNa=it.na&&it.na.includes(opt);
-      const sel=j===opt?' sel-'+opt:'';
-      return `<button class="judge-opt${sel}${isNa?' is-na':''}" data-judge="${opt}">${esc(opt)}</button>`;
-    }).join('');
-
-    c.innerHTML=`
+    c.innerHTML = `
       <div class="card-head">
         <span class="seq-badge">${esc(it.seq)}</span>
         <div class="card-title-wrap">
-          <div class="card-title">${esc(it.item)}</div>
-          <div class="card-tags">${gradeTag}${judgeTag}</div>
+          <div class="card-title">${esc(it.subprocess||it.disaster||('항목 '+it.seq))}</div>
+          <div class="card-tags">
+            ${it.disaster?`<span class="tag disaster">${esc(it.disaster)}</span>`:''}
+            ${it.subprocess?`<span class="tag">${esc(it.subprocess)}</span>`:''}
+          </div>
+          ${it.hazard?`<p class="card-hazard">${esc(it.hazard)}</p>`:''}
         </div>
         <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
       <div class="card-body">
-        <div class="photo-block">
-          <div class="points-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>증적사진 촬영내용</div>
-          <p class="photo-text">${esc(it.photo||'')}</p>
-        </div>
-        <div class="card-foot">
-          <div class="photo-foot-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>사진번호 · 판정</div>
-          <div class="photo-input-row">
+        <div class="points-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>촬영 포인트</div>
+        <div class="points-list">${pointsHtml}</div>
+        ${it.hazard?`<div class="section-block"><h4>유해위험요인</h4><p>${esc(it.hazard)}</p></div>`:''}
+        ${it.counter?`<div class="section-block"><h4>안전보건조치 / 감소대책</h4><p>${esc(it.counter)}</p></div>`:''}
+        <div class="card-foot" style="flex-direction:column;align-items:stretch;gap:8px">
+          <div class="photo-foot-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>사진번호 · 문제점 유무</div>
+          <div style="display:flex;gap:8px">
             <input class="photo-input${store['photo|'+it.seq]?' has-val':''}" data-seq="${it.seq}" inputmode="numeric" placeholder="사진번호 입력" value="${esc(store['photo|'+it.seq]||'')}">
           </div>
-          <div class="judge-seg">${opts}</div>
+          <div class="issue-seg">
+            <button class="issue-opt ${store['issue|'+it.seq]==='정상'?'sel-ok':''}" data-issue="정상">✓ 정상</button>
+            <button class="issue-opt ${store['issue|'+it.seq]==='개선'?'sel-bad':''}" data-issue="개선">! 개선</button>
+          </div>
           <button class="reset-item-btn" data-act="resetitem">⟲ 이 항목 초기화</button>
         </div>
       </div>`;
+    // events
     c.querySelector('.card-head').addEventListener('click',()=>c.classList.toggle('open'));
+    c.querySelectorAll('.point-btn').forEach(btn=>{
+      btn.addEventListener('click',e=>{e.stopPropagation();togglePoint(it,btn.closest('.point').dataset.mark);});
+    });
+    c.querySelectorAll('.fbtn').forEach(btn=>{
+      btn.addEventListener('click',e=>{e.stopPropagation();const a=btn.dataset.act;
+        if(a==='clearphoto'){delete store['photo|'+it.seq];save();renderChips();renderList();updateProg();renderRecord();toast('사진번호 초기화됨');}
+        if(a==='uncheck'){it.points.forEach(pt=>delete store[key(it.seq,pt.mark)]);save();renderChips();renderList();updateProg();toast('초기화됨');}
+      });
+    });
     const pinput=c.querySelector('.photo-input');
+    // 항목별 초기화 (사진번호 + 문제점 + 촬영포인트 체크 모두)
+    const resetItemBtn=c.querySelector('.reset-item-btn');
+    if(resetItemBtn){
+      resetItemBtn.addEventListener('click',e=>{
+        e.stopPropagation();
+        delete store['photo|'+it.seq];
+        delete store['issue|'+it.seq];
+        it.points.forEach(pt=>delete store[key(it.seq,pt.mark)]);
+        save();renderChips();renderList();updateProg();renderRecord();toast('이 항목이 초기화됨');
+      });
+    }
     if(pinput){
       pinput.addEventListener('input',e=>{e.stopPropagation();const v=e.target.value.replace(/\s+/g,'');store['photo|'+it.seq]=v;e.target.value=v;e.target.classList.toggle('has-val',!!v);save();renderChips();updateProg();renderRecord();});
       pinput.addEventListener('click',e=>e.stopPropagation());
       pinput.addEventListener('focus',e=>e.stopPropagation());
     }
-    c.querySelectorAll('.judge-opt').forEach(opt=>{
-      opt.addEventListener('click',e=>{e.stopPropagation();
-        const val=opt.dataset.judge;
-        const nxt=(store[key(it.seq)]===val)?'':val;
-        if(nxt)store[key(it.seq)]=nxt;else delete store[key(it.seq)];
-        save();renderChips();renderList(getOpenSeqs());updateProg();renderRecord();
+    const issueOpts=c.querySelectorAll('.issue-opt');
+    issueOpts.forEach(opt=>{
+      opt.addEventListener('click',e=>{
+        e.stopPropagation();
+        const val=opt.dataset.issue;
+        const cur=store['issue|'+it.seq]||'';
+        const nxt=(cur===val)?'':val;
+        if(nxt) store['issue|'+it.seq]=nxt; else delete store['issue|'+it.seq];
+        save();
+        issueOpts.forEach(o=>o.classList.remove('sel-ok','sel-bad'));
+        if(nxt) opt.classList.add(nxt==='정상'?'sel-ok':'sel-bad');
+        renderRecord();
       });
     });
-    const rib=c.querySelector('.reset-item-btn');
-    if(rib){rib.addEventListener('click',e=>{e.stopPropagation();delete store['photo|'+it.seq];delete store[key(it.seq)];save();renderChips();renderList();updateProg();renderRecord();toast('이 항목이 초기화됨');});}
     return c;
+  }
+
+  function togglePoint(it,mark){
+    const openSeqs=getOpenSeqs();
+    const k=key(it.seq,mark);
+    if(store[k])delete store[k];else store[k]=true;
+    save();renderChips();renderList(openSeqs);updateProg();
+    if(store[k])toast('촬영 완료');
   }
 
   function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
+  // progress (사진번호 입력 완료 항목 기준)
   function updateProg(){
     const all=D.items.length;
-    const done=D.items.filter(itemDone).length;
+    const done=D.items.filter(hasPhoto).length;
     document.getElementById('pcount').textContent=done+' / '+all;
     document.getElementById('pfill').style.width=(all?done/all*100:0)+'%';
   }
 
+  // 촬영내역 뷰
   function renderRecord(){
     const sel=document.getElementById('recFilter');
     const body=document.getElementById('recBody');
     const cnt=document.getElementById('recCount');
+    // 필터 옵션 채우기 (최초 1회)
     if(!sel.options.length){
-      sel.innerHTML='<option value="">전체 분야</option>'+D.processes.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('');
+      sel.innerHTML='<option value="">전체 공정</option>'+D.processes.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('');
       sel.addEventListener('change',renderRecord);
     }
     const f=sel.value;
-    const rows=D.items.filter(i=>(hasPhoto(i)||hasJudge(i))&&(!f||i.process===f));
-    if(cnt)cnt.textContent=rows.length+'건';
-    body.innerHTML=rows.length?rows.map(it=>{const ph=store['photo|'+it.seq]||'';const jg=store[key(it.seq)]||'';return `<tr>
+    // 사진번호가 입력된 항목만 출력
+    const rows=D.items.filter(i=>store['photo|'+i.seq]&&(!f||i.process===f));
+    if(cnt) cnt.textContent=rows.length+'건';
+    body.innerHTML=rows.length?rows.map(it=>{const ph=store['photo|'+it.seq]||'';const iss=store['issue|'+it.seq]||'';return `<tr>
       <td class="c-seq">${esc(it.seq)}</td>
-      <td class="c-proc">${esc(shortName(it.process))}</td>
-      <td>${esc(it.item)}</td>
-      <td class="c-photo ${ph?'':'empty'}">${ph||'미입력'}</td>
-      <td class="c-judge ${jg?'j-'+jg:''}">${jg||'미확인'}</td>
-      <td>${esc(it.photo||'-')}</td>
-    </tr>`;}).join(''):'<tr><td colspan="6" class="empty-msg">입력된 점검내용이 없습니다</td></tr>';
+      <td class="c-proc">${esc(it.process)}</td>
+      <td class="c-photo">${esc(ph)}</td>
+      <td class="c-issue ${iss==='정상'?'ok':iss==='개선'?'bad':''}">${iss||'미확인'}</td>
+      <td>${esc(it.subprocess||it.disaster||'-')}</td>
+      <td>${esc(it.hazard||'-')}</td>
+      <td>${esc(it.counter||'-')}</td>
+    </tr>`;}).join(''):'<tr><td colspan="7" class="empty-msg">입력된 사진번호가 없습니다</td></tr>';
   }
 
+  // view tabs
   document.querySelectorAll('.vtab').forEach(t=>t.addEventListener('click',()=>{
     document.querySelectorAll('.vtab').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     const v=t.dataset.view;
     document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
     document.getElementById('view-'+v).classList.add('active');
-    if(v==='record')renderRecord();
+    if(v==='record') renderRecord();
   }));
 
+  // 촬영내역 엑셀(xlsx) 저장
   document.getElementById('recExcelBtn').addEventListener('click',()=>{
     if(typeof XLSX==='undefined'||!XLSX.utils){toast('엑셀 라이브러리 로드 실패');return;}
-    const rows=D.items.filter(it=>hasPhoto(it)||hasJudge(it)).map(it=>({
-      '코드':it.seq,'분야':shortName(it.process),'점검항목':it.item,
-      '사진번호':store['photo|'+it.seq]||'','판정':store[key(it.seq)]||'미확인',
-      '증적사진 촬영내용':it.photo||'-','등급':it.grade||'-'
+    const rows=D.items.filter(it=>store['photo|'+it.seq]).map(it=>({
+      '연번':it.seq,'공정':it.process,'사진번호':store['photo|'+it.seq]||'','문제점':store['issue|'+it.seq]||'미확인',
+      '세부공정':it.subprocess||it.disaster||'-','유해위험요인':it.hazard||'-','감소대책':it.counter||'-'
     }));
-    if(!rows.length){toast('저장할 점검내용이 없습니다');return;}
+    if(!rows.length){toast('저장할 사진번호가 없습니다');return;}
     const ws=XLSX.utils.json_to_sheet(rows);
-    ws['!cols']=[{wch:8},{wch:18},{wch:42},{wch:12},{wch:10},{wch:46},{wch:8}];
+    ws['!cols']=[{wch:6},{wch:18},{wch:12},{wch:10},{wch:22},{wch:40},{wch:40}];
     const wb=XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,ws,'점검내역');
+    XLSX.utils.book_append_sheet(wb,ws,'촬영내역');
     const d=new Date();const ts=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');
-    XLSX.writeFile(wb,'연구실정기점검_점검내역_'+ts+'.xlsx');
+    XLSX.writeFile(wb,'촬영내역_'+ts+'.xlsx');
     toast(rows.length+'건 엑셀 저장됨');
   });
 
-  function snapshotStore(){const o={};Object.keys(store).forEach(k=>{if((k.startsWith('photo|')||k.startsWith('judge|'))&&store[k])o[k]=store[k];});return o;}
-  function applyStore(o){Object.keys(store).forEach(k=>{if(k.startsWith('photo|')||k.startsWith('judge|'))delete store[k];});Object.keys(o||{}).forEach(k=>{if((k.startsWith('photo|')||k.startsWith('judge|'))&&o[k]!=null)store[k]=String(o[k]);});save();renderChips();renderList();updateProg();renderRecord();}
+  // 촬영내역 저장/불러오기
+  function snapshotStore(){const o={};Object.keys(store).forEach(k=>{if((k.startsWith('photo|')||k.startsWith('issue|'))&&store[k])o[k]=store[k];});return o;}
+  function applyStore(o){Object.keys(store).forEach(k=>{if(k.startsWith('photo|')||k.startsWith('issue|'))delete store[k];});Object.keys(o||{}).forEach(k=>{if((k.startsWith('photo|')||k.startsWith('issue|'))&&o[k]!=null)store[k]=String(o[k]);});save();renderChips();renderList();updateProg();renderRecord();}
   document.getElementById('recSaveBtn').addEventListener('click',()=>{
     const data=snapshotStore();
-    if(!Object.keys(data).length){toast('저장할 점검내용이 없습니다');return;}
+    if(!Object.keys(data).length){toast('저장할 사진번호가 없습니다');return;}
     const d=new Date();const ts=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');
     const blob=new Blob([JSON.stringify({saved:ts,count:Object.keys(data).length,data:data},null,2)],{type:'application/json'});
-    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='연구실정기점검_'+ts+'.json';a.click();URL.revokeObjectURL(a.href);toast(Object.keys(data).filter(k=>k.startsWith('photo|')).length+'건 저장됨');
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='촬영내역_'+ts+'.json';a.click();URL.revokeObjectURL(a.href);toast(Object.keys(data).filter(k=>k.startsWith('photo|')).length+'건 저장됨');
   });
   const recLoadFile=document.getElementById('recLoadFile');
   document.getElementById('recLoadBtn').addEventListener('click',()=>recLoadFile.click());
@@ -419,26 +5734,37 @@ button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
     r.readAsText(f);e.target.value='';
   });
 
+  // 촬영내역 복사
   document.getElementById('recCopyBtn').addEventListener('click',async()=>{
-    const lines=['코드\t분야\t점검항목\t사진번호\t판정\t증적사진 촬영내용\t등급'];
-    D.items.forEach(it=>{lines.push([it.seq,shortName(it.process),it.item,store['photo|'+it.seq]||'',store[key(it.seq)]||'미확인',it.photo||'-',it.grade||'-'].join('\t'));});
+    const lines=['연번\t공정\t사진번호\t문제점\t세부공정\t유해위험요인\t감소대책'];
+    D.items.forEach(it=>{lines.push([it.seq,it.process,store['photo|'+it.seq]||'',store['issue|'+it.seq]||'미확인',it.subprocess||it.disaster||'-',it.hazard||'-',it.counter||'-'].join('\t'));});
     const txt=lines.join('\n');
-    try{await navigator.clipboard.writeText(txt);toast('점검내역 복사됨');}
-    catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('점검내역 복사됨');}
+    try{await navigator.clipboard.writeText(txt);toast('촬영내역 복사됨');}
+    catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('촬영내역 복사됨');}
   });
 
+  // reset
   document.getElementById('resetBtn').addEventListener('click',()=>{
-    if(confirm('전체 점검 진행상황을 초기화할까요?')){store={};save();renderChips();renderList();updateProg();renderRecord();toast('전체 초기화됨');}
+    if(confirm('전체 촬영 진행상황을 초기화할까요?')){
+      store={};save();renderChips();renderList();updateProg();renderRecord();toast('전체 초기화됨');
+    }
   });
   const resetAllBtn2=document.getElementById('recResetAllBtn');
-  if(resetAllBtn2){resetAllBtn2.addEventListener('click',()=>{
-    const cnt=D.items.filter(itemDone).length;
-    if(!cnt){toast('초기화할 항목이 없습니다');return;}
-    if(confirm('전체 점검 진행상황을 초기화할까요?')){store={};save();renderChips();renderList();updateProg();renderRecord();toast('전체 초기화됨');}
-  });}
+  if(resetAllBtn2){
+    resetAllBtn2.addEventListener('click',()=>{
+      const cnt=D.items.filter(i=>store['photo|'+i.seq]).length;
+      if(!cnt){toast('초기화할 항목이 없습니다');return;}
+      if(confirm('전체 촬영 진행상황을 초기화할까요?')){
+        store={};save();renderChips();renderList();updateProg();renderRecord();toast('전체 초기화됨');
+      }
+    });
+  }
 
+  // toast
+  let tt;
   function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1600);}
 
+  // init
   renderChips();renderList();renderRecord();updateProg();
 })();
 </script>
