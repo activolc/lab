@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f3b43">
+<title>연구실 정기점검 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root, [data-theme='light'] {
+  --color-bg: #f4f7f7; --color-surface: #ffffff; --color-surface-2: #f7faf9;
+  --color-surface-offset: #eef3f1; --color-divider: #dde6e3; --color-border: #cdd8d4;
+  --color-text: #16262a; --color-text-muted: #5d7479; --color-text-faint: #9aa8ac;
+  --color-primary: #0f3b43; --color-primary-hover: #0a2c33; --color-primary-soft: #e2ecee;
+  --color-accent: #c45c26; --color-accent-soft: #fbe9dd;
+  --color-success: #2f7a3a; --color-success-soft: #e4f1e6;
+  --color-warning: #b86b1a; --color-warning-soft: #f7ece0;
+  --color-danger: #b3261e; --color-danger-soft: #f6e0de;
+  --shadow-sm: 0 1px 2px rgba(16,38,42,.06); --shadow-md: 0 4px 14px rgba(16,38,42,.09); --shadow-lg: 0 12px 32px rgba(16,38,42,.14);
+  --font-body: 'Noto Sans KR', system-ui, sans-serif;
+}
+[data-theme='dark'] {
+  --color-bg: #101a1c; --color-surface: #162427; --color-surface-2: #1b2b2e; --color-surface-offset: #14201f;
+  --color-divider: #243436; --color-border: #2f4347; --color-text: #d6e0e0; --color-text-muted: #8ca0a3; --color-text-faint: #5d6f72;
+  --color-primary: #6fb0b8; --color-primary-hover: #8cc3ca; --color-primary-soft: #1d3236;
+  --color-accent: #e08a4f; --color-accent-soft: #33281d;
+  --color-success: #7bbf6a; --color-success-soft: #1d2c20; --color-warning: #d9a23a; --color-warning-soft: #2c2618;
+  --color-danger: #e5706a; --color-danger-soft: #2c1d1c;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3); --shadow-md: 0 4px 14px rgba(0,0,0,.4); --shadow-lg: 0 12px 32px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:none;text-size-adjust:none;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:84px}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:16px;color:var(--color-text);background:var(--color-bg);-webkit-tap-highlight-color:transparent}
+button{cursor:pointer;background:none;border:none;color:inherit;font:inherit}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+.appbar{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--color-surface) 92%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider);padding-top:env(safe-area-inset-top)}
+.appbar-inner{max-width:460px;margin:0 auto}
+.header-inner{display:flex;align-items:center;gap:10px;padding:10px 16px}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.brand-logo{width:30px;height:30px;flex-shrink:0;color:var(--color-primary)}
+.brand-text{min-width:0}
+.brand-title{font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.brand-sub{font-size:11px;color:var(--color-text-muted);line-height:1.3;margin-top:1px}
+.theme-btn{flex-shrink:0;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--color-text-muted);border:1px solid var(--color-border)}
+.theme-btn:active{background:var(--color-surface-offset)}
+
+.progress-wrap{padding:0 16px 8px}
+.progress-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--color-text-muted);margin-bottom:5px}
+.progress-head b{color:var(--color-text);font-weight:700}
+.progress-bar{height:6px;background:var(--color-surface-offset);border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));border-radius:999px;transition:width .4s cubic-bezier(.16,1,.3,1);width:0}
+
+.chips{display:flex;gap:7px;overflow-x:auto;padding:6px 16px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;scroll-snap-align:start;padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-muted);white-space:nowrap;display:flex;align-items:center;gap:6px}
+.chip:active{transform:scale(.96)}
+.chip.active{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.chip.active .chip-count{background:rgba(255,255,255,.22);color:#fff}
+.chip-count{font-size:11px;font-weight:700;background:var(--color-surface-offset);color:var(--color-text-muted);padding:1px 7px;border-radius:999px;min-width:18px;text-align:center}
+
+.list{padding:12px 16px calc(28px + env(safe-area-inset-bottom));max-width:460px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
+.proc-head{display:flex;align-items:baseline;gap:8px;margin:6px 2px 2px}
+.proc-head h2{font-size:18px;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.proc-head .proc-meta{font-size:12px;color:var(--color-text-muted);white-space:nowrap}
+
+.card{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);transition:border-color .2s,box-shadow .2s}
+.card.done{border-color:var(--color-success)}
+.card-head{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer}
+.seq-badge{flex-shrink:0;min-width:46px;height:30px;padding:0 8px;border-radius:9px;background:var(--color-primary);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;letter-spacing:-.01em}
+.card.done .seq-badge{background:var(--color-success)}
+.card-title-wrap{flex:1;min-width:0}
+.card-title{font-size:15px;font-weight:700;line-height:1.3}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--color-surface-offset);color:var(--color-text-muted)}
+.tag.grade-core{background:var(--color-accent-soft);color:var(--color-accent)}
+.tag.grade-gen{background:var(--color-primary-soft);color:var(--color-primary)}
+.tag.judge-tag{font-weight:700}
+.tag.judge-양호{background:var(--color-success-soft);color:var(--color-success)}
+.tag.judge-주의{background:var(--color-warning-soft);color:var(--color-warning)}
+.tag.judge-불량{background:var(--color-danger-soft);color:var(--color-danger)}
+.tag.judge-해당없음{background:var(--color-surface-offset);color:var(--color-text-muted)}
+.chev{flex-shrink:0;color:var(--color-text-faint);transition:transform .25s}
+.card.open .chev{transform:rotate(180deg);color:var(--color-primary)}
+
+.card-body{display:none;padding:0 14px 14px;animation:fade .25s ease}
+.card.open .card-body{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+.photo-block{margin-top:6px}
+.points-label{font-size:12px;font-weight:700;color:var(--color-accent);margin:4px 0 8px;display:flex;align-items:center;gap:6px}
+.photo-text{font-size:14px;line-height:1.55;color:var(--color-text);padding:12px 13px;background:var(--color-accent-soft);border-radius:11px;white-space:pre-line;word-break:keep-all}
+
+/* 메모 필드 추가 CSS */
+.memo-block {margin-top: 12px;}
+.memo-input {width: 100%; padding: 10px; border-radius: 11px; font-size: 13px; font-weight: 500; background: var(--color-surface-offset); border: 1.5px solid var(--color-border); color: var(--color-text); min-height: 50px; resize: vertical; font-family: inherit;}
+.memo-input::placeholder {color: var(--color-text-faint); font-weight: 500;}
+.memo-input:focus {outline: none; border-color: var(--color-primary); background: var(--color-surface);}
+
+.card-foot{display:flex;flex-direction:column;gap:8px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-divider)}
+.photo-foot-label{font-size:11px;font-weight:700;color:var(--color-text-muted);margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.photo-input-row{display:flex;gap:8px;align-items:center}
+.photo-input{flex:1;min-width:0;padding:9px 10px;border-radius:10px;font-size:13px;font-weight:600;background:var(--color-surface-offset);border:1.5px solid var(--color-border);color:var(--color-text);text-align:center;min-height:38px}
+.photo-input::placeholder{color:var(--color-text-faint);font-weight:500}
+.photo-input:focus{outline:none;border-color:var(--color-primary);background:var(--color-surface)}
+.photo-input.has-val{background:var(--color-success-soft);border-color:var(--color-success);color:var(--color-success)}
+.judge-seg{display:flex;gap:7px;flex-wrap:wrap}
+.judge-opt{flex:1;min-width:0;padding:9px 4px;border-radius:10px;font-size:12px;font-weight:700;border:1.5px solid var(--color-border);background:var(--color-surface-offset);color:var(--color-text-muted);min-height:40px}
+.judge-opt:active{transform:scale(.98)}
+.judge-opt.sel-양호{background:var(--color-success-soft);border-color:var(--color-success);color:var(--color-success)}
+.judge-opt.sel-주의{background:var(--color-warning-soft);border-color:var(--color-warning);color:var(--color-warning)}
+.judge-opt.sel-불량{background:var(--color-danger-soft);border-color:var(--color-danger);color:var(--color-danger)}
+.judge-opt.sel-해당없음{background:var(--color-primary-soft);border-color:var(--color-primary);color:var(--color-primary)}
+.judge-opt.is-na{opacity:.3;text-decoration:line-through;pointer-events:none}
+.reset-item-btn{margin-top:2px;padding:8px;border-radius:10px;font-size:12px;font-weight:600;border:1px dashed var(--color-border);background:transparent;color:var(--color-text-muted)}
+.reset-item-btn:active{transform:scale(.98);background:var(--color-surface-offset)}
+
+.record-wrap{max-width:460px;margin:0 auto;padding:10px 0 calc(28px + env(safe-area-inset-bottom))}
+.record-bar{display:flex;gap:8px;align-items:center;padding:6px 16px 8px;background:var(--color-bg)}
+.record-bar select{flex:1;padding:9px;border-radius:10px;font-size:13px;font-weight:600;background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text);min-height:38px}
+.record-bar .rec-count{font-size:12px;color:var(--color-text-muted);font-weight:600;white-space:nowrap}
+.record-tbl-wrap{overflow:auto;max-height:calc(100dvh - 300px);-webkit-overflow-scrolling:touch;border:1px solid var(--color-divider);border-radius:10px;margin:0 16px;background:var(--color-surface)}
+.record-tbl{width:100%;border-collapse:collapse;min-width:850px;font-size:12px}
+.record-tbl thead th{position:sticky;top:0;z-index:2;background:var(--color-primary);color:#fff;font-weight:700;padding:8px;text-align:left;white-space:nowrap;border:1px solid var(--color-primary);font-size:11px}
+.record-tbl td{padding:8px;border:1px solid var(--color-divider);vertical-align:top;line-height:1.45;background:var(--color-surface)}
+.record-tbl tr:nth-child(even) td{background:var(--color-surface-2)}
+.record-tbl td.c-seq{text-align:center;font-weight:700;white-space:nowrap;color:var(--color-primary)}
+.record-tbl td.c-photo{text-align:center;font-weight:700;color:var(--color-accent);white-space:nowrap;min-width:64px}
+.record-tbl td.c-photo.empty{color:var(--color-text-faint);font-weight:500}
+.record-tbl td.c-proc{white-space:nowrap}
+.record-tbl td.c-judge{text-align:center;font-weight:700;white-space:nowrap}
+.record-tbl td.c-judge.j-양호{color:var(--color-success)}
+.record-tbl td.c-judge.j-주의{color:var(--color-warning)}
+.record-tbl td.c-judge.j-불량{color:var(--color-danger)}
+.record-tbl td.c-judge.j-해당없음{color:var(--color-text-muted)}
+.record-tbl td.empty-msg{text-align:center;color:var(--color-text-faint);padding:24px 8px;font-weight:500}
+.rec-export{padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:6px}
+.rec-export button{flex:1 1 30%;min-width:0;padding:10px 4px;border-radius:10px;font-size:12px;font-weight:700;border:none;white-space:nowrap}
+.rec-export button.primary{background:var(--color-primary);color:#fff}
+.rec-export button.secondary{background:var(--color-surface);color:var(--color-text);border:1px solid var(--color-border)}
+.rec-export button.danger{color:var(--color-danger);border-color:var(--color-danger)}
+.rec-export button:active{transform:scale(.98)}
+
+.viewtabs{display:flex;gap:6px;padding:0 16px 10px;max-width:460px;margin:0 auto}
+.vtab{flex:1;padding:10px;border-radius:10px;font-size:13px;font-weight:700;background:var(--color-surface-offset);color:var(--color-text-muted);border:1px solid transparent}
+.vtab.active{background:var(--color-surface);color:var(--color-primary);border-color:var(--color-border);box-shadow:var(--shadow-sm)}
+
+.view{display:none}
+.view.active{display:block}
+
+.float-btn{position:fixed;right:max(16px,calc((100vw - 460px)/2 + 16px));bottom:calc(18px + env(safe-area-inset-bottom));width:46px;height:46px;border-radius:50%;background:var(--color-surface);border:1px solid var(--color-border);box-shadow:var(--shadow-lg);display:grid;place-items:center;color:var(--color-text-muted);z-index:30}
+
+.toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--color-text);color:var(--color-surface);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:60;box-shadow:var(--shadow-lg);max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="appbar">
+ <div class="appbar-inner">
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <svg class="brand-logo" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="6" width="26" height="19" rx="3"/>
+        <circle cx="11" cy="13" r="2.5" fill="currentColor" stroke="none"/>
+        <path d="M3 20l6-5 5 4 4-3 8 6"/>
+        <path d="M16 2v4M12 4h8" opacity=".5"/>
+      </svg>
+      <div class="brand-text">
+        <div class="brand-title">연구실 정기점검 가이드</div>
+        <div class="brand-sub">전 분야 점검 · 증적사진 촬영포인트</div>
+      </div>
+    </div>
+    <button class="theme-btn" data-theme-toggle aria-label="테마 전환"></button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-head"><span>전체 점검 진행률</span><b id="pcount">0 / 0</b></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+</header>
+
+<nav class="chips" id="chips" aria-label="분야 선택"></nav>
+
+<div class="viewtabs">
+  <button class="vtab active" data-view="list">점검항목</button>
+  <button class="vtab" data-view="record">점검내역</button>
+</div>
+ </div>
+</div>
+
+<main>
+  <section class="view active" id="view-list">
+    <div class="list" id="list"></div>
+  </section>
+  <section class="view" id="view-record">
+    <div class="record-wrap">
+      <div class="record-bar">
+        <select id="recFilter" aria-label="분야 필터"></select>
+        <span class="rec-count" id="recCount"></span>
+      </div>
+      <div class="rec-export">
+        <button id="recCopyBtn" class="primary">복사</button>
+        <button id="recExcelBtn" class="secondary">엑셀저장</button>
+        <button id="recSaveBtn" class="secondary">JSON저장</button>
+        <button id="recLoadBtn" class="secondary">불러오기</button>
+        <button id="recResetAllBtn" class="secondary danger">전체초기화</button>
+        <input type="file" id="recLoadFile" accept="application/json,.json" style="display:none">
+      </div>
+      <div class="record-tbl-wrap">
+        <table class="record-tbl" id="recTable">
+          <thead><tr>
+            <th>코드</th><th>분야</th><th>점검항목</th><th>사진번호</th><th>판정</th><th>메모</th><th>증적사진 촬영내용</th>
+          </tr></thead>
+          <tbody id="recBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="data.js"></script>
+
+<button class="float-btn" id="resetBtn" aria-label="진행 초기화">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.3 2.6L3 9"/><path d="M3 3v6h6"/></svg>
+</button>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  const D = DATA;
+  const listEl=document.getElementById('list');
+  const chipsEl=document.getElementById('chips');
+  let cur=D.processes[0]||'';
+  let store={};
+  let tt=null;
+
+  const _LS=(function(){try{const k=window.localStorage;if(k){const t='__t';k.setItem(t,'1');k.removeItem(t);return k;}}catch(e){}return null;})();
+  function load(){if(_LS){try{store=JSON.parse(_LS.getItem('labinspect')||'{}');}catch(e){store={};}}}
+  function save(){if(_LS){try{_LS.setItem('labinspect',JSON.stringify(store));}catch(e){}}}
+  load();
+
+  function key(seq){return 'judge|'+seq;}
+
+  // theme
+  (function(){
+    const t=document.querySelector('[data-theme-toggle]'), r=document.documentElement;
+    let d=(_LS&&_LS.getItem('labtheme'))|| (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    r.setAttribute('data-theme',d);
+    function setIcon(){t.innerHTML=d==='dark'
+      ?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>'
+      :'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>';}
+    setIcon();
+    t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);setIcon();if(_LS)_LS.setItem('labtheme',d);});
+  })();
+
+  function hasPhoto(it){return !!store['photo|'+it.seq];}
+  function hasJudge(it){return !!store[key(it.seq)];}
+  function hasMemo(it){return !!store['memo|'+it.seq];}
+  function itemDone(it){return hasPhoto(it)||hasJudge(it)||hasMemo(it);}
+
+  function renderChips(){
+    chipsEl.innerHTML='';
+    D.processes.forEach(p=>{
+      const items=D.items.filter(i=>i.process===p);
+      const done=items.filter(itemDone).length;
+      const b=document.createElement('button');
+      b.className='chip'+(p===cur?' active':'');
+      b.innerHTML=`<span>${esc(shortName(p))}</span><span class="chip-count">${done}/${items.length}</span>`;
+      b.addEventListener('click',()=>{cur=p;renderChips();renderList();document.getElementById('view-list').scrollIntoView();});
+      chipsEl.appendChild(b);
+    });
+  }
+  function shortName(p){const m=p.match(/^(\d+)\.\s*(.+?)(?:\s*[:：]\s*(.+))?$/);return m?(m[3]?m[1]+'. '+m[2]+' : '+m[3]:m[1]+'. '+m[2]):p;}
+
+  function getOpenSeqs(){return new Set([...document.querySelectorAll('.card.open')].map(c=>c.dataset.seq));}
+  function renderList(openSeqs){
+    openSeqs=openSeqs||getOpenSeqs();
+    listEl.innerHTML='';
+    const items=D.items.filter(i=>i.process===cur);
+    const hdr=document.createElement('div');
+    hdr.className='proc-head';
+    hdr.innerHTML=`<h2>${esc(cur)}</h2><span class="proc-meta">${items.length}개 항목 · ${items.filter(itemDone).length}개 완료</span>`;
+    listEl.appendChild(hdr);
+    if(!items.length){listEl.innerHTML+='<p style="padding:20px;text-align:center;color:var(--color-text-faint)">항목이 없습니다.</p>';return;}
+    items.forEach(it=>listEl.appendChild(card(it,openSeqs.has(String(it.seq)))));
+  }
+
+  function card(it,forceOpen){
+    const done=itemDone(it);
+    const c=document.createElement('article');
+    c.dataset.seq=String(it.seq);
+    c.className='card'+(done?' done':'')+(forceOpen?' open':'');
+    const j=store[key(it.seq)]||'';
+    const jtagCls=j?`judge-tag judge-${j}`:'';
+    const gradeTag=it.grade==='핵심'?'<span class="tag grade-core">핵심</span>':it.grade==='일반'?'<span class="tag grade-gen">일반</span>':'';
+    const judgeTag=j?`<span class="tag ${jtagCls}">${esc(j)}</span>`:'';
+
+    const opts=['양호','주의','불량','해당없음'].map(opt=>{
+      const isNa=it.na&&it.na.includes(opt);
+      const sel=j===opt?' sel-'+opt:'';
+      return `<button class="judge-opt${sel}${isNa?' is-na':''}" data-judge="${opt}">${esc(opt)}</button>`;
+    }).join('');
+
+    c.innerHTML=`
+      <div class="card-head">
+        <span class="seq-badge">${esc(it.seq)}</span>
+        <div class="card-title-wrap">
+          <div class="card-title">${esc(it.item)}</div>
+          <div class="card-tags">${gradeTag}${judgeTag}</div>
+        </div>
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="photo-block">
+          <div class="points-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>증적사진 촬영내용</div>
+          <p class="photo-text">${esc(it.photo||'')}</p>
+        </div>
+        <div class="memo-block">
+          <div class="points-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M3 15.5V21h5.5l12-12.5-5.5-5.5L3 15.5z"/></svg>메모
+          </div>
+          <textarea class="memo-input" data-seq="${it.seq}" placeholder="특이사항 및 메모 입력">${esc(store['memo|'+it.seq]||'')}</textarea>
+        </div>
+        <div class="card-foot">
+          <div class="photo-foot-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>사진번호 · 판정</div>
+          <div class="photo-input-row">
+            <input class="photo-input${store['photo|'+it.seq]?' has-val':''}" data-seq="${it.seq}" inputmode="numeric" placeholder="사진번호 입력" value="${esc(store['photo|'+it.seq]||'')}">
+          </div>
+          <div class="judge-seg">${opts}</div>
+          <button class="reset-item-btn" data-act="resetitem">⟲ 이 항목 초기화</button>
+        </div>
+      </div>`;
+    
+    // 아코디언 동작 수정
+    c.querySelector('.card-head').addEventListener('click', () => {
+      const isOpen = c.classList.contains('open');
+      document.querySelectorAll('.card.open').forEach(card => card.classList.remove('open'));
+      if (!isOpen) {
+        c.classList.add('open');
+      }
+    });
+    
+    const pinput=c.querySelector('.photo-input');
+    if(pinput){
+      pinput.addEventListener('input',e=>{e.stopPropagation();const v=e.target.value.replace(/\s+/g,'');store['photo|'+it.seq]=v;e.target.value=v;e.target.classList.toggle('has-val',!!v);save();renderChips();updateProg();renderRecord();});
+      pinput.addEventListener('click',e=>e.stopPropagation());
+      pinput.addEventListener('focus',e=>e.stopPropagation());
+    }
+
+    const minput = c.querySelector('.memo-input');
+    if(minput){
+      minput.addEventListener('input', e=>{
+        e.stopPropagation();
+        store['memo|'+it.seq] = e.target.value;
+        save();
+        renderChips();
+        updateProg();
+        renderRecord();
+      });
+      minput.addEventListener('click', e => e.stopPropagation());
+    }
+
+    c.querySelectorAll('.judge-opt').forEach(opt=>{
+      opt.addEventListener('click',e=>{e.stopPropagation();
+        const val=opt.dataset.judge;
+        const nxt=(store[key(it.seq)]===val)?'':val;
+        if(nxt)store[key(it.seq)]=nxt;else delete store[key(it.seq)];
+        save();renderChips();renderList(getOpenSeqs());updateProg();renderRecord();
+      });
+    });
+    const rib=c.querySelector('.reset-item-btn');
+    if(rib){rib.addEventListener('click',e=>{e.stopPropagation();delete store['photo|'+it.seq];delete store['memo|'+it.seq];delete store[key(it.seq)];save();renderChips();renderList();updateProg();renderRecord();toast('이 항목이 초기화됨');});}
+    return c;
+  }
+
+  function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  function updateProg(){
+    const all=D.items.length;
+    const done=D.items.filter(itemDone).length;
+    document.getElementById('pcount').textContent=done+' / '+all;
+    document.getElementById('pfill').style.width=(all?done/all*100:0)+'%';
+  }
+
+  function renderRecord(){
+    const sel=document.getElementById('recFilter');
+    const body=document.getElementById('recBody');
+    const cnt=document.getElementById('recCount');
+    if(!sel.options.length){
+      sel.innerHTML='<option value="">전체 분야</option>'+D.processes.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('');
+      sel.addEventListener('change',renderRecord);
+    }
+    const f=sel.value;
+    const rows=D.items.filter(i=>itemDone(i)&&(!f||i.process===f));
+    if(cnt)cnt.textContent=rows.length+'건';
+    body.innerHTML=rows.length?rows.map(it=>{
+      const ph=store['photo|'+it.seq]||'';
+      const jg=store[key(it.seq)]||'';
+      const mo=store['memo|'+it.seq]||'';
+      return `<tr>
+      <td class="c-seq">${esc(it.seq)}</td>
+      <td class="c-proc">${esc(shortName(it.process))}</td>
+      <td>${esc(it.item)}</td>
+      <td class="c-photo ${ph?'':'empty'}">${ph||'미입력'}</td>
+      <td class="c-judge ${jg?'j-'+jg:''}">${jg||'미확인'}</td>
+      <td>${esc(mo||'-')}</td>
+      <td>${esc(it.photo||'-')}</td>
+    </tr>`;}).join(''):'<tr><td colspan="7" class="empty-msg">입력된 점검내용이 없습니다</td></tr>';
+  }
+
+  document.querySelectorAll('.vtab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.vtab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    const v=t.dataset.view;
+    document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+    document.getElementById('view-'+v).classList.add('active');
+    if(v==='record')renderRecord();
+  }));
+
+  document.getElementById('recExcelBtn').addEventListener('click',()=>{
+    if(typeof XLSX==='undefined'||!XLSX.utils){toast('엑셀 라이브러리 로드 실패');return;}
+    const rows=D.items.filter(it=>itemDone(it)).map(it=>({
+      '코드':it.seq,'분야':shortName(it.process),'점검항목':it.item,
+      '사진번호':store['photo|'+it.seq]||'','판정':store[key(it.seq)]||'미확인',
+      '메모':store['memo|'+it.seq]||'',
+      '증적사진 촬영내용':it.photo||'-','등급':it.grade||'-'
+    }));
+    if(!rows.length){toast('저장할 점검내용이 없습니다');return;}
+    const ws=XLSX.utils.json_to_sheet(rows);
+    ws['!cols']=[{wch:8},{wch:18},{wch:42},{wch:12},{wch:10},{wch:30},{wch:46},{wch:8}];
+    const wb=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,ws,'점검내역');
+    const d=new Date();const ts=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');
+    XLSX.writeFile(wb,'연구실정기점검_점검내역_'+ts+'.xlsx');
+    toast(rows.length+'건 엑셀 저장됨');
+  });
+
+  function snapshotStore(){const o={};Object.keys(store).forEach(k=>{if((k.startsWith('photo|')||k.startsWith('judge|')||k.startsWith('memo|'))&&store[k])o[k]=store[k];});return o;}
+  function applyStore(o){Object.keys(store).forEach(k=>{if(k.startsWith('photo|')||k.startsWith('judge|')||k.startsWith('memo|'))delete store[k];});Object.keys(o||{}).forEach(k=>{if((k.startsWith('photo|')||k.startsWith('judge|')||k.startsWith('memo|'))&&o[k]!=null)store[k]=String(o[k]);});save();renderChips();renderList();updateProg();renderRecord();}
+  document.getElementById('recSaveBtn').addEventListener('click',()=>{
+    const data=snapshotStore();
+    if(!Object.keys(data).length){toast('저장할 점검내용이 없습니다');return;}
+    const d=new Date();const ts=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');
+    const blob=new Blob([JSON.stringify({saved:ts,count:Object.keys(data).length,data:data},null,2)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='연구실정기점검_'+ts+'.json';a.click();URL.revokeObjectURL(a.href);toast('데이터 백업 완료');
+  });
+  const recLoadFile=document.getElementById('recLoadFile');
+  document.getElementById('recLoadBtn').addEventListener('click',()=>recLoadFile.click());
+  recLoadFile.addEventListener('change',e=>{
+    const f=e.target.files&&e.target.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{try{const o=JSON.parse(r.result);if(o&&o.data)applyStore(o.data);else if(o)applyStore(o);toast('불러오기 완료');}catch(err){toast('파일을 읽을 수 없습니다');}};
+    r.onerror=()=>toast('파일 읽기 실패');
+    r.readAsText(f);e.target.value='';
+  });
+
+  document.getElementById('recCopyBtn').addEventListener('click',async()=>{
+    const lines=['코드\t분야\t점검항목\t사진번호\t판정\t메모\t증적사진 촬영내용\t등급'];
+    D.items.forEach(it=>{lines.push([it.seq,shortName(it.process),it.item,store['photo|'+it.seq]||'',store[key(it.seq)]||'미확인',store['memo|'+it.seq]||'',it.photo||'-',it.grade||'-'].join('\t'));});
+    const txt=lines.join('\n');
+    try{await navigator.clipboard.writeText(txt);toast('점검내역 복사됨');}
+    catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('점검내역 복사됨');}
+  });
+
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(confirm('전체 점검 진행상황을 초기화할까요?')){store={};save();renderChips();renderList();updateProg();renderRecord();toast('전체 초기화됨');}
+  });
+  const resetAllBtn2=document.getElementById('recResetAllBtn');
+  if(resetAllBtn2){resetAllBtn2.addEventListener('click',()=>{
+    const cnt=D.items.filter(itemDone).length;
+    if(!cnt){toast('초기화할 항목이 없습니다');return;}
+    if(confirm('전체 점검 진행상황을 초기화할까요?')){store={};save();renderChips();renderList();updateProg();renderRecord();toast('전체 초기화됨');}
+  });}
+
+  function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1600);}
+
+  renderChips();renderList();renderRecord();updateProg();
+})();
+</script>
+</body>
+</html>
